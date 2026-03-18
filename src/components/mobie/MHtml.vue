@@ -28,7 +28,7 @@
             <div class="nav-item">
                 <a href="#">
                     <img src="../../assets/imgs/xn5.png" alt="">
-                    <h4>海礁</h4>   
+                    <h4>海礁</h4>
                     <p>问专家</p>
                 </a>
             </div>
@@ -361,7 +361,7 @@
     height: 23vmin;
     width: 100%;
     text-align: center;
-    padding: 0 4vmin 5vmin;
+    padding: 0 4vmin 0;
     color: var(--font-color-nav);
     background-color: var(--bg-color);
 }

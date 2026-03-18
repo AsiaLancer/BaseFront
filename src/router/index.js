@@ -87,9 +87,19 @@ const routes = [
     component: () => import('../components/mobie/MHtml.vue')  // 使用相对路径
   },
   {
+    path: '/mr-login',
+    name: 'MRabbitShopLogin',
+    component: () => import('../components/mobie/MRabbitShopLogin.vue')  // 使用相对路径
+  },
+  {
     path: '/tts',
     name: 'TTS',
     component: () => import('../views/IndexTTSView.vue')  // 使用相对路径
+  },
+  {
+    path: '/design-code-index',
+    name: 'DesignCodeIndex',
+    component: () => import('../components/DesignCodeIndex.vue')  // 使用相对路径
   },
 ]
 

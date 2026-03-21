@@ -101,6 +101,11 @@ const routes = [
     name: 'DesignCodeIndex',
     component: () => import('../components/DesignCodeIndex.vue')  // 使用相对路径
   },
+  {
+    path: '/bootstrap-learn',
+    name: 'BootstrapLearn',
+    component: () => import('../components/BoostreapLearn.vue')  // 使用相对路径
+  },
 ]
 
 const router = createRouter({

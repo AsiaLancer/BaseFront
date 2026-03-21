@@ -736,6 +736,7 @@
     background-color: #3e2140;
     border-radius: 5px;
     scroll-behavior: smooth;
+    z-index: 999;
 }
 
 .back a {

@@ -1108,6 +1108,7 @@
 .entry-box .banner ul li {
     height: 100%;
     width: 100%;
+    transition: all 0.5s;
 }
 
 .entry-box .banner img {

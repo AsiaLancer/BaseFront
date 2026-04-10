@@ -1,116 +1,174 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: () => import('../components/HelloWorld.vue')  // 使用相对路径
-  },
+const base4Learns = [
   {
     path: '/card-scroll',
     name: 'CardScroll',
-    component: () => import('../components/CardScorll.vue')  // 使用相对路径
+    component: () => import('@/components/bases/CardScorll.vue')  // 使用相对路径
   },
   {
     path: '/html',
     name: 'Html',
-    component: () => import('../components/Html.vue')  // 使用相对路径
+    component: () => import('@/components/bases/Html.vue')  // 使用相对路径
   },
   {
     path: '/parallax-scroll',
     name: 'ParallaxScroll',
-    component: () => import('../components/ParallaxScroll.vue')  // 使用相对路径
+    component: () => import('@/components/bases/ParallaxScroll.vue')  // 使用相对路径
   },
   {
     path: '/gradient-rotation',
     name: 'GradientRotation',
-    component: () => import('../components/GradientRotation.vue')  // 使用相对路径
+    component: () => import('@/components/bases/GradientRotation.vue')  // 使用相对路径
   },
   {
-    path: '/sidebar',
-    name: 'Sidebar',
-    component: () => import('../components/Sidebar.vue')  // 使用相对路径
+    path: '/sidebarexe',
+    name: 'SidebarEXE',
+    component: () => import('@/components/bases/SidebarEXE.vue')  // 使用相对路径
   },
   {
     path: '/nav-bar',
     name: 'NavBar',
-    component: () => import('../components/TagList.vue')  // 使用相对路径
+    component: () => import('@/components/bases/TagList.vue')  // 使用相对路径
   },
   {
     path: '/display-card',
     name: 'DisplayCard',
-    component: () => import('../components/DisplayCard.vue')  // 使用相对路径
+    component: () => import('@/components/bases/DisplayCard.vue')  // 使用相对路径
   },
   {
     path: '/waterfall-flow',
     name: 'WaterfallFlow',
-    component: () => import('../components/WaterfallFlow.vue')  // 使用相对路径
+    component: () => import('@/components/bases/WaterfallFlow.vue')  // 使用相对路径
   },
   {
     path: '/waterfall-flow-with-a',
     name: 'WaterfallFlowWithA',
-    component: () => import('../components/WaterfallFlowWithA.vue')  // 使用相对路径
-  },
-  {
-    path: '/lubashop-index',
-    name: 'LubaShopIndex',
-    component: () => import('../views/LubaShopIndex.vue')  // 使用相对路径
-  },
-  {
-    path: '/rabbitshop-index',
-    name: 'RabbitShopIndex',
-    component: () => import('../views/RabbitShopIndex.vue')  // 使用相对路径
-  },
-  {
+    component: () => import('@/components/bases/WaterfallFlowWithA.vue')  // 使用相对路径
+  }, {
     path: '/cat-scroll',
     name: 'CatScroll',
-    component: () => import('../components/CatScorll.vue')  // 使用相对路径
+    component: () => import('@/components/bases/CatScorll.vue')  // 使用相对路径
   },
   {
     path: '/nav-bar-list',
     name: 'NavBarList',
-    component: () => import('../components/NavBarList.vue')  // 使用相对路径
+    component: () => import('@/components/bases/NavBarList.vue')  // 使用相对路径
   },
   {
     path: '/img-list',
     name: 'ImgList',
-    component: () => import('../components/ImgList.vue')  // 使用相对路径
+    component: () => import('@/components/bases/ImgList.vue')  // 使用相对路径
   },
   {
     path: '/flow-gradient',
     name: 'FlowGradient',
-    component: () => import('../components/FlowGradient.vue')  // 使用相对路径
+    component: () => import('@/components/bases/FlowGradient.vue')  // 使用相对路径
+  }, {
+    path: '/bootstrap-learn',
+    name: 'BootstrapLearn',
+    component: () => import('@/components/bases/BoostreapLearn.vue')  // 使用相对路径
+  },
+  {
+    path: '/need-learn',
+    name: 'NeedLearn',
+    component: () => import('@/components/bases/VNeedLearn.vue')  // 使用相对路径
+  },
+  {
+    path: '/new-need',
+    name: 'NewNeed',
+    component: () => import('@/components/bases/NewNeedLearn.vue')  // 使用相对路径
+  },
+]
+
+const viewRoutes = [
+  {
+    path: '/',
+    name: 'RabbitShopIndex',
+    component: () => import('@/views/RabbitShopIndex.vue')  // 使用相对路径
+  },
+  {
+    path: '/lubashop-index',
+    name: 'LubaShopIndex',
+    component: () => import('@/views/LubaShopIndex.vue')  // 使用相对路径
   },
   {
     path: '/mhtml',
     name: 'MHtml',
-    component: () => import('../components/mobie/MHtml.vue')  // 使用相对路径
+    component: () => import('@/views/mobie/MHtml.vue')  // 使用相对路径
   },
   {
     path: '/mr-login',
     name: 'MRabbitShopLogin',
-    component: () => import('../components/mobie/MRabbitShopLogin.vue')  // 使用相对路径
+    component: () => import('@/views/mobie/MRabbitShopLogin.vue')  // 使用相对路径
   },
   {
     path: '/tts',
     name: 'TTS',
-    component: () => import('../views/IndexTTSView.vue')  // 使用相对路径
+    component: () => import('@/views/IndexTTSView.vue')  // 使用相对路径
   },
   {
     path: '/design-code-index',
     name: 'DesignCodeIndex',
-    component: () => import('../components/DesignCodeIndex.vue')  // 使用相对路径
+    component: () => import('@/views/DesignCodeIndex.vue')  // 使用相对路径
   },
   {
-    path: '/bootstrap-learn',
-    name: 'BootstrapLearn',
-    component: () => import('../components/BoostreapLearn.vue')  // 使用相对路径
+    path: '/user-info/:id',
+    name: 'UserInfo',
+    component: () => import('@/components/UserInfo.vue'),  // 使用相对路径
+    props: true,
+    children: [
+      {
+        path: 'children1',
+        name: 'UserInfoChildren1',
+        component: () => import('@/components/UserInfoChildren1.vue')  // 使用相对路径
+      },
+      {
+        path: 'children2',
+        name: 'UserInfoChildren2',
+        component: () => import('@/components/UserInfoChildren2.vue'),  // 使用相对路径
+        props: true
+      }
+    ]
   },
+  {
+    path: '/element',
+    name: 'ElementPlus4L',
+    component: () => import('@/components/bases/ElementPlus4L.vue')  // 使用相对路径
+  },
+  {
+    path: '/user-info/:id(\\d+)',
+    name: 'NotFound',
+    component: () => import('@/components/NotFount.vue') // 使用相对路径
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/vr4l/Login.vue'), // 使用相对路径
+    meta: { title: '登录', hidden: true }
+  },
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('@/views/vr4l/errors/404.vue'), // 使用相对路径
+    meta: { title: '页面不存在', hidden: true }
+  },
+  {
+    path: '/403',
+    name: '403',
+    component: () => import('@/views/vr4l/errors/403.vue'), // 使用相对路径
+    meta: { title: '无权限', hidden: true }
+  },
+  // {
+  //   path: '/:pathMatch(.*)*',
+  //   redirect: '/404',
+  //   meta: { hidden: true }
+  // }
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [...base4Learns, ...viewRoutes,]
 })
 
 export default router

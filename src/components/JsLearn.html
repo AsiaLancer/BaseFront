@@ -1,0 +1,2323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style scoped>
+        .body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 30px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            transition: width 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .info {
+            margin-top: 10px;
+            font-family: monospace;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        .speed {
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>JavaScript 能够直接写入 HTML 输出流中：</p>
+    <script>
+        document.write("<h1>这是一个标题</h1>");
+        document.write("<p>这是一个段落。</p>");
+        // setTimeout(function () {
+        //     // 文档已加载完成，这会覆盖整个页面
+        //     document.write("<p>这会把整个页面覆盖掉</p>");
+        // }, 1000);
+    </script>
+    <button type="button" onclick="alert('欢迎!')">点我!</button>
+    <p id="demo">
+        这是一个段落。
+    </p>
+    <script>
+        var x = false;
+        function myFunction() {
+            x = !x;
+            e = document.getElementById("demo");  // 找到元素
+            e.innerHTML = x ? "Hello JavaScript!" : "这是一个段落。";    // 改变内容
+        }
+    </script>
+    <button type="button" onclick="myFunction()">点击这里</button>
+    <img id="myimage" src="../assets/imgs/xiana10.png" alt="">
+    <script>
+        function myFunction2() {
+            var image = document.getElementById("myimage");
+            if (image.src.endsWith("10.png")) {
+                image.src = "../assets/imgs/xiana11.png";
+            } else {
+                image.src = "../assets/imgs/xiana10.png";
+            }
+            // 监听加载完成事件
+            image.onload = function () {
+                console.log("新图片加载完成，尺寸：", this.width, "x", this.height);
+            };
+
+            image.onerror = function () {
+                console.error("图片加载失败！");
+            };
+        }
+    </script>
+    <button type="button" onclick="myFunction2()">点击这里2</button>
+    <p id="demo2">sadas</p>
+    <script>
+        document.getElementById("demo2").style.color = "red";
+    </script>
+    <input id="demo3" type="text">
+    <script>
+        function myFunction3() {
+            var x = document.getElementById("demo3").value;
+            if (x == "" || isNaN(x)) {
+                alert("请输入数字");
+            }
+        }
+    </script>
+    <script>
+        var obj = {
+            name: "张三",
+            age: 18,
+            sex: "男"
+        };
+        var arr = new Array();
+        console.log(arr);
+    </script>
+
+    <button type="button" onclick="myFunction3()">点击这里3</button>
+    <script>
+        document.write(new Date().toLocaleString());
+    </script>
+    <p id="demo4"></p>
+    <script>
+        //四种输出
+        // window.alert("hello world");
+        console.log("hello world");
+        document.write("hello world");
+        document.getElementById("demo4").innerHTML = "hello world";
+    </script>
+    <script>
+        document.write(16 + "Volvo");
+        document.write("你好 W3Cschool!");
+    </script>
+    <script>
+        var a = 10;
+        var b = "12e2";
+        var c = 12e2;
+        var d;
+        var arr1 = new Array();
+        var obj = {};
+        var fun = function () {
+            n = 1;
+            console.log("hello world");
+            console.log(n);
+        }
+        function fun2() {
+            m = 1;
+            console.log("hello world2");
+        }
+        fun2();
+        console.log(m + "我在这");
+        document.write(a + b);
+        document.write(typeof a);
+        document.write(typeof b);
+        document.write(typeof d);
+        document.write(arr1 instanceof Array);
+        document.write(typeof obj);
+        document.write(typeof fun);
+        document.write("<br>");
+        document.write(a + c);
+        fun();
+        var person = {
+            name: "张三",
+            age: 18,
+            sex: "男",
+        };
+        document.write(person.name);
+        document.write(person.age);
+        document.write(person.sex);
+        document.write(person["name"]);
+        var notE;
+        document.write(notE);
+        notE = null;
+        document.write(notE);
+
+        //引用类型特性容易混淆的点
+        var a = new Number(123);
+        var b = a;
+        b = 456; // 直接赋值值字面量相当于将b指向一个新的对象
+        document.write(a);
+        document.write(b);
+        document.write("<br>");
+        var a = new Number(123);
+        var b = a;
+        b.value = 456;
+        document.write(a.value); // 单纯的引用特性
+        document.write(b);
+        // 同理
+        var a = { name: "张三" };
+        var b = a;
+        b.name = "李四";
+        document.write(a.name);
+        document.write(b.name);
+        document.write("<br>");
+        var c = { name: "张三" };
+        var d = c;
+        d = { name: "王五" };
+        document.write(c.name);
+        document.write(d.name);
+        // 存储在栈内存中，直接保存值
+        var num = 123;        // number
+        var str = "hello";    // string
+        var bool = true;      // boolean
+        var und = undefined;  // undefined
+        var nul = null;       // null
+        var sym = Symbol();   // symbol (ES6)
+        var big = 9007199254740991n; // bigint
+        // 存储在堆内存中，变量保存的是内存地址（引用）
+        var obj = { name: "张三" };      // object
+        var arr = [1, 2, 3];            // object（数组也是对象）
+        var func = function () { };        // function（函数也是对象）
+        var date = new Date();           // object
+        var reg = /abc/;                 // object
+        // 方式1：对象字面量（推荐）
+        var person1 = {
+            name: "张三"
+        };
+        document.write(person1.name);
+        // 方式2：new Object()
+        var person2 = new Object();
+        person2.name = "张三";
+        document.write(person2.name);
+        // 方式3：Object.create()
+        var person3 = Object.create(null);
+        person3.name = "张三";
+        document.write(person3.name);
+
+        // 方式4：构造函数
+        function Person4(name) {
+            this.name = name;
+        }
+        var person4 = new Person4("张三");
+        document.write(person4.name);
+
+        // 方式5：class（ES6语法糖）
+        class Person5 {
+            constructor(name) {
+                this.name = name;
+            }
+        }
+        var person5 = new Person5("张三");
+        document.write(person5.name);
+        document.write(undefined == null); // undefined 派生自 null
+        document.write(undefined === null);
+        document.write(typeof undefined);
+        document.write(typeof null);
+        document.write(Boolean(0));
+        document.write(Boolean(""));
+        document.write(Boolean("hello"));
+        document.write(Boolean(null));
+        document.write(Boolean(undefined));
+        document.write("<br>");
+        var add = 0;
+        function fun6() {
+            add++;
+            return;
+        }
+        document.write(fun6());
+        document.write(add);
+        let str1 = `hello world${add}`;
+        document.write(str1);
+        document.write("<br>");
+        document.write(typeof str1);
+        let globalVar = "我是全局变量";
+
+        function testScope() {
+            let localVar = "我是局部变量";
+            implicitGlobal = "我因为没有声明，变成了全局变量"; // 强烈不推荐这样做！
+            console.log(globalVar); // 可以访问
+            console.log(localVar);  // 可以访问
+        }
+        testScope();
+        console.log(globalVar); // 可以访问
+        // console.log(localVar); // 报错: localVar is not defined
+        console.log(implicitGlobal); // 可以访问，但这是糟糕的实践
+        function debounce(fn, delay, immediate = false) {
+            let timer = null;
+
+            return function (...args) {
+                // ① args: 收集所有传入的参数
+                // 例如：传入 'js', 1, 10 → args = ['js', 1, 10]
+
+                const context = this;
+                // ② context: 保存正确的 this 指向
+
+                if (timer) clearTimeout(timer);
+
+                if (immediate && !timer) {
+                    // 立即执行：直接调用原函数
+                    fn.apply(context, args);
+                    // 设置定时器，防止短时间内再次立即执行
+                    timer = setTimeout(() => {
+                        timer = null;
+                    }, delay);
+                } else {
+                    // 延迟执行：设置定时器
+                    timer = setTimeout(() => {
+                        // ③ 使用 apply 调用原函数
+                        // fn.apply(context, args) 等价于：
+                        // context.fn(...args)
+                        fn.apply(context, args);
+                        timer = null;
+                    }, delay);
+                }
+            };
+        }
+
+        // 实际使用
+        function search(keyword, page = 1) {
+            console.log(`🔍 搜索: ${keyword}, 页码: ${page}`);
+            console.log(`this指向:`, this);
+        }
+
+        class App1 {
+            constructor() {
+                this.name = 'MyApp';
+                // 创建防抖函数
+                this.debouncedSearch = debounce(this.search, 500);
+            }
+
+            search(keyword, page) {
+                // 这里的 this 指向 App 实例
+                console.log(`${this.name} 执行搜索: ${keyword}, 第${page}页`);
+            }
+
+            test() {
+                // 模拟用户输入
+                this.debouncedSearch('JavaScript', 1);
+                setTimeout(() => this.debouncedSearch('JavaScript', 2), 200);
+                setTimeout(() => this.debouncedSearch('JavaScript', 3), 400);
+                setTimeout(() => this.debouncedSearch('JavaScript', 4), 600);
+                // 只有最后一次（第4次）会真正执行
+            }
+        }
+
+        // const app = new App1();
+        // app.test();
+        const original = {
+            name: 'Original',
+            info: {
+                age: 25,
+                city: 'New York'
+            },
+            hobbies: ["reading", "travel"]
+        }
+        const clone = { ...original };
+        console.log(clone);
+        const clone2 = Object.assign({}, original);
+        console.log(clone2);
+        clone.name = 'Clone';
+        console.log(clone);
+        clone.info.age = 30;
+        console.log(original);
+        clone.info = { age: 30, city: 'Los Angeles' };
+        console.log(original);
+        const original2 = {
+            name: 'Original2',
+            info: {
+                age: 25,
+                city: 'New York'
+            }
+            , hobbies: ["reading", "travel"],
+            undefined: undefined,
+            null: null,
+
+            date: new Date()
+        };
+        console.log(original2);
+        const clone3 = JSON.parse(JSON.stringify(original2)); // 不能赋值函数 date symbol 循环引用
+        console.log(clone3);
+        const clone4 = structuredClone(original2); // 似乎不能赋值函数
+        console.log(clone4);
+        function deepClone(obj) {
+            if (obj === null || typeof obj !== 'object') {
+                return obj;
+            }
+            const clone = Array.isArray(obj) ? [] : {};
+            for (const key in obj) {
+                clone[key] = deepClone(obj[key]);
+            }
+            return clone;
+        }
+        const clone5 = deepClone(original2);
+        console.log(clone5);
+        const calculator = {
+            value: 0,
+            getValue() {
+                return this.value;
+            },
+
+            // 普通函数中的 this 指向调用者
+            print() {
+                console.log(`当前值: ${this.value}`);
+                console.log(this);
+            },
+
+            // 箭头函数中的 this 指向定义时的上下文
+            arrowPrint: () => {
+                // 注意：这里的 this 是定义时的 this（window/global），不是 calculator
+                console.log(`箭头函数中的 this: ${this}`);
+            }
+        };
+        calculator.print();
+        calculator.arrowPrint();
+        const nodeobj = {
+            name: 'Node',
+            arrowPrint: () => {
+                console.log(`箭头函数中的 this: ${this}`);
+            },
+            method: function () {
+                console.log(`普通函数中的 this: ${this}`);
+            }
+        }
+        nodeobj.arrowPrint();
+        nodeobj.method();
+        console.log(`this: ${this}`);
+        const fruits = ['apple', 'banana', 'orange'];
+        const numbers = [1, 2, 3, 4, 5];
+        const emptyArray = [];
+        const emptyArray2 = new Array(5).fill(0);
+        const emptyArray3 = Array.of(5);
+        document.write(fruits);
+        document.write('<br>');
+        document.write(numbers);
+        document.write('<br>');
+        document.write(emptyArray);
+        document.write('<br>');
+        document.write(emptyArray2);
+        document.write('<br>');
+        document.write(emptyArray3);
+        document.write('<br>');
+        const array4 = Array.from({ length: 5 }, (_, i) => i);
+        document.write(array4);
+        document.write('<br>');
+        numbers.push(6);
+        document.write(numbers);
+        document.write('<br>');
+        numbers.unshift(0);
+        document.write(numbers);
+        document.write('<br>');
+        numbers[2] = 100;
+        document.write(numbers);
+        document.write('<br>');
+        numbers.pop();
+        document.write(numbers);
+        document.write('<br>');
+        numbers.shift();
+        document.write(numbers);
+        document.write('<br>');
+        numbers.splice(2, 1);
+        document.write(numbers);
+        document.write('<br>');
+        numbers.splice(2, 0, 100);
+        document.write(numbers);
+        document.write('<br>');
+        const users = [
+            { id: 1, name: "张三", age: 25, active: true },
+            { id: 2, name: "李四", age: 30, active: false },
+            { id: 3, name: "王五", age: 28, active: true },
+            { id: 4, name: "赵六", age: 35, active: false }
+        ];
+        users.forEach((user, index) => {
+            document.write(`${index}: ${user.name}`);
+        });
+        document.write('<br>');
+        var names = users.map(user => user.name);
+        document.write(names);
+        document.write('<br>');
+        var activeUsers = users.filter(user => user.active);
+        var activeNames = activeUsers.map(user => user.name);
+        document.write(activeNames);
+        document.write('<br>');
+        var totalAge = users.reduce((acc, user) => acc + user.age, 0);
+        document.write(totalAge);
+        document.write('<br>');
+        var maxAge = users.reduce((max, user) => Math.max(max, user.age), 0);
+        document.write(maxAge);
+        document.write('<br>');
+        var minAge = users.reduce((min, user) => Math.min(min, user.age), Infinity);
+        document.write(minAge);
+        document.write('<br>');
+        const groupedByActive = users.reduce((result, user) => {
+            const key = user.active ? "active" : "inactive";
+            if (!result[key]) result[key] = [];
+            result[key].push(user);
+            return result;
+        }, {});
+        console.log(groupedByActive);
+        document.write('<br>');
+        const some = users.some(user => user.active);
+        document.write(some);
+        document.write('<br>');
+        const every = users.every(user => user.active);
+        document.write(every);
+        document.write('<br>');
+        const find = users.find(user => user.active);
+        console.log(find);
+        const findIndex = users.findIndex(user => user.active);
+        console.log(findIndex);
+        document.write('<br>');
+        const ages = [25, 30, 28, 35];
+        const maxAge1 = Math.max(...ages);
+        document.write(maxAge1);
+        document.write('<br>');
+        ages.sort((a, b) => a - b);
+        document.write(ages);
+        document.write('<br>');
+        ages.sort((a, b) => b - a);
+        document.write(ages);
+        document.write('<br>');
+        const reversedUsers = users.reverse();
+        console.log(reversedUsers);
+        users.sort((a, b) => b.age - a.age);
+        console.log(users);
+        document.write('<br>');
+        const arr3 = [1, 2];
+        const arr4 = [3, 4];
+        const mergedArr = [...arr3, ...arr4];
+        console.log(mergedArr);
+        const mergedArr2 = arr3.concat(arr4);
+        console.log(mergedArr2);
+        const slicedArr = ages.slice(2, 4);
+        console.log(slicedArr);
+        console.log(ages);
+        const string = ages.join(',');
+        console.log(string);
+        const splitArr = string.split(',').map(item => Number(item));
+        console.log(splitArr);
+        const includes = ages.includes(28);
+        console.log(includes);
+        const index = ages.indexOf(28);
+        console.log(index);
+        const lastIndexOf = ages.lastIndexOf(28);
+        console.log(lastIndexOf);
+        const nested = [1, [2, 3], [4, [5, 6]]];
+        const flattened1 = nested.flat(1);
+        console.log(flattened1);
+        const flattened = nested.flat(2);
+        console.log(flattened);
+        const sentences = ["Hello world", "How are you"];
+        const words = sentences.flatMap(sentence => sentence.split(' '));
+        console.log(words);
+        const matrix = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ];
+        const flattenedMatrix = matrix.flatMap(row => row);
+        console.log(flattenedMatrix);
+        matrix.forEach(row => {
+            console.log(row);
+        });
+        matrix.forEach((row, i) => {
+            console.log(row);
+            row.forEach((value, j) => {
+                console.log(`matrix[${i}][${j}] = ${value}`);
+            });
+        });
+        function createMatrix(rows, cols, initial = 0) {
+            return Array.from({ length: rows }, () =>
+                Array.from({ length: cols }, () => initial)
+            );
+        }
+
+        const zeros = createMatrix(3, 4, 0);
+        console.log(zeros);
+        const strexm = "Hello, JavaScript World!";
+        console.log(strexm.length);
+        console.log(strexm[0]);
+        console.log(strexm.charAt(0));
+        console.log(strexm.charCodeAt(0));
+        console.log(strexm.slice(0, 5));
+        console.log(strexm.substring(0, 5));
+        console.log(strexm.substr(7, 4));
+        console.log(strexm.indexOf("JavaScript"));
+        console.log(strexm.lastIndexOf("JavaScript"));
+        console.log(strexm.replace("JavaScript", "TypeScript"));
+        console.log(strexm.replace(/JavaScript/g, "TypeScript"));
+        console.log(strexm.replaceAll("l", "L"));
+        console.log(strexm.toUpperCase());
+        console.log(strexm.toLowerCase());
+        console.log(strexm.trim());
+        console.log(strexm.endsWith("!"));
+        console.log(strexm.startsWith("Hello"));
+        console.log(strexm.includes("JavaScript"));
+        console.log(strexm.split(" "));
+        console.log(str.split(""));
+        console.log(strexm.search("JavaScript"));
+        console.log("abe".repeat(3));
+        console.log("s".padStart(4, "0"));
+        console.log("t".padEnd(4, "0"));
+        console.log(Math.PI);
+        console.log(Math.E);
+        console.log(Math.round(3.14));
+        console.log(Math.floor(3.14));
+        console.log(Math.ceil(3.14));
+        console.log(Math.random());
+        console.log(Math.floor(Math.random() * 10 + 1));
+        console.log(Math.floor(Math.random() * 100) + 1);
+        console.log(Math.trunc(3.14));
+        console.log(Math.pow(2, 3));
+        console.log(Math.cbrt(8));
+        console.log(Math.sqrt(9));
+        console.log(Math.max(1, 2, 3));
+        console.log(Math.min(1, 2, 3));
+        console.log(Math.abs(-10));
+        console.log(Math.sign(11));
+        console.log(Math.sign(-10));
+        console.log(Math.sign(0));
+        const date1 = new Date();
+        console.log(date1.toLocaleString());
+        const date2 = new Date(2023, 11, 31);
+        console.log(date2.toLocaleString());
+        const date3 = new Date(1705305600000);
+        console.log(date3.toLocaleString());
+        const date4 = new Date("2023-12-31");
+        console.log(date4.toLocaleString());
+        console.log(date4.getFullYear());
+        console.log(date4.getMonth() + 1);
+        console.log(date4.getDate());
+        console.log(date4.getHours());
+        console.log(date4.getMinutes());
+        console.log(date4.getSeconds());
+        console.log(date4.getMilliseconds());
+        console.log(date4.getTime());
+        console.log(date4.toISOString());
+        console.log(date4.toUTCString());
+        console.log(date4.toLocaleDateString());
+        console.log(date4.toLocaleTimeString());
+        console.log(date4.toLocaleString());
+        const regexp = /hello/i;
+        console.log(regexp.test("Hello, JavaScript World!"));
+        const regexp2 = new RegExp("hello", "i");
+        console.log(regexp2.test("Hello, JavaScript World!"));
+        const userObj = {
+            name: "张三",
+            age: 28,
+            hobbies: ["读书", "游泳"],
+            address: {
+                city: "北京",
+                district: "朝阳区"
+            }
+        };
+        const userJson = JSON.stringify(userObj);
+        console.log(userJson);
+        const userObj2 = JSON.parse(userJson);
+        console.log(userObj2);
+        userObj2.age = 29;
+        console.log(userObj);
+        userObj2.address.city = "上海";
+        console.log(userObj);
+        const prettyJson = JSON.stringify(userObj, null, 2);
+        console.log(prettyJson);
+        const custom = JSON.stringify(userObj, (key, value) => {
+            if (key === "age") return value + 1; // 年龄加1
+            return value;
+        });
+        console.log(custom);
+        console.log(arr);
+        for (const key in arr) {
+            console.log(key);
+            if (arr.hasOwnProperty(key)) {
+                console.log(arr[key]);
+            }
+        }
+        function memoizePromise(fn) {
+            const cache = new Map(); // 使用 Map 存储缓存结果
+
+            return async function (...args) {
+                // 生成缓存键（可以用参数序列化，或者更精细的控制）
+                const key = JSON.stringify(args);
+
+                // 如果已经有缓存，直接返回
+                if (cache.has(key)) {
+                    console.log('返回缓存结果', key);
+                    return cache.get(key);
+                }
+                const promise = fn(...args);
+                cache.set(key, promise);
+                console.log('缓存结果', key, promise);
+
+                // 没有缓存，执行原函数
+                try {
+                    const result = await promise;
+                    console.log('✅ 请求完成:', key);
+                    return result;
+                } catch (error) {
+                    // 失败时清理缓存
+                    cache.delete(key);
+                    throw error;
+                }
+            };
+        }
+
+        // 使用示例
+        async function fetchUser(id) {
+            console.log('实际请求:', id);
+            // 模拟异步请求
+            return new Promise(resolve => {
+                setTimeout(() => resolve({ id, name: `User ${id}` }), 1000);
+            });
+        }
+
+        const memoizedFetchUser = memoizePromise(fetchUser);
+
+        // 第一次调用：会执行实际请求
+        memoizedFetchUser(1).then(console.log); // 输出: 实际请求: 1, { id: 1, name: 'User 1' }
+
+        // 第二次调用相同参数：直接返回缓存结果
+        memoizedFetchUser(1).then(console.log); // 输出: 返回缓存结果, { id: 1, name: 'User 1' }
+
+        // 不同参数：会执行新请求
+        memoizedFetchUser(2).then(console.log); // 输出: 实际请求: 2, { id: 2, name: 'User 2' }
+
+        memoizedFetchUser(1).then(console.log);
+
+    </script>
+    <div id="plist">
+        <p class="test1">1</p>
+        <p class="test2" id="test2">2</p>
+        <p class="test3" id="test3">3</p>
+    </div>
+    <p id="test4">4</p>
+    <script>
+        console.log(document.documentElement) // <html> 元素
+        console.log(document.body) // <body> 元素
+        console.log(document.head) // <head> 元素
+        console.log(document.title) // <title> 元素
+
+        console.log(document.getElementById("test4")) // <p id="test4">4</p>
+        console.log(document.getElementsByClassName("test1")) // [p.test1]
+        console.log(document.querySelectorAll("#plist p")) // [p#plist p]
+        console.log(document.getElementsByTagName("p")) // htmlCollection(4, p1, p2, p3, p4)
+        console.log(document.querySelector("#test2")) // <p class="test2" id="test2">2</p>
+    </script>
+    <div id="parent">
+        <span id="first">第一个</span>
+        <span id="second">第二个</span>
+        <span id="third">第三个</span>
+    </div>
+    <script>
+        const parent = document.getElementById("parent");
+        const first = document.getElementById("first");
+        console.log(parent.children);
+        console.log(parent.children.length);
+        console.log(parent.childNodes);
+        console.log(parent.firstChild);
+        console.log(parent.lastChild);
+        console.log(parent.firstElementChild);
+        console.log(parent.lastElementChild);
+        console.log(first.nextElementSibling);
+        console.log(first.previousElementSibling);
+        console.log(first.parentElement);
+        console.log(first.parentNode);
+        for (let child of parent.children) {
+            console.log(child.textContent);
+        }
+        const newDiv = document.createElement("div");
+        newDiv.className = "card";
+        newDiv.id = "card-1";
+        newDiv.textContent = "这是一个新卡片";
+        parent.appendChild(newDiv);
+        console.log(parent.children.length);
+        console.log(parent.childNodes.length);
+
+        const textNode = document.createTextNode("这是纯文本");
+        newDiv.appendChild(textNode);
+
+        const idAttr = document.createAttribute("data-id");
+        idAttr.value = "123";
+
+        // newDiv.setAttribute(idAttr.name, idAttr.value);
+        newDiv.setAttributeNode(idAttr);
+        console.log(newDiv.getAttribute("data-id"));
+        newDiv.dataset.id = "456";
+        console.log(newDiv.dataset.id);
+        newDiv.id = "card-2";
+        console.log(newDiv.id);
+        newDiv.insertAdjacentText("beforebegin", textNode);
+        newDiv.insertAdjacentText("afterend", textNode);
+        newDiv.insertAdjacentText("afterbegin", textNode);
+        newDiv.insertAdjacentText("beforeend", textNode);
+        document.querySelector("#card-2").childNodes[0].textContent = "这是新文本";
+        // document.querySelector("#card-2")NaNpxoveChild(textNode);
+        // document.querySelector("#card-2").childNodes[0]NaNpxove();
+        newDiv.classList.toggle("visible");
+        newDiv.classList.replace("card", "hidden");
+    </script>
+    <div id="todo-container"
+        style="background-color: rgba(32, 30, 30, 0.8);width: 20%;display: grid;grid-template-columns: 1fr;">
+
+    </div>
+    <script>
+        class TodoList {
+            constructor(containerId) {
+                this.container = document.getElementById(containerId);
+                this.todos = [];
+                this.render();
+                this.bindEvents();
+            }
+
+            addTodo(text) {
+                this.todos.push({
+                    id: Date.now().toLocaleString(),
+                    text: text,
+                    completed: false
+                });
+                this.render();
+            }
+
+            toggleTodo(id) {
+                const todo = this.todos.find(t => t.id === id);
+                if (todo) todo.completed = !todo.completed;
+                this.render();
+            }
+
+            deleteTodo(id) {
+                this.todos = this.todos.filter(t => t.id !== id);
+                this.render();
+            }
+
+            render() {
+                // 清空容器
+                this.container.innerHTML = '';
+
+                if (this.todos.length === 0) {
+                    this.container.innerHTML = '<p class="empty">暂无待办事项</p>';
+                    return;
+                }
+
+                // 创建列表
+                const ul = document.createElement('ul');
+                ul.className = 'todo-list';
+
+                this.todos.forEach(todo => {
+                    const li = document.createElement('li');
+                    li.className = `todo-item ${todo.completed ? 'completed' : ''}`;
+                    li.setAttribute('data-id', todo.id);
+
+                    // 复选框
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.checked = todo.completed;
+                    checkbox.addEventListener('change', () => this.toggleTodo(todo.id));
+
+                    // 文本
+                    const text = document.createElement('span');
+                    text.textContent = todo.text;
+                    text.className = 'todo-text';
+
+                    // 删除按钮
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.textContent = '删除';
+                    deleteBtn.className = 'delete-btn';
+                    deleteBtn.addEventListener('click', () => this.deleteTodo(todo.id));
+
+                    li.appendChild(checkbox);
+                    li.appendChild(text);
+                    li.appendChild(deleteBtn);
+                    ul.appendChild(li);
+                });
+
+                this.container.appendChild(ul);
+            }
+
+            bindEvents() {
+                // 添加待办的表单
+                const form = document.createElement('form');
+                form.className = 'todo-form';
+                form.innerHTML = `
+            <input type="text" placeholder="输入待办事项" class="todo-input">
+            <button type="submit">添加</button>
+        `;
+
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const input = form.querySelector('.todo-input');
+                    const text = input.value.trim();
+                    if (text) {
+                        this.addTodo(text);
+                        input.value = '';
+                    }
+                });
+
+                // 将表单插入到容器前面
+                this.container.parentNode.insertBefore(form, this.container);
+            }
+        }
+
+        // 使用
+        const todoApp = new TodoList('todo-container');
+    </script>
+    <style>
+        #todo-container {
+            margin: 0 auto;
+        }
+
+        .todo-form {
+            margin-bottom: 1.25rem;
+            background-color: rgba(206, 100, 100, 0.8);
+            width: 20%;
+            height: 3.125rem;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 1.25rem;
+        }
+
+        .todo-form button {
+            height: 1.875rem;
+            width: 40%;
+            padding: 0 .625rem;
+            border: none;
+            border-radius: .9375rem;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .todo-input {
+            padding: 0 .625rem;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            border-radius: .3125rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            height: 1.875rem;
+            flex: 1;
+        }
+    </style>
+
+    <div class="crouse-imgs">
+        <div class="imglist">
+            <img class="active" src="../assets/imgs/xiana7.png" alt="">
+            <img src="../assets/imgs/xiana2.png" alt="">
+            <img src="../assets/imgs/xiana3.png" alt="">
+            <img src="../assets/imgs/xiana4.png" alt="">
+            <img src="../assets/imgs/xiana5.png" alt="">
+            <button class="prev-btn">1</button>
+            <button class="next-btn">2</button>
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <style>
+        .crouse-imgs {
+            margin: 0 auto;
+            width: 37.5rem;
+            height: 15.625rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .imglist {
+            width: 25rem;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: .625rem;
+        }
+
+        .imglist img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: all 0.8s ease-in-out;
+        }
+
+        .imglist img.active {
+            opacity: 1;
+            backdrop-filter: blur(.625rem);
+            transform: scale(1.1);
+            border-radius: .625rem;
+        }
+
+        .imglist ul {
+            position: absolute;
+            bottom: 0;
+            right: .9375rem;
+            width: 6.25rem;
+            height: 1.25rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .625rem;
+            list-style: none;
+            border-radius: .3125rem;
+            padding: .3125rem 0;
+            margin: .625rem auto;
+        }
+
+        .imglist ul li {
+            width: .625rem;
+            height: .625rem;
+            border-radius: 50%;
+            background-color: rgba(177, 88, 46, 0.8);
+        }
+
+        .imglist ul li.active {
+            background-color: rgba(255, 141, 87, 0.8);
+        }
+
+        .imglist button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.875rem;
+            height: 1.875rem;
+            line-height: 1.875rem;
+            text-align: center;
+            border: none;
+            border-radius: 50%;
+            background-color: rgba(255, 141, 87, 0.8);
+            color: #000;
+            cursor: pointer;
+        }
+
+        .prev-btn {
+            left: 0;
+        }
+
+        .next-btn {
+            right: 0;
+        }
+    </style>
+    <script>
+        const imgList = document.querySelectorAll('.imglist img');
+        const liList = document.querySelectorAll('.imglist ul li');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentIndex = 0;
+        function changeImg(index) {
+            imgList.forEach((item, i) => {
+                item.classList.remove('active');
+            });
+            imgList[index].classList.add('active');
+            liList.forEach((item, i) => {
+                item.classList.remove('active');
+            });
+            liList[index].classList.add('active');
+            currentIndex = index;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex === 0) {
+                changeImg(imgList.length - 1);
+                return;
+            }
+            changeImg(currentIndex - 1);
+        })
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex === imgList.length - 1) {
+                changeImg(0);
+                return;
+            }
+            changeImg(currentIndex + 1);
+        })
+
+        let timer = setInterval(() => {
+            if (currentIndex === imgList.length - 1) {
+                changeImg(0);
+                return;
+            }
+            changeImg(currentIndex + 1);
+        }, 3000);
+        liList.forEach((item, i) => {
+            item.addEventListener('mouseover', () => {
+                changeImg(i);
+            })
+        })
+        const imglist = document.querySelector('.imglist');
+        imglist.addEventListener('mouseover', () => {
+            clearInterval(timer);
+        })
+        const timer1 = null;
+        imglist.addEventListener('mouseout', () => {
+            timer = setInterval(() => {
+                if (currentIndex === imgList.length - 1) {
+                    changeImg(0);
+                    return;
+                }
+                changeImg(currentIndex + 1);
+            }, 3000);
+        })
+    </script>
+    <button id="btn" onclick="handClick()">测试test</button>
+    <script>
+        function handClick() {
+            console.log("handClick");
+        }
+        document.getElementById('btn').addEventListener('click', (e) => {
+            console.log(e);
+            console.log(e.target);
+            console.log(e.type);
+            console.log(e.currentTarget);
+            console.log(e.clientX, e.clientY);
+            console.log(e.offsetX, e.offsetY);
+            console.log(e.timeStamp);
+
+            e.preventDefault();
+
+            e.stopPropagation();
+
+            // 立即停止事件传播（包括捕获和冒泡阶段）
+            // event.stopImmediatePropagation();
+        })
+        document.getElementById('btn').addEventListener('click', (e) => {
+            console.log("第二个事件");
+        })
+        btn.addEventListener("click", handleClick1);
+        function handleClick1() {
+            console.log("handleClick1");
+        }
+        btnNaNpxoveEventListener("click", handleClick1);
+    </script>
+    <div class="par">
+        <button class="chi">子元素</button>
+    </div>
+    <script>
+        const par = document.querySelector('.par');
+        const chi = document.querySelector('.chi');
+        par.addEventListener('click', (e) => {
+            console.log("par点击事件");
+            console.log(e.target.classList.contains('chi'));
+            console.log(e.currentTarget);
+            console.log(e.target);
+        })
+        chi.addEventListener('click', (e) => {
+            console.log("chi点击事件");
+        })
+        par.addEventListener('click', (e) => {
+            console.log("par捕获事件");
+        }, true)
+        chi.addEventListener('click', (e) => {
+            console.log("chi捕获事件");
+        }, true)
+        // document.addEventListener('keydown', (e) => {
+        //     console.log(e.key);
+        //     console.log(e.keyCode);
+        //     console.log(e.ctrlKey);
+        //     console.log(e.shiftKey);
+        //     console.log(e.altKey);
+
+        //     if (e.key === "Enter") {
+        //         console.log("按下了回车键");
+        //     }
+        // })
+    </script>
+    <div class="eventTest">
+        <input type="text" placeholder="请输入">
+
+    </div>
+    <script>
+        const input = document.querySelector('.eventTest input');
+        input.addEventListener('focus', (e) => {
+            console.log("input获得焦点");
+        })
+        input.addEventListener('blur', (e) => {
+            console.log("input失去焦点");
+        })
+        input.addEventListener('change', (e) => {
+            console.log(e.target.value);
+        })
+        // input.addEventListener('input', (e) => {
+        //     console.log(e.target.value);
+        // })
+        // window.addEventListener("load", () => {
+        //     console.log("页面完全加载完成（包括图片、样式等）");
+        // });
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     console.log("DOM 树构建完成，可以安全操作 DOM");
+        // });
+        // window.addEventListener("resize", () => {
+        //     console.log("窗口大小改变", window.innerWidth, window.innerHeight);
+        // });
+        // window.addEventListener("scroll", () => {
+        //     console.log("滚动位置", window.scrollY);
+        // });
+        const userLoginEvent = new CustomEvent("userLogin", {
+            detail: {
+                username: "张三",
+                password: "123456"
+            }
+        });
+
+        document.addEventListener("userLogin", (e) => {
+            console.log("用户登录:", e.detail);
+        });
+        document.dispatchEvent(userLoginEvent);
+    </script>
+    <div class="attributeTest">
+        1
+    </div>
+    <script>
+        const attributeTest = document.querySelector('.attributeTest');
+        attributeTest.setAttribute('data-id', '123');
+        console.log(attributeTest.getAttribute('data-id'));
+        console.log(attributeTest.dataset.id);  
+    </script>
+    <script>
+        console.log(window.document === document);
+        console.log(window.console === console);
+        console.log(window.innerHeight)
+        console.log(window.innerWidth)
+        console.log(window.outerHeight)
+        console.log(window.outerWidth)
+        console.log(navigator.userAgent)
+        console.log(navigator.platform)
+        console.log(navigator.language)
+        console.log(navigator.cookieEnabled);    // 是否启用 Cookie
+        console.log(navigator.onLine);           // 是否在线
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        console.log(isMobile);
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    console.log("纬度:", position.coords.latitude);
+                    console.log("经度:", position.coords.longitude);
+                    console.log("精度:", position.coords.accuracy);
+                },
+                (error) => {
+                    console.error("获取位置失败:", error.message);
+                }
+            );
+        }
+        async function copyToClipboard(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                console.log("复制成功");
+            } catch (err) {
+                console.error("复制失败:", err);
+            }
+        }
+        async function readFromClipboard() {
+            try {
+                const text = await navigator.clipboard.readText();
+                console.log("读取的内容:", text);
+            } catch (err) {
+                console.error("读取失败:", err);
+            }
+        }
+        console.log(location.href);        // 完整 URL
+        console.log(location.protocol);    // 协议: "https:"
+        console.log(location.host);        // 主机名+端口: "example.com:8080"
+        console.log(location.hostname);    // 主机名: "example.com"
+        console.log(location.port);        // 端口: "8080"
+        console.log(location.pathname);    // 路径: "/path/page.html"
+        console.log(location.search + '11');      // 查询参数: "?id=123&name=张三"
+        console.log(location.hash + '11');        // 锚点: "#section"
+        // 解析 URL 参数
+        function getUrlParams() {
+            const params = new URLSearchParams(location.search);
+            return {
+                id: params.get("id"),
+                name: params.get("name"),
+                getAll: (key) => params.getAll(key)
+            };
+        }
+        // location.assign("https://www.baidu.com");  // 跳转，保留历史记录
+        // location.replace("https://www.baidu.com"); // 跳转，替换当前历史记录
+        // location.reload();                       // 重新加载页面
+        // location.reload(true);                   // 强制从服务器重新加载
+
+    </script>
+    <button onclick="location.assign('https\://www.baidu.com')">测试test</button>
+    <button onclick="gotoPage('http\://localhost/html')">测试test</button>
+
+    <h1>三种修改URL方式对比</h1>
+
+    <!-- 方式1：普通跳转（刷新页面） -->
+    <div style="border:.0625rem solid #ccc; padding:1.25rem; margin:.625rem 0;">
+        <h2>方式1：普通跳转（页面刷新）</h2>
+        <button onclick="normalJump(1)">第1页</button>
+        <button onclick="normalJump(2)">第2页</button>
+        <button onclick="normalJump(3)">第3页</button>
+        <p>点击后页面会刷新</p>
+    </div>
+
+    <!-- 方式2：pushState（添加历史记录） -->
+    <div style="border:.0625rem solid #ccc; padding:1.25rem; margin:.625rem 0;">
+        <h2>方式2：pushState（添加记录，能后退）</h2>
+        <button onclick="pushStatePage(1)">第1页</button>
+        <button onclick="pushStatePage(2)">第2页</button>
+        <button onclick="pushStatePage(3)">第3页</button>
+        <p>点击后地址栏变，页面不刷新，点后退能回来</p>
+    </div>
+
+    <!-- 方式3：replaceState（替换历史记录） -->
+    <div style="border:.0625rem solid #ccc; padding:1.25rem; margin:.625rem 0;">
+        <h2>方式3：replaceState（替换记录，不能后退）</h2>
+        <button onclick="replaceStatePage(1)">第1页</button>
+        <button onclick="replaceStatePage(2)">第2页</button>
+        <button onclick="replaceStatePage(3)">第3页</button>
+        <p>点击后地址栏变，页面不刷新，点后退回不到上一页</p>
+    </div>
+
+    <!-- 显示内容区域 -->
+    <div id="content" style="background:#f0f0f0; padding:1.25rem; margin:1.25rem 0;">
+        <h2 id="pageTitle">第1页</h2>
+        <p>这是第1页的内容</p>
+    </div>
+
+    <p><strong>当前地址栏:</strong> <span id="urlDisplay"></span></p>
+    <p><strong>历史记录数量:</strong> <span id="historyCount"></span></p>
+
+    <script>
+        // 显示当前地址和历史记录数
+        function updateDisplay() {
+            document.getElementById('urlDisplay').innerHTML = window.location.href;
+            document.getElementById('historyCount').innerHTML = history.length;
+        }
+        updateDisplay();
+
+        // ========== 方式1：普通跳转（刷新页面） ==========
+        function normalJump(page) {
+            // 直接跳转，页面会刷新
+            window.location.href = "?page=" + page;
+            // 注意：这行之后的代码不会执行，因为页面已经刷新了
+        }
+
+        // ========== 方式2：pushState（添加记录） ==========
+        function pushStatePage(page) {
+            // 1. 改地址栏（添加新记录）
+            history.pushState({ page: page }, "", "?page=" + page);
+
+            // 2. 手动改页面内容
+            document.getElementById('pageTitle').innerHTML = "第" + page + "页";
+            document.querySelector('#content p').innerHTML = "这是第" + page + "页的内容（pushState）";
+
+            // 3. 更新显示
+            updateDisplay();
+            console.log('pushState 后历史记录数:', history.length);
+        }
+
+        // ========== 方式3：replaceState（替换记录） ==========
+        function replaceStatePage(page) {
+            // 1. 改地址栏（替换当前记录）
+            history.replaceState({ page: page }, "", "?page=" + page);
+
+            // 2. 手动改页面内容
+            document.getElementById('pageTitle').innerHTML = "第" + page + "页";
+            document.querySelector('#content p').innerHTML = "这是第" + page + "页的内容（replaceState）";
+
+            // 3. 更新显示
+            updateDisplay();
+            console.log('replaceState 后历史记录数:', history.length);
+        }
+
+        // 监听后退/前进按钮
+        window.addEventListener('popstate', (event) => {
+            let page = event.state ? event.state.page : 1;
+            document.getElementById('pageTitle').innerHTML = "第" + page + "页";
+            document.querySelector('#content p').innerHTML = "这是第" + page + "页的内容（后退回来的）";
+            updateDisplay();
+            console.log('popstate 触发，当前页:', page);
+        });
+
+        // 页面加载时，根据当前 URL 显示内容
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentPage = urlParams.get('page') || 1;
+        document.getElementById('pageTitle').innerHTML = "第" + currentPage + "页";
+        document.querySelector('#content p').innerHTML = "这是第" + currentPage + "页的内容（初始加载）";
+    </script>
+    <div class="draggable" style="width: 100px; height: 100px; background-color: red;">23</div>
+    <script>
+        class Draggable {
+            constructor(element) {
+                this.element = element;
+                this.isDragging = false;
+                this.startX = 0;
+                this.startY = 0;
+                this.currentX = 0;
+                this.currentY = 0;
+
+                // 鼠标按下：开始拖拽
+                this.element.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    this.isDragging = true;
+
+                    // 记录鼠标按下的初始位置
+                    this.startX = e.clientX - this.currentX;
+                    this.startY = e.clientY - this.currentY;
+
+                    // 绑定全局事件
+                    document.addEventListener('mousemove', this.onMouseMove);
+                    document.addEventListener('mouseup', this.onMouseUp);
+                });
+
+                // 绑定方法（为了能正确移除）
+                this.onMouseMove = this.onMouseMove.bind(this);
+                this.onMouseUp = this.onMouseUp.bind(this);
+            }
+
+            onMouseMove(e) {
+                if (!this.isDragging) return;
+
+                // 计算新位置
+                this.currentX = e.clientX - this.startX;
+                this.currentY = e.clientY - this.startY;
+
+                // 应用位置
+                this.element.style.transform = `translate(${this.currentX}px, ${this.currentY}px)`;
+            }
+
+            onMouseUp() {
+                this.isDragging = false;
+
+                // 移除全局事件
+                document.removeEventListener('mousemove', this.onMouseMove);
+                document.removeEventListener('mouseup', this.onMouseUp);
+            }
+        }
+        new Draggable(document.querySelector('.draggable'));
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .list {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            background: white;
+            transition: background-color 0.2s;
+        }
+
+        .item:hover {
+            background: #f5f5f5;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .no-more {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .error {
+            text-align: center;
+            padding: 20px;
+            color: #f00;
+        }
+
+        /* 加载动画 */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ddd;
+            border-top-color: #333;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <div class="container">
+        <h1>无限滚动</h1>
+        <div id="list" class="list"></div>
+    </div>
+
+    <script>
+        class InfiniteScroll {
+            constructor(options) {
+                this.container = options.container;      // 容器元素
+                this.loadMore = options.loadMore;        // 加载数据的函数
+                this.pageSize = options.pageSize || 20;  // 每页数量
+                this.threshold = options.threshold || 100; // 提前加载距离(px)
+
+                this.page = 1;          // 当前页码
+                this.loading = false;   // 是否正在加载
+                this.hasMore = true;    // 是否还有更多数据
+                this.observer = null;   // IntersectionObserver 实例
+
+                this.init();
+            }
+
+            init() {
+                // 创建底部加载指示器
+                this.createLoader();
+
+                // 使用 IntersectionObserver 监听加载器
+                this.initObserver();
+
+                // 首次加载
+                this.loadMoreData();
+            }
+
+            createLoader() {
+                // 创建加载器元素
+                this.loader = document.createElement('div');
+                this.loader.className = 'loading';
+                this.loader.innerHTML = '<div class="spinner"></div> 加载中...';
+                this.container.appendChild(this.loader);
+            }
+
+            initObserver() {
+                // 创建 IntersectionObserver
+                this.observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach(entry => {
+                            // 当加载器进入可视区域时，加载更多
+                            if (entry.isIntersecting && !this.loading && this.hasMore) {
+                                this.loadMoreData();
+                            }
+                        });
+                    },
+                    {
+                        root: null,           // 视口
+                        threshold: 0.1,       // 10% 进入时触发
+                        rootMargin: `0px 0px ${this.threshold}px 0px`  // 提前触发
+                    }
+                );
+
+                // 开始观察加载器
+                this.observer.observe(this.loader);
+            }
+
+            async loadMoreData() {
+                if (this.loading || !this.hasMore) return;
+
+                this.loading = true;
+
+                try {
+                    // 调用用户提供的加载函数
+                    const newData = await this.loadMore(this.page, this.pageSize);
+                    if (newData && newData.length > 0) {
+                        // 渲染数据
+                        this.renderData(newData);
+                        this.page++;
+                    } else {
+                        // 没有更多数据
+                        this.hasMore = false;
+                        this.showNoMore();
+                    }
+                } catch (error) {
+                    console.error('加载失败:', error);
+                    this.showError();
+                } finally {
+                    this.loading = false;
+                }
+            }
+
+            renderData(data) {
+                data.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'item';
+                    div.textContent = item.text || item;
+                    // 在加载器之前插入
+                    this.container.insertBefore(div, this.loader);
+                });
+            }
+
+            showNoMore() {
+                this.loader.className = 'no-more';
+                this.loader.innerHTML = '没有更多数据了';
+
+                // 停止观察
+                if (this.observer) {
+                    this.observer.unobserve(this.loader);
+                }
+            }
+
+            showError() {
+                this.loader.className = 'error';
+                this.loader.innerHTML = '加载失败，点击重试';
+                this.loader.style.cursor = 'pointer';
+
+                // 点击重试
+                this.loader.onclick = () => {
+                    this.loader.className = 'loading';
+                    this.loader.innerHTML = '<div class="spinner"></div> 加载中...';
+                    this.loadMoreData();
+                };
+            }
+
+            // 重置滚动（用于重新加载）
+            reset() {
+                this.page = 1;
+                this.hasMore = true;
+                this.loading = false;
+
+                // 清空容器（保留加载器）
+                const items = this.container.querySelectorAll('.item');
+                items.forEach(item => item.remove());
+
+                // 重置加载器
+                this.loader.className = 'loading';
+                this.loader.innerHTML = '<div class="spinner"></div> 加载中...';
+                this.loader.onclick = null;
+
+                // 重新观察
+                if (this.observer) {
+                    this.observer.unobserve(this.loader);
+                    this.observer.observe(this.loader);
+                }
+
+                // 重新加载
+                this.loadMoreData();
+            }
+        }
+
+        // ========== 使用示例 ==========
+
+        // 模拟 API 请求
+        function fetchData(page, pageSize) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // 模拟数据
+                    const start = (page - 1) * pageSize;
+                    const data = [];
+
+                    // 总共只有 5 页数据
+                    if (page <= 5) {
+                        for (let i = 0; i < pageSize; i++) {
+                            const id = start + i + 1;
+                            data.push({
+                                id: id,
+                                text: `第 ${page} 页 - 第 ${i + 1} 条数据 (ID: ${id})`
+                            });
+                        }
+                    }
+                    resolve(data);
+                    reject(new Error('加载失败'));
+                }, 500); // 模拟网络延迟
+            });
+        }
+
+        // 初始化无限滚动
+        const container = document.getElementById('list');
+        const infiniteScroll = new InfiniteScroll({
+            container: container,
+            loadMore: (page, pageSize) => fetchData(page, pageSize),
+            pageSize: 10,
+            threshold: 200  // 距离底部 200px 时提前加载
+        });
+
+        // 可选：添加重置按钮
+        const resetBtn = document.createElement('button');
+        resetBtn.textContent = '重置';
+        resetBtn.style.marginBottom = '10px';
+        resetBtn.onclick = () => infiniteScroll.reset();
+        container.parentNode.insertBefore(resetBtn, container);
+    </script>
+
+    <script>
+        /**
+         * 学习原型链
+         * 原型链是指对象之间的继承关系，每个对象都有一个原型，原型 again。
+         * 每个原型都有一个原型，直到到达根原型。
+         * 根原型没有原型，它自己。
+         */
+        function User(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        User.prototype.sayName = function () {
+            console.log(`我是${this.name}，我今年${this.age}`);
+        }
+        User.prototype.specis = '人';
+        const user1 = new User('张三', 18);
+        const user2 = new User('李四', 20);
+        user1.sayName();
+        user2.sayName();
+        console.log(user1.specis);
+        console.log(user2.specis);
+        console.log(user1.__proto__ === User.prototype);
+        console.log(User.prototype.__proto__ === Object.prototype);
+        console.log(Object.prototype.__proto__ === null);
+        console.log(user2.__proto__);
+        console.log(User.prototype.__proto__);
+        console.log(Object.prototype.__proto__);
+
+        // function Animal(name) {
+        //     this.name = name;
+        //     this.colors = ["黑色", "白色"];
+        // }
+
+        // Animal.prototype.eat = function () {
+        //     console.log(`${this.name}正在吃东西`);
+        // };
+
+        // function Dog(name, breed) {
+        //     this.name = name;
+        //     this.breed = breed;
+        // }
+
+        // // 设置原型链
+        // Dog.prototype = new Animal();
+        // Dog.prototype.constructor = Dog; // 修复构造函数指向
+
+        // Dog.prototype.bark = function () {
+        //     console.log("汪汪汪！");
+        // };
+
+        // const dog1 = new Dog("旺财", "金毛");
+        // const dog2 = new Dog("小黑", "拉布拉多");
+
+        // dog1.eat(); // 旺财正在吃东西
+        // dog1.bark(); // 汪汪汪！
+        // // console.log(Dog.prototype.__proto__ === Animal.prototype);
+        // // 问题：引用类型属性会被所有实例共享
+        // dog1.colors.push("棕色");
+        // console.log(dog2.colors); // ["黑色", "白色", "棕色"] - 被影响了！
+        function Animal(name) {
+            this.name = name;
+            this.colors = ["黑色", "白色"];
+        }
+
+        Animal.prototype.eat = function () {
+            console.log(`${this.name}正在吃东西`);
+        };
+
+        function Dog(name, breed) {
+            // 调用父类构造函数，解决引用类型共享问题
+            Animal.call(this, name);
+            this.breed = breed;
+        }
+
+        const dog1 = new Dog("旺财", "金毛");
+        const dog2 = new Dog("小黑", "拉布拉多");
+
+        dog1.colors.push("棕色");
+        console.log(dog1.colors); // ["黑色", "白色", "棕色"]
+        console.log(dog2.colors); // ["黑色", "白色"] - 不受影响
+
+        // 问题：无法继承父类原型上的方法
+        // dog1.eat(); // TypeError: dog1.eat is not a function
+
+        function introduce() {
+            console.log(`我是${this.name}`);
+        }
+
+        const human1 = { name: '王五' };
+        // bind 返回新函数
+        const boundIntroduce = introduce.bind(human1);
+        const fn = introduce;
+        // 稍后调用
+        boundIntroduce();  // 我是王五
+        fn();  // 我是王五
+    </script>
+    <script>
+        function getDataXhr() {
+            const xhr = new XMLHttpRequest();
+            // xhr.open('GET', 'https://jsonplaceholder.typicode.com/users', true);
+            xhr.open('GET', 'http://127.0.0.1:8080/userPets/loadDataList', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function () {
+                // readyState 状态：
+                // 0: 未初始化
+                // 1: 正在加载
+                // 2: 已加载
+                // 3: 交互中
+                // 4: 完成
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        const users = JSON.parse(xhr.responseText);
+                        console.log('用户列表:', users);
+                    } else {
+                        console.error('请求失败:', xhr.status);
+                    }
+                }
+            };
+            xhr.send();
+        }
+        getDataXhr();
+        //     public class UserPets implements Serializable {
+
+        // /**
+        //  *  id
+        //  */
+        // private Long id;
+        // /**
+        //  *  userId
+        //  */
+        // private Long userId;
+        // /**
+        //  *  petId
+        //  */
+        // private Long petId;
+        // /**
+        //  *  nickname
+        //  */
+        // private String nickname;
+        // /**
+        //  *  level
+        //  */
+        // private Integer level;
+        // /**
+        //  *  exp
+        //  */
+        // private Integer exp;
+        // /**
+        //  *  hp
+        //  */
+        // private Integer hp;
+        // /**
+        //  *  attack
+        //  */
+        // private Integer attack;
+        // /**
+        //  *  defense
+        //  */
+        // private Integer defense;
+        // /**
+        //  *  speed
+        //  */
+        // private Integer speed;
+        // /**
+        //  *  mood
+        //  */
+        // private String mood;
+        // /**
+        //  *  hunger
+        //  */
+        // private Integer hunger;
+        // /**
+        //  *  energy
+        //  */
+        // private Integer energy;
+        // /**
+        //  *  affection
+        //  */
+        // private Integer affection;
+        // /**
+        //  *  skinId
+        //  */
+        // private Long skinId;
+        // /**
+        //  *  isForSale
+        //  */
+        // private Integer isForSale;
+        // /**
+        //  *  price
+        //  */
+        // private Integer price;
+        // /**
+        //  *  createdAt
+        //  */
+        // @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+        // @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        // private Date createdAt;
+
+        // public Long getId() {
+        // 	return this.id;
+        // }
+
+        // public void setId(Long id) {
+        // 	this.id = id;
+        // }
+
+        // public Long getUserId() {
+        // 	return this.userId;
+        // }
+
+        // public void setUserId(Long userId) {
+        // 	this.userId = userId;
+        // }
+
+        // public Long getPetId() {
+        // 	return this.petId;
+        // }
+
+        // public void setPetId(Long petId) {
+        // 	this.petId = petId;
+        // }
+
+        // public String getNickname() {
+        // 	return this.nickname;
+        // }
+
+        // public void setNickname(String nickname) {
+        // 	this.nickname = nickname;
+        // }
+
+        // public Integer getLevel() {
+        // 	return this.level;
+        // }
+
+        // public void setLevel(Integer level) {
+        // 	this.level = level;
+        // }
+
+        // public Integer getExp() {
+        // 	return this.exp;
+        // }
+
+        // public void setExp(Integer exp) {
+        // 	this.exp = exp;
+        // }
+
+        // public Integer getHp() {
+        // 	return this.hp;
+        // }
+
+        // public void setHp(Integer hp) {
+        // 	this.hp = hp;
+        // }
+
+        // public Integer getAttack() {
+        // 	return this.attack;
+        // }
+
+        // public void setAttack(Integer attack) {
+        // 	this.attack = attack;
+        // }
+
+        // public Integer getDefense() {
+        // 	return this.defense;
+        // }
+
+        // public void setDefense(Integer defense) {
+        // 	this.defense = defense;
+        // }
+
+        // public Integer getSpeed() {
+        // 	return this.speed;
+        // }
+
+        // public void setSpeed(Integer speed) {
+        // 	this.speed = speed;
+        // }
+
+        // public String getMood() {
+        // 	return this.mood;
+        // }
+
+        // public void setMood(String mood) {
+        // 	this.mood = mood;
+        // }
+
+        // public Integer getHunger() {
+        // 	return this.hunger;
+        // }
+
+        // public void setHunger(Integer hunger) {
+        // 	this.hunger = hunger;
+        // }
+
+        // public Integer getEnergy() {
+        // 	return this.energy;
+        // }
+
+        // public void setEnergy(Integer energy) {
+        // 	this.energy = energy;
+        // }
+
+        // public Integer getAffection() {
+        // 	return this.affection;
+        // }
+
+        // public void setAffection(Integer affection) {
+        // 	this.affection = affection;
+        // }
+
+        // public Long getSkinId() {
+        // 	return this.skinId;
+        // }
+
+        // public void setSkinId(Long skinId) {
+        // 	this.skinId = skinId;
+        // }
+
+        // public Integer getIsForSale() {
+        // 	return this.isForSale;
+        // }
+
+        // public void setIsForSale(Integer isForSale) {
+        // 	this.isForSale = isForSale;
+        // }
+
+        // public Integer getPrice() {
+        // 	return this.price;
+        // }
+
+        // public void setPrice(Integer price) {
+        // 	this.price = price;
+        // }
+
+        // public Date getCreatedAt() {
+        // 	return this.createdAt;
+        // }
+
+        // public void setCreatedAt(Date createdAt) {
+        // 	this.createdAt = createdAt;
+        // }
+
+        // @Override
+        // public String toString() {
+        // 	return ":"+(id == null ? "空" : id)+":"+(userId == null ? "空" : userId)+":"+(petId == null ? "空" : petId)+":"+(nickname == null ? "空" : nickname)+":"+(level == null ? "空" : level)+":"+(exp == null ? "空" : exp)+":"+(hp == null ? "空" : hp)+":"+(attack == null ? "空" : attack)+":"+(defense == null ? "空" : defense)+":"+(speed == null ? "空" : speed)+":"+(mood == null ? "空" : mood)+":"+(hunger == null ? "空" : hunger)+":"+(energy == null ? "空" : energy)+":"+(affection == null ? "空" : affection)+":"+(skinId == null ? "空" : skinId)+":"+(isForSale == null ? "空" : isForSale)+":"+(price == null ? "空" : price)+":"+(createdAt == null ? "空" : DateUtils.format(createdAt,DateUtils.YYYY_MM_DD_HH_MM_SS));
+        // }}
+        // 1.2 POST 请求
+        function createUserXHR(userPedData) {
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('POST', 'http://127.0.0.1:8080/userPets/add', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const newUser = JSON.parse(xhr.responseText);
+                    console.log('创建成功:', newUser);
+                } else {
+                    console.error('创建失败:', xhr.status);
+                }
+            };
+
+            xhr.onerror = function () {
+                console.error('网络错误');
+            };
+
+            xhr.send(JSON.stringify(userPedData));
+        }
+        const userPedData = {
+            userId: 1,
+            petId: 1,
+            nickname: '旺财',
+            level: 10,
+            exp: 1000,
+            hp: 100,
+            attack: 10,
+            defense: 10,
+            speed: 10,
+            mood: '开心',
+            hunger: 10,
+            energy: 10,
+            affection: 10,
+            skinId: 1,
+            isForSale: 0,
+            price: 1000,
+        }
+        // createUserXHR(userPedData);
+
+        async function fetchUsers() {
+            try {
+                const response = await fetch('http://127.0.0.1:8080/userPets/loadDataList');
+
+                // 检查响应状态
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const users = await response.json();
+                console.log('用户列表:', users);
+                return users;
+            } catch (error) {
+                console.error('请求失败:', error);
+                throw error;
+            }
+        }
+        fetchUsers();
+
+        async function createUser(userPedData) {
+            try {
+                const response = await fetch('http://127.0.0.1:8080/userPets/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    },
+                    body: JSON.stringify(userPedData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const newUser = await response.json();
+                console.log('创建成功:', newUser);
+                return newUser;
+            } catch (error) {
+                console.error('创建失败:', error);
+            }
+        }
+        // createUser(userPedData);
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        axios.get('http://127.0.0.1:8080/userPets/loadDataList')
+            .then(response => {
+                console.log('用户列表:', response.data);
+            })
+            .catch(error => {
+                console.error('请求失败:', error);
+            });
+
+        // axios.post('http://127.0.1:8080/userPets/add', userPedData)
+        //     .then(response => {
+        //         console.log('创建成功:', response.data);
+        //     })
+        //     .catch(error => {
+        //         console.error('创建失败:', error);
+        //     });
+        // axios.delete('http://127.0.1:8080/userPets/deleteUserPetsById/2')
+        //     .then(response => {
+        //         console.log('删除成功:', response.data);
+        //     })
+        //     .catch(error => {
+        //         console.error('删除失败:', error);
+        //     });
+        const api = axios.create({
+            baseURL: 'https://jsonplaceholder.typicode.com',
+            timeout: 10000,
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
+        api.interceptors.request.use(
+            config => {
+                return config;
+            },
+            error => {
+                return Promise.reject(error);
+            }
+        );
+        function outer() {
+            inner();
+        }
+        function inner() {
+            console.log(inner.caller); // 会输出outer函数的代码，因为是outer调用了inner
+        }
+        outer();
+        var forarr = [1, 2, 3, 4, 5];
+        console.log(...forarr);
+        console.log(forarr);
+    </script>
+    <script>
+
+        document.cookie = "username=张三";
+        document.cookie = "age=25";
+        document.cookie = "theme=dark; max-age=6"; // 1小时过期
+        console.log(document.cookie);
+        // 解析 Cookie 的函数
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (let cookie of cookies) {
+                const [key, value] = cookie.split('=');
+                if (key === name) return value;
+            }
+            return null;
+        }
+        console.log(getCookie('username'));
+        console.log(getCookie('age'));
+        console.log(getCookie('theme'));
+        // setTimeout(() => {
+        //     console.log(getCookie('theme'));
+        // }, 7000)
+
+    </script>
+
+    <script>
+        // 存储
+        localStorage.setItem('username', '张三');
+        localStorage.setItem('age', '25');
+        localStorage.setItem('user', JSON.stringify({ name: '张三', age: 25 }));
+
+        // 读取
+        const username = localStorage.getItem('username');  // "张三"
+        const age = localStorage.getItem('age');            // "25"（字符串）
+        const user = JSON.parse(localStorage.getItem('user')); // { name: '张三', age: 25 }
+        console.log(username);
+        console.log(age);
+        console.log(user);
+
+        // 删除
+        localStorage.removeItem('username');  // 删除单个
+        console.log(localStorage.getItem('username'));
+
+        localStorage.clear();                 // 清空所有
+        console.log(localStorage.getItem('age'));
+
+    </script>
+    <script>
+        console.log('1'); // 同步任务，先执行
+
+        setTimeout(() => {
+            console.log('2'); // 宏任务，最后执行
+        }, 0);
+
+        Promise.resolve().then(() => {
+            console.log('3'); // 微任务，同步任务完了就执行
+        });
+
+        console.log('4'); // 同步任务，接着1执行
+        const userInfo = JSON.stringify({
+            name: 'Tom',
+            age: 20
+        })
+        console.log(userInfo); // 同步任务，接着4执行
+        console.log(typeof userInfo);
+    </script>
+
+
+    <h2>📁 文件上传进度条演示</h2>
+
+    <input type="file" id="fileInput">
+    <button id="uploadBtn">上传</button>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar">0%</div>
+    </div>
+    <div class="info" id="info"></div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const progressBar = document.getElementById('progressBar');
+        const info = document.getElementById('info');
+
+        let startTime = 0;
+
+        uploadBtn.addEventListener('click', async () => {
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('请先选择文件');
+                return;
+            }
+
+            // 重置UI
+            uploadBtn.disabled = true;
+            progressBar.style.width = '0%';
+            progressBar.textContent = '0%';
+            progressBar.style.backgroundColor = '';
+            info.innerHTML = '';
+            startTime = Date.now();
+
+            // 创建 FormData
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('filename', file.name);
+            formData.append('size', file.size);
+
+            try {
+                // 使用 axios 发送，带进度监听
+                let count = 0;
+                const response = await axios.post('https://httpbin.org/post', formData, {
+                    onUploadProgress: (progressEvent) => {
+                        count++;
+                        // 计算百分比
+                        const percent = (progressEvent.loaded / progressEvent.total) * 100;
+                        progressBar.style.width = percent + '%';
+                        progressBar.textContent = percent.toFixed(2) + '%';
+
+                        // 计算上传速度
+                        const elapsed = (Date.now() - startTime) / 1000; // 秒
+                        const speed = (progressEvent.loaded / 1024 / elapsed).toFixed(2);
+                        console.log(`第${count}次触发，进度：${percent.toFixed(2)}%`);
+                        info.innerHTML = `
+                            📊 已上传：${(progressEvent.loaded / 1024).toFixed(2)} KB / ${(progressEvent.total / 1024).toFixed(2)} KB<br>
+                            ⚡ 速度：${speed} KB/s<br>
+                            📁 文件名：${file.name}
+                        `;
+                    }
+                });
+
+                // 上传成功
+                progressBar.style.backgroundColor = '#4caf50';
+                info.innerHTML += `<br>✅ 上传成功！服务器返回：${JSON.stringify(response.data.files)}`;
+
+            } catch (error) {
+                // 上传失败
+                progressBar.style.backgroundColor = '#f44336';
+                info.innerHTML += `<br>❌ 上传失败：${error.message}`;
+            } finally {
+                uploadBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>

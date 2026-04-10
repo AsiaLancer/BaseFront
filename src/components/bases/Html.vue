@@ -795,13 +795,43 @@
             <div class="sr-item">5</div>
             <div class="sr-item">6</div>
         </div>
+        <div class="media-learn">
+        </div>
     </div>
 </template>
 
 <script setup>
+import axios from 'axios';
+axios.get('/api/userPets/loadDataList')
+    .then(response => {
+        console.log(response);
+        console.log('用户列表:', response.data);
+    })
+    .catch(error => {
+        console.error('请求失败:', error);
+    });
 </script>
 
 <style scoped>
+.media-learn {
+    height: 20vmin;
+    width: 100%;
+    background-color: #ff9e20;
+}
+
+@media screen and (min-width: 1200px) {
+    .media-learn {
+        background-color: #1be47f;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .media-learn {
+        background-color: #ff2020;
+    }
+}
+
+
 .sr-box {
     display: flex;
     flex-wrap: wrap;

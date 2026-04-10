@@ -736,6 +736,7 @@
     background-color: #3e2140;
     border-radius: 5px;
     scroll-behavior: smooth;
+    z-index: 999;
 }
 
 .back a {
@@ -1107,6 +1108,7 @@
 .entry-box .banner ul li {
     height: 100%;
     width: 100%;
+    transition: all 0.5s;
 }
 
 .entry-box .banner img {

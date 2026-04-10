@@ -1,0 +1,67 @@
+/* Element Plus 主题覆盖 - 深色古风 */
+.el-button--primary {
+    --el-button-bg-color: var(--color-bronze);
+    --el-button-border-color: var(--color-bronze);
+    --el-button-hover-bg-color: var(--color-gold);
+    --el-button-hover-border-color: var(--color-gold);
+    --el-button-active-bg-color: var(--color-ancient);
+    --el-button-active-border-color: var(--color-ancient);
+}
+
+.el-input__wrapper {
+    background-color: var(--bg-card) !important;
+    box-shadow: 0 0 0 1px var(--border-color) inset !important;
+}
+
+.el-input__wrapper:hover {
+    box-shadow: 0 0 0 1px var(--color-bronze) inset !important;
+}
+
+.el-input__wrapper.is-focus {
+    box-shadow: 0 0 0 1px var(--color-bronze) inset !important;
+}
+
+.el-input__inner {
+    color: var(--text-primary) !important;
+}
+
+.el-input__inner::placeholder {
+    color: var(--text-placeholder) !important;
+}
+
+.el-form-item__label {
+    color: var(--text-regular) !important;
+}
+
+.el-checkbox__label {
+    color: var(--text-secondary) !important;
+}
+
+.el-card {
+    --el-card-bg-color: var(--bg-card);
+    --el-card-border-color: var(--border-color);
+    border-radius: var(--radius-lg);
+}
+
+.el-dialog {
+    --el-dialog-bg-color: var(--bg-card);
+    --el-dialog-border-radius: var(--radius-lg);
+}
+
+.el-message-box {
+    --el-messagebox-title-color: var(--text-primary);
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+.el-dropdown-menu {
+    --el-dropdown-menu-box-shadow: var(--shadow-lg);
+}
+
+.el-menu {
+    --el-menu-bg-color: transparent;
+    --el-menu-text-color: var(--text-secondary);
+    --el-menu-hover-bg-color: var(--bg-hover);
+    --el-menu-active-color: var(--color-bronze);
+    --el-menu-hover-text-color: var(--color-bronze);
+}

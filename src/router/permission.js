@@ -43,7 +43,7 @@ function addRoutes(accessRoutes) {
 router.beforeEach(async (to, from, next) => {
     // 1. 设置页面标题
     document.title = to.meta.title
-        ? `${to.meta.title} - 管理后台`
+        ? `${to.meta.title}`
         : '管理后台'
 
     const userStore = useUserStore()
@@ -71,7 +71,6 @@ router.beforeEach(async (to, from, next) => {
 
             // 获取权限路由
             const accessRoutes = await permissionStore.generateRoutes()
-            console.log(permissionStore.visibleRoutes)
             // 根据用户角色过滤路由
             const filteredRoutes = filterRoutes(
                 accessRoutes,

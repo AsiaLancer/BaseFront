@@ -8,10 +8,10 @@ export const useUserStore = defineStore('user', () => {
     const token = ref(localStorage.getItem('token') || '')
     const userInfo = ref(null)
     const role = ref('')
+    const username = ref(localStorage.getItem('username') || '未知用户')
 
     // ============ Getters ============
     const isLoggedIn = computed(() => !!token.value)
-    const username = computed(() => localStorage.getItem('username') || '未知用户')
     const avatar = computed(() => userInfo.value?.avatar || '/default-avatar.png')
 
     // ============ Actions ============
@@ -23,6 +23,7 @@ export const useUserStore = defineStore('user', () => {
             token.value = res.token
             role.value = res.data.role
             userInfo.value = res.data
+            username.value = res.data.username
 
             // 持久化
             localStorage.setItem('token', res.token)
@@ -41,6 +42,7 @@ export const useUserStore = defineStore('user', () => {
             const res = await getUserInfoApi()
             userInfo.value = res.data
             role.value = res.data.role
+            username.value = res.data.username
             return res.data
         } catch (error) {
             console.error('获取用户信息失败', error.message)
@@ -59,6 +61,7 @@ export const useUserStore = defineStore('user', () => {
             token.value = ''
             role.value = ''
             userInfo.value = null
+            username.value = '未知用户'
             localStorage.removeItem('token')
             localStorage.removeItem('role')
             localStorage.removeItem('username')

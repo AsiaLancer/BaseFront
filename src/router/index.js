@@ -85,7 +85,8 @@ const viewRoutes = [
   {
     path: '/',
     name: 'RabbitShopIndex',
-    component: () => import('@/views/RabbitShopIndex.vue')  // 使用相对路径
+    component: () => import('@/views/RabbitShopIndex.vue'),  // 使用相对路径
+    meta: { title: '兔子商店' }
   },
   {
     path: '/lubashop-index',
@@ -110,7 +111,8 @@ const viewRoutes = [
   {
     path: '/design-code-index',
     name: 'DesignCodeIndex',
-    component: () => import('@/views/DesignCodeIndex.vue')  // 使用相对路径
+    component: () => import('@/views/DesignCodeIndex.vue'),  // 使用相对路径
+    meta: { title: '课程' }
   },
   {
     path: '/user-info/:id',

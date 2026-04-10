@@ -4,7 +4,7 @@
         <!-- Logo -->
         <div class="logo">
             <img src="/favicon.ico" alt="logo" class="logo-img" />
-            <span v-if="sidebarOpened" class="logo-text">管理后台</span>
+            <span class="logo-text" :class="{ 'logo-text-hidden': !sidebarOpened }">管理后台</span>
         </div>
         <!-- 菜单 -->
         <el-menu :default-active="activeMenu" :collapse="!sidebarOpened" :unique-opened="true" class="sidebar-menu"
@@ -62,7 +62,6 @@ const flattenRoutes = (routes, parentPath = '') => {
 
 // 菜单数据
 const menuList = computed(() => permissionStore.visibleRoutes)
-console.log(menuList.value)
 // 当前激活的菜单
 const activeMenu = computed(() => route.path)
 
@@ -105,5 +104,15 @@ const sidebarOpened = computed(() => settingsStore.sideBarOpened)
     color: #fff;
     font-size: 16px;
     font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.3s, width 0.3s, margin 0.3s;
+}
+
+.logo-text-hidden {
+    opacity: 0;
+    width: 0;
+    margin-left: 0;
 }
 </style>

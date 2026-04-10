@@ -33,5 +33,4 @@ const props = defineProps({
 })
 
 const menu = props.item
-console.log(menu)
 </script>

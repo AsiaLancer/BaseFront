@@ -801,6 +801,15 @@
 </template>
 
 <script setup>
+import axios from 'axios';
+axios.get('/api/userPets/loadDataList')
+    .then(response => {
+        console.log(response);
+        console.log('用户列表:', response.data);
+    })
+    .catch(error => {
+        console.error('请求失败:', error);
+    });
 </script>
 
 <style scoped>

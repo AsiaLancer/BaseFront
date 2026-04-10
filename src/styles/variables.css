@@ -1,0 +1,106 @@
+/**
+ * 墨学教学平台 - CSS 变量定义
+ * 采用深色系中国传统色配色方案
+ */
+
+:root {
+  /* 主背景渐变色 */
+  --gradient-bg: linear-gradient(to bottom, #000000 0%, #1a1a1a 40%, #504635 70%, #9b8d6a 100%);
+
+  /* 色彩变量 */
+  --color-qihhei: #141721;
+  /* 漆黑 - 主背景 */
+  --color-dark-gray: #3f3f3d;
+  /* 暗灰 - 边框/分割 */
+  --color-ancient: #504635;
+  /* 古铜 - 辅助 */
+  --color-bronze: #9b8d6a;
+  /* 古铜黄 - 强调/按钮 */
+  --color-gold: #d4a574;
+  /* 金色 - 会员标识 */
+
+  /* 功能色 */
+  --color-success: #67c23a;
+  /* 成功 */
+  --color-warning: #e6a23c;
+  /* 警告 */
+  --color-danger: #f56c6c;
+  /* 危险 */
+  --color-info: #909399;
+  /* 信息 */
+
+  /* 文字颜色 */
+  --text-primary: #ffffff;
+  /* 主要文字 */
+  --text-regular: #d4d4d4;
+  /* 常规文字 */
+  --text-secondary: #909399;
+  /* 次要文字 */
+  --text-placeholder: #606266;
+  /* 占位文字 */
+
+  /* 边框颜色 */
+  --border-color: #3f3f3d;
+  /* 边框 */
+  --border-light: #504635;
+  /* 浅边框 */
+
+  /* 背景颜色 */
+  --bg-color: #141721;
+  /* 背景 */
+  --bg-card: #1f2328;
+  /* 卡片背景 */
+  --bg-hover: #2a2f38;
+  /* 悬停背景 */
+  --bg-mask: rgba(0, 0, 0, 0.7);
+  /* 遮罩 */
+
+  /* 字体 */
+  --font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, 'Microsoft YaHei', sans-serif;
+
+  /* 字体大小 */
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-xxl: 24px;
+
+  /* 间距 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-base: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* 圆角 */
+  --radius-sm: 4px;
+  --radius-base: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  --radius-circle: 50%;
+
+  /* 阴影 */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-base: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+
+  /* 动画 */
+  --transition-fast: 0.15s;
+  --transition-base: 0.3s;
+  --transition-slow: 0.5s;
+  --transition-slow-5: 5s;
+  --transition-slow-10: 10s;
+
+  /* 布局 */
+  --header-height: 64px;
+  --sidebar-width: 240px;
+  --sidebar-collapsed-width: 64px;
+
+  /* 距离 */
+  --distance-base: 20px;
+}

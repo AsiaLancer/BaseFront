@@ -1,0 +1,191 @@
+@import '@/styles/variables.css';
+@import '@/styles/mobile.css';
+@import '@/styles/commonutils.css';
+@import '@/styles/loginregister.css';
+@import '@/styles/elementplus.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.8;
+    color: var(--text-primary);
+    background: var(--gradient-bg);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+#app {
+    min-height: 100vh;
+}
+
+a {
+    color: var(--color-bronze);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    background: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-gold);
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+ol,
+ul,
+li {
+    list-style: none;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    /* 选择器：滚动条的轨道（背景条） */
+    background: var(--color-qihhei);
+    /* 轨道背景色：漆黑 */
+}
+
+::-webkit-scrollbar-thumb {
+    /* 选择器：滚动条的滑块（可拖拽的部分） */
+    background: var(--color-dark-gray);
+    /* 滑块颜色：深灰色 */
+    border-radius: var(--radius-full);
+    /* 滑块完全圆角（变成圆形端点） */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    /* 选择器：鼠标悬停时的滚动条滑块 */
+    background: var(--color-ancient);
+    /* 悬停时滑块颜色变为古铜色 */
+}
+
+/* 平台特色 */
+.features-section {
+    padding: var(--spacing-xxl) 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.feature-item {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-base);
+}
+
+.feature-item:hover {
+    border-color: var(--color-bronze);
+    transform: translateY(-4px);
+}
+
+.feature-icon {
+    font-size: 40px;
+    margin-bottom: var(--spacing-base);
+}
+
+.feature-item h3 {
+    font-size: var(--font-size-md);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.feature-item p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+
+    .login-container,
+    .register-container {
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .login-brand,
+    .register-brand {
+        display: none;
+    }
+
+    .profile-content {
+        grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+        order: -1;
+    }
+
+    .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .header-nav {
+        display: none;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 路由切换动画 */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}

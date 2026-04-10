@@ -72,6 +72,7 @@ const handleCommand = async (command) => {
     font-size: 20px;
     cursor: pointer;
     border: 1px solid #993535;
+    color: #993535;
 }
 
 .user-info {
@@ -80,5 +81,13 @@ const handleCommand = async (command) => {
 
 .user-name {
     color: #333;
+    display: inline-flex;
+    align-items: center;
+    outline: none;
+}
+
+.user-name:focus,
+.user-name:hover {
+    outline: none;
 }
 </style>

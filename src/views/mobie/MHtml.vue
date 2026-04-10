@@ -363,8 +363,10 @@
     text-align: center;
     padding: 0 4vmin 0;
     color: var(--font-color-nav);
-    background-color: var(--bg-color);
+    background-color: var(--mobile-bg-color);
 }
+
+
 
 .footer ul {
     display: flex;
@@ -420,7 +422,7 @@
 
 .content-item {
     width: 100%;
-    border-bottom: 0.4vmin dashed var(--bg-color);
+    border-bottom: 0.4vmin dashed var(--mobile-bg-color);
 }
 
 .content-item-content {
@@ -439,7 +441,7 @@
 
 .content-item-content a {
     font-size: 3.2vmin;
-    color: var(--bg-color);
+    color: var(--mobile-bg-color-nav);
 }
 
 .content-item-content p {
@@ -501,8 +503,8 @@
     line-height: 8vmin;
     text-align: center;
     border-radius: 4vmin;
-    color: var(--bg-color);
-    border: 0.4vmin solid var(--bg-color);
+    color: var(--mobile-bg-color-nav);
+    border: 0.4vmin solid var(--mobile-bg-color-nav);
     font-size: 3.2vmin;
 }
 
@@ -539,7 +541,7 @@
 
 .scroll-line {
     height: .5333vmin;
-    background-color: var(--bg-color);
+    background-color: var(--mobile-bg-color);
     border-radius: .5333vmin;
     animation: scroll-line 2s linear;
     animation-timeline: scroll();
@@ -571,7 +573,7 @@
 .tabs ul li.active {
     color: var(--font-color-nav);
     font-weight: 600;
-    border-bottom: 0.4vmin solid var(--bg-color);
+    border-bottom: 0.4vmin solid var(--mobile-bg-color);
 }
 
 .banner {

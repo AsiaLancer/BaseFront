@@ -11,13 +11,13 @@
             <p>11</p>
             <strong>sss</strong>
             <strong>s11</strong>
-            <img title="美女" src="../assets/imgs/im_00002_.png" alt="美女" width="100px" height="auto">
-            <img src="../assets/imgs/im_mo.gif" alt="">
+            <img title="美女" src="@/assets/imgs/im_00002_.png" alt="美女" width="100px" height="auto">
+            <img src="@/assets/imgs/im_mo.gif" alt="">
             <div>
-                <video src="../assets/1.mp4" controls width="300px" height="auto" loop></video>
+                <video src="@/assets/1.mp4" controls width="300px" height="auto" loop></video>
             </div>
 
-            <audio src="/src/assets/2.mp3" controls></audio>
+            <audio src="@/assets/2.mp3" controls></audio>
             <a href="https://www.baidu.com" target="_blank">百度一下 </a>
             <a href="https://www.taobao.com" target="_blank">淘宝一下 </a>
             <a href="dowload.exe"> 下载</a>
@@ -222,7 +222,7 @@
             <div class="title">
                 <span>最新动态</span>
                 <span>更多</span>
-                <img src="../assets/imgs/im_mo.gif" alt="" style="width: 60px; height: 30px;">
+                <img src="@/assets/imgs/im_mo.gif" alt="" style="width: 60px; height: 30px;">
             </div>
             <ul class="scontent" id="scontent">
                 <li>
@@ -678,8 +678,8 @@
         </div>
 
         <div class="swap-img">
-            <img src="../assets/imgs/im_00003_.png" alt=""></img>
-            <img src="../assets/imgs/im_00002_.png" alt=""></img>
+            <img src="@/assets/imgs/im_00003_.png" alt=""></img>
+            <img src="@/assets/imgs/im_00002_.png" alt=""></img>
         </div>
 
         <div class="scroll-clip">
@@ -687,7 +687,7 @@
             <h1>HelloNiuQian</h1>
         </div>
         <div class="view-scroll">
-            <img src="../assets/imgs/im_00004_.png" alt="">
+            <img src="@/assets/imgs/im_00004_.png" alt="">
         </div>
 
         <div class="toggle">

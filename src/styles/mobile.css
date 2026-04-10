@@ -1,0 +1,10 @@
+:root {
+    --aleftW: 100px;
+
+    /**mobile**/
+    --mobileW: 100vw;
+    --mobileH: 100vh;
+    --font-color-nav: #f39c38;
+    --mobile-bg-color: #e05438;
+    --font-color-tab: #afafaf;
+}

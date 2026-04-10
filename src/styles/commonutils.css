@@ -1,0 +1,215 @@
+/* 公共工具类 */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-gold {
+    color: var(--color-gold);
+}
+
+.text-bronze {
+    color: var(--color-bronze);
+}
+
+.mt-sm {
+    margin-top: var(--spacing-sm);
+}
+
+.mt-base {
+    margin-top: var(--spacing-base);
+}
+
+.mt-lg {
+    margin-top: var(--spacing-lg);
+}
+
+.mb-sm {
+    margin-bottom: var(--spacing-sm);
+}
+
+.mb-base {
+    margin-bottom: var(--spacing-base);
+}
+
+.mb-lg {
+    margin-bottom: var(--spacing-lg);
+}
+
+.p-base {
+    padding: var(--spacing-base);
+}
+
+.p-lg {
+    padding: var(--spacing-lg);
+}
+
+/* 动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn var(--transition-base) ease-out;
+}
+
+@keyframes moveY {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(var(--distance-base));
+    }
+}
+
+@keyframes moveX {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(var(--distance-base));
+    }
+}
+
+@keyframes moveXY {
+    from {
+        transform: translate(0, 0);
+        opacity: 0.05;
+    }
+
+    to {
+        transform: translate(var(--distance-base), calc(var(--distance-base) * -1));
+    }
+}
+
+/* 旋转动画 */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 会员标识 */
+.vip-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 2px 8px;
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-bronze) 100%);
+    color: var(--color-qihhei);
+    font-size: var(--font-size-xs);
+    font-weight: bold;
+    border-radius: var(--radius-full);
+}
+
+/* 卡片容器 */
+.card-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-base);
+}
+
+.card-container:hover {
+    border-color: var(--color-bronze);
+    box-shadow: var(--shadow-base);
+}
+
+
+/* 背景装饰 */
+.bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-ancient), var(--color-bronze));
+    opacity: 0.1;
+}
+
+.circle-1 {
+    --distance-base: 200px;
+    width: 600px;
+    height: 600px;
+    top: -200px;
+    right: -100px;
+    animation: moveY var(--transition-slow-5) ease-in-out infinite alternate;
+}
+
+.circle-2 {
+    --distance-base: 200px;
+    width: 400px;
+    height: 400px;
+    bottom: -100px;
+    left: -100px;
+    opacity: 0.2;
+    animation: moveX var(--transition-slow-5) ease-in-out infinite alternate;
+}
+
+.circle-3 {
+    --distance-base: 500px;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 20%;
+    animation: moveXY var(--transition-slow-10) ease-in-out infinite alternate;
+}
+
+/* 星星装饰 */
+.stars-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: starTwinkle var(--duration, 3s) ease-in-out infinite alternate, starRotate var(--duration, 3s) ease-in-out infinite;
+}
+
+/* 星星闪烁动画 */
+@keyframes starTwinkle {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: var(--opacity, 0.8);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
+}
+
+/* 可选：星星缓慢飘移动画 */
+@keyframes starRotate {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(400px, -400px);
+    }
+}

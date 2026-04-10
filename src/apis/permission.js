@@ -79,7 +79,7 @@ export async function getMenuListApi() {
             path: '/layout',
             component: () => import('@/components/layout/Layout.vue'),
             redirect: '/layout/dashboard',
-            meta: { requiresAuth: true },
+            meta: { requiresAuth: true, title: '数据操作' },
             children: [
                 {
                     path: 'dashboard',

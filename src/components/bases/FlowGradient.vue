@@ -100,11 +100,7 @@
     border-radius: 6px;
 }
 
-@keyframes rotate {
-    to {
-        transform: rotate(360deg);
-    }
-}
+
 
 
 @keyframes move {

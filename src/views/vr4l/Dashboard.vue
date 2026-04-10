@@ -1,6 +1,6 @@
 <!-- views/dashboard/index.vue -->
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useUserStore } from '@/stores/user'
 
 const userStore = useUserStore()

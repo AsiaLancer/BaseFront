@@ -1,0 +1,62 @@
+.login-page,
+.register-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 背景装饰 */
+.login-bg,
+.register-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.login-container,
+.register-container {
+    position: relative;
+    display: flex;
+    width: 1000px;
+    min-height: 600px;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    animation: fadeIn 0.3s ease-in-out;
+    animation-delay: 0.1s;
+    z-index: 1;
+}
+
+.login-brand,
+.register-brand {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-qihhei) 0%, var(--color-ancient) 100%);
+    padding: var(--spacing-xxl);
+}
+
+.login-form-wrapper,
+.register-form-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xxl);
+}
+
+.login-form-container,
+.register-form-container {
+    width: 100%;
+    max-width: 360px;
+}
+
+/* 表单样式 */
+.login-form .el-input,
+.register-form .el-input {
+    --el-input-bg-color: var(--bg-color);
+}

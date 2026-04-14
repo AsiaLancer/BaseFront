@@ -83,7 +83,7 @@ const base4Learns = [
 
 const viewRoutes = [
   {
-    path: '/',
+    path: '/rabbit-shop-index',
     name: 'RabbitShopIndex',
     component: () => import('@/views/RabbitShopIndex.vue'),  // 使用相对路径
     meta: { title: '兔子商店' }
@@ -139,38 +139,48 @@ const viewRoutes = [
     component: () => import('@/components/bases/ElementPlus4L.vue')  // 使用相对路径
   },
   {
-    path: '/user-info/:id(\\d+)',
-    name: 'NotFound',
-    component: () => import('@/components/NotFount.vue') // 使用相对路径
-  },
-  {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/vr4l/Login.vue'), // 使用相对路径
+    component: () => import('@/views/curse/Login.vue'), // 使用相对路径
     meta: { title: '登录', hidden: true }
   },
   {
-    path: '/404',
-    name: '404',
-    component: () => import('@/views/vr4l/errors/404.vue'), // 使用相对路径
-    meta: { title: '页面不存在', hidden: true }
+    path: '/register',
+    name: 'Register',
+    component: () => import('@/views/curse/Register.vue'), // 使用相对路径
+    meta: { title: '注册', hidden: true }
   },
   {
-    path: '/403',
-    name: '403',
-    component: () => import('@/views/vr4l/errors/403.vue'), // 使用相对路径
-    meta: { title: '无权限', hidden: true }
+    path: '/curse',
+    component: () => import('@/components/layout/curselayout/CurseLayou.vue'), // 使用相对路径
+    redirect: '/curse/home',
+    children: [
+      {
+        path: 'home',
+        name: 'CurseHome',
+        component: () => import('@/views/curse/CurseHome.vue'), // 使用相对路径
+        meta: { title: '课程首页' }
+      }
+    ]
   },
-  // {
-  //   path: '/:pathMatch(.*)*',
-  //   redirect: '/404',
-  //   meta: { hidden: true }
-  // }
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/curse/errors/NotFound.vue'), // 使用相对路径
+    meta: { hidden: true }
+  }
 ]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [...base4Learns, ...viewRoutes,]
+  routes: [...base4Learns, ...viewRoutes,],
+  scrollBehavior(to, from, savedPosition) {
+    // 路由切换时滚动到顶部
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  }
 })
 
 export default router

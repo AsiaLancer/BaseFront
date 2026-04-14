@@ -3,34 +3,49 @@ import { defineStore } from 'pinia'
 import { loginApi, logoutApi, getUserInfoApi } from '@/apis/user'
 import { usePermissionStore } from './permission'
 import { ref, computed } from 'vue'
+import storages from '@/utils/storages.js'
 export const useUserStore = defineStore('user', () => {
     // ============ State ============
-    const token = ref(localStorage.getItem('token') || '')
+    const token = ref(storages.getItem("token") || '')
     const userInfo = ref(null)
     const role = ref('')
-    const username = ref(localStorage.getItem('username') || '未知用户')
+    const username = ref(storages.getItem("username") || '未知用户')
 
     // ============ Getters ============
     const isLoggedIn = computed(() => !!token.value)
     const avatar = computed(() => userInfo.value?.avatar || '/default-avatar.png')
-
     // ============ Actions ============
 
     // 登录
     async function login(loginForm) {
         try {
             const res = await loginApi(loginForm)
+            if (loginForm.remember) {
+                storages.setItem("last_login_number", loginForm.loginType === 'password' ? loginForm.username : loginForm.phone)
+                storages.setItem("loginType", loginForm.loginType)
+            } else {
+                if (storages.getItem("last_login_number")) {
+                    storages.removeItem("last_login_number")
+                }
+                if (storages.getItem("loginType")) {
+                    storages.removeItem("loginType")
+                }
+            }
             token.value = res.token
             role.value = res.data.role
             userInfo.value = res.data
             username.value = res.data.username
 
             // 持久化
-            localStorage.setItem('token', res.token)
-            localStorage.setItem('role', res.data.role)
-            localStorage.setItem('username', res.data.username)
+            storages.setItem("token", res.token)
+            storages.setItem("username", res.data.username)
+
             return { success: true }
         } catch (error) {
+            if (loginForm.remember) {
+                storages.removeItem("last_login_number")
+                storages.removeItem("loginType")
+            }
             return { success: false, message: error.message }
         }
     }
@@ -62,9 +77,8 @@ export const useUserStore = defineStore('user', () => {
             role.value = ''
             userInfo.value = null
             username.value = '未知用户'
-            localStorage.removeItem('token')
-            localStorage.removeItem('role')
-            localStorage.removeItem('username')
+            storages.removeItem("token")
+            storages.removeItem("username")
             // 清理权限状态
             const permissionStore = usePermissionStore()
             permissionStore.resetPermission()

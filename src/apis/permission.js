@@ -1,12 +1,14 @@
 // apis/permission.js
+import { useUserStore } from '@/stores/user'
 const delay = (ms = 500) => new Promise(resolve => setTimeout(resolve, ms))
 
 // 模拟后端返回的菜单路由
 // 注意：这里的格式和前端 asyncRoutes 一致，但只返回用户有权限的
 export async function getMenuListApi() {
     await delay(500)
+    const userStore = useUserStore()
+    const role = userStore.role
 
-    const role = localStorage.getItem('role') || 'user'
 
     // 根据角色返回不同菜单
     const adminMenus = [
@@ -19,7 +21,7 @@ export async function getMenuListApi() {
                 {
                     path: 'dashboard',
                     name: 'Dashboard',
-                    component: () => import('@/views/vr4l/Dashboard.vue'),
+                    component: () => import('@/views/curse/Dashboard.vue'),
                     meta: {
                         title: '仪表盘',
                         icon: 'dashboard',
@@ -32,12 +34,12 @@ export async function getMenuListApi() {
             path: '/users',
             component: () => import('@/components/layout/Layout.vue'),
             redirect: '/users/list',
-            meta: { requiresAuth: true, roles: ['admin', 'user-manager'], title: '用户操作' },
+            meta: { requiresAuth: true, roles: ['admin'], title: '用户操作' },
             children: [
                 {
                     path: 'list',
                     name: 'UserList',
-                    component: () => import('@/views/vr4l/UserList.vue'),
+                    component: () => import('@/views/curse/UserList.vue'),
                     meta: {
                         title: '用户列表',
                         icon: 'user',
@@ -47,7 +49,7 @@ export async function getMenuListApi() {
                 {
                     path: ':id',
                     name: 'UserDetail',
-                    component: () => import('@/views/vr4l/UserDetail.vue'),
+                    component: () => import('@/views/curse/UserDetail.vue'),
                     meta: {
                         title: '用户详情',
                         permission: 'user:view'
@@ -63,7 +65,7 @@ export async function getMenuListApi() {
                 {
                     path: '',
                     name: 'Settings',
-                    component: () => import('@/views/vr4l/Settings.vue'),
+                    component: () => import('@/views/curse/Settings.vue'),
                     meta: {
                         title: '系统设置',
                         icon: 'setting',
@@ -84,7 +86,7 @@ export async function getMenuListApi() {
                 {
                     path: 'dashboard',
                     name: 'Dashboard',
-                    component: () => import('@/views/vr4l/Dashboard.vue'),
+                    component: () => import('@/views/curse/Dashboard.vue'),
                     meta: {
                         title: '仪表盘',
                         icon: 'dashboard',

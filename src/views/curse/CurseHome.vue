@@ -4,8 +4,7 @@
 
 <template>
     <div>
-        404
-        {{ $route.meta?.title }}
+        curse 首页
     </div>
 </template>
 

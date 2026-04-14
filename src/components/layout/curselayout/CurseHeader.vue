@@ -4,7 +4,7 @@
 
 <template>
     <div>
-        NotFound Found {{ $route.params.id }}
+        curse 头部
     </div>
 </template>
 

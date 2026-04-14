@@ -5,7 +5,6 @@
         <div class="hamburger" @click="toggleSideBar">
             <i :class="sidebarOpened ? 'el-icon-fold' : 'el-icon-unfold'"></i>1
         </div>
-
         <!-- 右侧用户信息 -->
         <div class="user-info">
             <el-dropdown @command="handleCommand">

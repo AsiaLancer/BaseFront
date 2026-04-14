@@ -1,11 +1,87 @@
+import storages from '@/utils/storages.js'
 // apis/user.js
 const userList = [
-    { id: 1, username: 'AsiaLancer', password: '123456', role: 'admin', email: 'admin@example.com', phone: '13800000000' },
-    { id: 2, username: 'user1', password: '123456', role: 'user-manager', email: 'user1@example.com', phone: '13800000001' },
-    { id: 3, username: 'user2', password: '123456', role: 'user-manager', email: 'user2@example.com', phone: '13800000002' },
-    { id: 4, username: 'user3', password: '123456', role: 'user-manager', email: 'user3@example.com', phone: '13800000003' },
-    { id: 5, username: 'user4', password: '123456', role: 'user-manager', email: 'user4@example.com', phone: '13800000004' },
-    { id: 6, username: 'user5', password: '123456', role: 'user-manager', email: 'user5@example.com', phone: '13800000005' }
+    {
+        id: '1',
+        username: 'AsiaLancer',
+        email: 'AsiaLancer@moxue.com',
+        password: '123456',
+        nickname: '管理员',
+        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=admin',
+        role: 'admin',
+        isVip: true,
+        vipLevel: 3,
+        bio: '墨学平台创始人，致力于弘扬中华传统文化与现代教育的融合。',
+        fans: 12580,
+        following: 256,
+        likes: 45890,
+        works: 48,
+        courses: 12,
+        phone: '13800000000',
+        registerTime: '2023-01-15',
+        lastLoginTime: '2024-03-10'
+    },
+    {
+        id: '2',
+        username: 'teacher',
+        email: 'teacher@moxue.com',
+        password: '123456',
+        nickname: '墨韵讲师',
+        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=teacher',
+        role: 'teacher',
+        isVip: true,
+        vipLevel: 2,
+        bio: '国学院资深讲师，专注古典文学与现代教学方法研究。',
+        fans: 5680,
+        following: 128,
+        likes: 12560,
+        works: 24,
+        courses: 8,
+        phone: '13800000001',
+        registerTime: '2023-03-20',
+        lastLoginTime: '2024-03-10'
+    },
+    {
+        id: '3',
+        username: 'student',
+        email: 'student@moxue.com',
+        password: '123456',
+        nickname: '墨香学员',
+        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=student',
+        role: 'user',
+        isVip: false,
+        vipLevel: 0,
+        bio: '热爱传统文化的学习者，正在墨学平台不断提升自己。',
+        fans: 256,
+        following: 89,
+        likes: 1234,
+        works: 5,
+        courses: 12,
+        phone: '13800000002',
+        registerTime: '2023-06-01',
+        lastLoginTime: '2024-03-09'
+    },
+    {
+        id: '4',
+        username: 'student',
+        email: 'student@moxue.com',
+        password: '123456',
+        nickname: '墨撒旦阿萨',
+        avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=student',
+        role: 'user',
+        isVip: false,
+        vipLevel: 0,
+        bio: '热爱传统文化的学习者，正在墨学平台不断提升自己。',
+        fans: 26,
+        following: 8129,
+        likes: 11234,
+        works: 51,
+        courses: 112,
+        phone: '13800000003',
+        registerTime: '2023-06-01',
+        lastLoginTime: '2024-03-09'
+    },
+
 ]
 
 // 模拟延迟
@@ -36,7 +112,7 @@ export async function loginApi(loginForm) {
 export async function getUserInfoApi() {
     await delay(300)
 
-    const token = localStorage.getItem('token')
+    const token = storages.getItem('token')
     if (!token) {
         throw new Error('未登录')
     }

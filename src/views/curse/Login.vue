@@ -3,45 +3,54 @@ import { reactive, ref, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useUserStore } from '../../stores/user'
 import { ElMessage } from 'element-plus'
-
+import { User, Lock, View, Hide } from '@element-plus/icons-vue'
+import storages from '@/utils/storages.js'
+import { getStarStyle } from '@/utils/designUtils.js'
 const router = useRouter()
 const route = useRoute()
 const userStore = useUserStore()
 
 // 表单引用
 const formRef = ref(null)
-// 登录方式
-const loginType = ref('password') // 'password' | 'username' | 'email'
+
 // 密码显示状态
-const passwordVisible = ref(false)
+const passwordVisible = ref(true)
+
 const loginForm = reactive({
     username: '',
     password: '',
-    remember: true
+    remember: true,
+    code: '',
+    phone: '',
+    loginType: 'password'
 })
 // 表单验证规则
 const rules = {
-    loginAccount: [
+    username: [
         { required: true, message: '请输入用户名或邮箱', trigger: 'blur' },
         { min: 3, max: 50, message: '长度在 3 到 50 个字符', trigger: 'blur' }
     ],
     password: [
         { required: true, message: '请输入密码', trigger: 'blur' },
         { min: 6, max: 20, message: '密码长度为 6-20 个字符', trigger: 'blur' }
+    ],
+    phone: [
+        { required: true, message: '请输入手机号码', trigger: 'blur' },
+        { pattern: /^1[3-9]\d{9}$/, message: '请输入正确的手机号码', trigger: 'blur' }
     ]
 }
 
-// 初始化用户状态
-onMounted(() => {
-    if (userStore.isLoggedIn) {
-        router.push('/layout')
-    }
-})
 const loading = ref(false)
 
 const handleLogin = async () => {
     if (!loginForm.username || !loginForm.password) {
         ElMessage.warning('请输入用户名和密码')
+        return
+    }
+    // 表单验证
+    const valid = await formRef.value?.validate().catch(() => false)
+    if (!valid) {
+        ElMessage.warning('请填写正确的用户名和密码')
         return
     }
 
@@ -63,75 +72,58 @@ const handleLogin = async () => {
         loading.value = false
     }
 }
-const getStarStyle = (index) => {
-    // 随机位置：宽度 0-100%，高度 0-50%（只在上半部分）
-    const left = Math.random() * 100
-    const top = Math.random() * 40  // 只在上半部分
 
-    // 随机大小：1px 到 4px
-    const size = 1 + Math.random() * 3
 
-    // 随机透明度
-    const opacity = 0.3 + Math.random() * 0.7
+function switchLoginType(type) {
+    loginForm.loginType = type
+}
 
-    // 随机动画时长：2s 到 8s
-    const duration = 2 + Math.random() * 6
-
-    // 随机延迟
-    const delay = Math.random() * 5
-
-    return {
-        left: `${left}%`,
-        top: `${top}%`,
-        width: `${size}px`,
-        height: `${size}px`,
-        opacity: opacity,
-        '--duration': `${duration}s`,
-        '--opacity': opacity,
-        animationDelay: `${delay}s`
+const goRegister = () => {
+    router.push('/register')
+}
+const initIsLoggedIn = () => {
+    if (storages.getItem("last_login_number") && storages.getItem("loginType")) {
+        loginForm.loginType = storages.getItem("loginType")
+        loginForm.username = storages.getItem("last_login_number")
+    }
+    // 检查用户是否已登录
+    if (userStore.isLoggedIn) {
+        router.push('/layout')
     }
 }
+
+// 初始化用户状态
+onMounted(
+    initIsLoggedIn
+)
 </script>
 
 <template>
-    <!-- <div class="login-container">
-        <el-card class="login-card">
-            <h2 class="title">管理后台登录</h2>
 
-            <el-form :model="loginForm" class="login-form">
-                <el-form-item>
-                    <el-input v-model="loginForm.username" placeholder="用户名" prefix-icon="User" />
-                </el-form-item>
-
-                <el-form-item>
-                    <el-input v-model="loginForm.password" type="password" placeholder="密码" prefix-icon="Lock"
-                        @keyup.enter="handleLogin" />
-                </el-form-item>
-
-                <el-form-item>
-                    <el-button type="primary" :loading="loading" class="login-button" @click="handleLogin">
-                        登录
-                    </el-button>
-                </el-form-item>
-            </el-form>
-        </el-card>
-    </div> -->
     <div class="login-page">
         <!-- 背景装饰 -->
         <div class="login-bg">
             <div class="bg-circle circle-1"></div>
             <div class="bg-circle circle-2"></div>
             <div class="bg-circle circle-3"></div>
+            <div class="bg-circle circle-4"></div>
             <div class="stars-container">
-                <div v-for="i in 200" :key="i" class="star" :style="getStarStyle(i)"></div>
+                <div v-for="i in 200" :key="i" class="star" :style="getStarStyle()"></div>
             </div>
         </div>
         <!-- 登录容器 -->
         <div class="login-container">
+            <img class="sidebar-img-left" src="@/assets/imgs/sidebar-left1.webp" alt="">
+            <img class="sidebar-img-right" src="@/assets/imgs/sidebar-right1.webp" alt="">
+            <img class="sidebar-img-top3" src="@/assets/imgs/sidebar-top3.webp" alt="">
+            <img class="sidebar-q-left" src="@/assets/imgs/sidebar-left2.webp" alt="">
+            <img class="sidebar-q-right" src="@/assets/imgs/sidebar-right2.webp" alt="">
+            <img class="sidebar-q-top" src="@/assets/imgs/sidebar-top2.webp" alt="">
+
             <!-- 左侧品牌区域 -->
             <div class="login-brand">
                 <div class="brand-content">
-                    <h1 class="brand-title">墨学</h1>
+                    <h1 class="brand-title">昇新</h1>
                     <p class="brand-subtitle">传承千年智慧 · 启迪当代学人</p>
                     <div class="brand-features">
                         <div class="feature-item">
@@ -142,10 +134,6 @@ const getStarStyle = (index) => {
                             <span class="feature-icon">🎓</span>
                             <span class="feature-text">名师在线授课</span>
                         </div>
-                        <div class="feature-item">
-                            <span class="feature-icon">🏆</span>
-                            <span class="feature-text">学习成就体系</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -154,15 +142,15 @@ const getStarStyle = (index) => {
                 <div class="login-form-container">
                     <div class="form-header">
                         <h2 class="form-title">欢迎回来</h2>
-                        <p class="form-subtitle">登录墨学账号，开启学习之旅</p>
+                        <p class="form-subtitle">登录昇新账号，开启学习之旅</p>
                     </div>
                     <!-- 登录类型切换 -->
                     <div class="login-type-tabs">
-                        <span class="tab-item" :class="{ active: loginType === 'password' }"
+                        <span class="tab-item" :class="{ active: loginForm.loginType === 'password' }"
                             @click="switchLoginType('password')">
                             密码登录
                         </span>
-                        <span class="tab-item" :class="{ active: loginType === 'code' }"
+                        <span class="tab-item" :class="{ active: loginForm.loginType === 'code' }"
                             @click="switchLoginType('code')">
                             验证码登录
                         </span>
@@ -170,31 +158,51 @@ const getStarStyle = (index) => {
 
                     <!-- 表单 -->
                     <el-form ref="formRef" :model="loginForm" :rules="rules" class="login-form"
-                        @keydown="handleKeydown">
+                        @keyup.enter="handleLogin">
                         <!-- 账号输入 -->
-                        <el-form-item prop="loginAccount">
-                            <el-input v-model="loginForm.loginAccount" placeholder="请输入用户名或邮箱" size="large"
+                        <el-form-item v-if="loginForm.loginType === 'password'" prop="username">
+                            <el-input v-model="loginForm.username" placeholder="请输入用户名或邮箱" size="large"
                                 :prefix-icon="User" clearable />
                         </el-form-item>
-
+                        <el-form-item v-if="loginForm.loginType === 'code'" prop="phone">
+                            <el-input v-model="loginForm.phone" placeholder="请输入手机号码" size="large" :prefix-icon="User"
+                                clearable />
+                        </el-form-item>
                         <!-- 密码输入 -->
-                        <el-form-item prop="password">
-                            <el-input v-model="loginForm.password" :type="passwordVisible ? 'text' : 'password'"
-                                placeholder="请输入密码" size="large" :prefix-icon="Lock"
-                                :suffix-icon="passwordVisible ? Hide : View"
-                                @click:suffix="passwordVisible = !passwordVisible" />
+                        <el-form-item v-if="loginForm.loginType === 'password'" prop="password">
+                            <el-input v-model="loginForm.password" :type="passwordVisible ? 'password' : 'text'"
+                                placeholder="请输入密码" size="large" :prefix-icon="Lock">
+                                <template #suffix>
+                                    <el-icon @click="passwordVisible = !passwordVisible">
+                                        <component :is="passwordVisible ? Hide : View" />
+                                    </el-icon>
+                                </template>
+                            </el-input>
+                        </el-form-item>
+
+                        <el-form-item v-else prop="code">
+                            <el-col :span="10">
+                                <el-input v-model="loginForm.code" placeholder="请输入验证码" size="large"
+                                    :prefix-icon="Lock" />
+                            </el-col>
+                            <el-col :span="8">
+                                <el-button type="primary" size="large" class="send-code-btn" @click="sendCode">
+                                    发送验证码
+                                </el-button>
+                            </el-col>
                         </el-form-item>
 
                         <!-- 记住密码 & 忘记密码 -->
                         <div class="form-options">
                             <el-checkbox v-model="loginForm.remember">记住账号</el-checkbox>
-                            <el-link type="primary" class="forgot-link">忘记密码？</el-link>
+                            <el-link v-if="loginForm.loginType === 'password'" type="primary"
+                                class="forgot-link">忘记密码？</el-link>
                         </div>
 
                         <!-- 提交按钮 -->
                         <el-form-item>
                             <el-button type="primary" size="large" class="submit-btn" :loading="loading"
-                                @click="handleSubmit">
+                                @click="handleLogin">
                                 {{ loading ? '登录中...' : '登 录' }}
                             </el-button>
                         </el-form-item>
@@ -212,9 +220,9 @@ const getStarStyle = (index) => {
                     <div class="test-accounts">
                         <p class="test-title">测试账号：</p>
                         <div class="test-list">
-                            <span>admin / 123456</span>
-                            <span>teacher / 123456</span>
-                            <span>student / 123456</span>
+                            <span>admin/123456</span>
+                            <span>teacher/123456</span>
+                            <span>student/123456</span>
                         </div>
                     </div>
                 </div>
@@ -223,54 +231,11 @@ const getStarStyle = (index) => {
     </div>
 </template>
 <style scoped>
-.brand-content {
-    color: var(--text-primary);
-    text-align: center;
-}
-
-.brand-title {
-    font-size: 48px;
-    font-weight: bold;
-    margin-bottom: var(--spacing-base);
-    background: linear-gradient(135deg, var(--color-bronze), var(--color-gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.brand-subtitle {
-    font-size: var(--font-size-lg);
-    color: var(--text-secondary);
-    margin-bottom: var(--spacing-xxl);
-}
-
-.brand-features {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-lg);
-}
-
 .feature-item {
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
     font-size: var(--font-size-md);
-}
-
-
-.form-header {
-    margin-bottom: var(--spacing-xl);
-}
-
-.form-title {
-    font-size: var(--font-size-xxl);
-    color: var(--text-primary);
-    margin-bottom: var(--spacing-sm);
-}
-
-.form-subtitle {
-    color: var(--text-secondary);
-    font-size: var(--font-size-base);
 }
 
 /* 登录类型切换 */
@@ -305,20 +270,6 @@ const getStarStyle = (index) => {
     font-size: var(--font-size-sm);
 }
 
-.submit-btn {
-    width: 100%;
-    height: 44px;
-    font-size: var(--font-size-md);
-}
-
-.form-footer {
-    text-align: center;
-    margin-top: var(--spacing-lg);
-}
-
-.footer-text {
-    color: var(--text-secondary);
-}
 
 /* 测试账号提示 */
 .test-accounts {

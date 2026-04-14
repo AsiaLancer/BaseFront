@@ -5,7 +5,7 @@ import { usePermissionStore } from '@/stores/permission'
 import { ElMessage } from 'element-plus'
 
 // 白名单
-const whiteList = ['/login', '/404', '/403']
+const whiteList = ['/login', '/404', '/403', '/register']
 
 // 递归过滤路由
 function filterRoutes(routes, roles) {
@@ -63,7 +63,7 @@ router.beforeEach(async (to, from, next) => {
         return
     }
 
-    // 4. 已登录，检查是否需要生成路由
+    // 4. 已登录，检查是否需要动态生成路由
     if (!permissionStore.isRoutesGenerated) {
         try {
             // 初始化用户状态

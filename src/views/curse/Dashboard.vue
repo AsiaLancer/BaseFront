@@ -44,7 +44,7 @@ onMounted(() => {
 
 h1 {
     margin-bottom: 30px;
-    color: #333;
+    color: var(--color-qihhei);
 }
 
 .stats-row {
@@ -62,7 +62,7 @@ h1 {
 }
 
 .stat-title {
-    color: #909399;
+    color: var(--text-primary);
     font-size: 14px;
     margin-bottom: 10px;
 }
@@ -70,7 +70,7 @@ h1 {
 .stat-value {
     font-size: 28px;
     font-weight: bold;
-    color: #303133;
+    color: var(--text-secondary);
 }
 
 .stat-icon {

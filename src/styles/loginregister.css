@@ -23,12 +23,79 @@
     width: 1000px;
     min-height: 600px;
     background: var(--bg-card);
-    border-radius: var(--radius-xl);
     box-shadow: var(--shadow-lg);
-    animation: fadeIn 0.3s ease-in-out;
-    animation-delay: 0.1s;
+    animation: fadeIn var(--transition-slow) ease-in-out;
     z-index: 1;
+    /* overflow: hidden; */
 }
+
+.sidebar-img-left {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: -305px;
+    object-fit: cover;
+}
+
+.video-bg {
+    position: absolute;
+    right: 0;
+    object-fit: center;
+    z-index: 0;
+    height: 100%;
+}
+
+.sidebar-img-right {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    right: -406px;
+    object-fit: cover;
+}
+
+.sidebar-img-top {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: -340px;
+    left: 30%;
+    object-fit: cover;
+}
+
+.sidebar-img-top3 {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: -320px;
+    left: 35%;
+    object-fit: cover;
+}
+
+.sidebar-q-left,
+.sidebar-q-right,
+.sidebar-q-top {
+    display: none;
+}
+
+.sidebar-q-right {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: -190px;
+    right: -406px;
+    object-fit: cover;
+}
+
+.sidebar-q-top {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: -190px;
+    left: 3%;
+    object-fit: cover;
+}
+
+
 
 .login-brand,
 .register-brand {
@@ -38,6 +105,49 @@
     justify-content: center;
     background: linear-gradient(135deg, var(--color-qihhei) 0%, var(--color-ancient) 100%);
     padding: var(--spacing-xxl);
+}
+
+.brand-content {
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.brand-title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: var(--spacing-base);
+    background: linear-gradient(135deg, var(--color-bronze), var(--color-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.brand-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xxl);
+}
+
+.form-header {
+    margin-bottom: var(--spacing-xl);
+}
+
+.form-title {
+    font-size: var(--font-size-xxl);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-subtitle {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+}
+
+
+.brand-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
 }
 
 .login-form-wrapper,
@@ -59,4 +169,22 @@
 .login-form .el-input,
 .register-form .el-input {
     --el-input-bg-color: var(--bg-color);
+}
+
+.submit-btn {
+    width: 100%;
+    height: 44px;
+    font-size: var(--font-size-md);
+}
+
+.form-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: var(--spacing-lg);
+}
+
+.footer-text {
+    color: var(--text-secondary);
 }

@@ -93,6 +93,9 @@
   --transition-fast: 0.15s;
   --transition-base: 0.3s;
   --transition-slow: 0.5s;
+  --transition-slow-2: 1s;
+  --transition-slow-3: 1.5s;
+  --transition-slow-4: 2s;
   --transition-slow-5: 5s;
   --transition-slow-10: 10s;
 

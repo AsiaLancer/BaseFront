@@ -19,7 +19,7 @@ html {
 body {
     font-family: var(--font-family);
     font-size: var(--font-size-base);
-    line-height: 1.8;
+    line-height: 1.6;
     color: var(--text-primary);
     background: var(--gradient-bg);
     background-attachment: fixed;
@@ -84,6 +84,18 @@ li {
     /* 悬停时滑块颜色变为古铜色 */
 }
 
+/* 覆盖 Chrome/Safari 自动填充样式 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--text-primary) !important;
+    -webkit-box-shadow: 0 0 0 1000px var(--bg-card) inset !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+    caret-color: var(--text-primary) !important;
+}
+
+
 /* 平台特色 */
 .features-section {
     padding: var(--spacing-xxl) 0;
@@ -129,10 +141,47 @@ li {
 
 @media (max-width: 1024px) {
 
+    .sidebar-img-left,
+    .sidebar-img-top3,
+    .sidebar-img-right,
+    .sidebar-img-top {
+        display: none;
+    }
+
+    .sidebar-q-left {
+        display: block;
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: -189px;
+        top: 0;
+        object-fit: cover;
+    }
+
+    .sidebar-q-right {
+        display: block;
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        top: 0;
+        right: -263px;
+        object-fit: cover;
+    }
+
+    .sidebar-q-top {
+        display: block;
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        top: -205px;
+        left: 3%;
+        object-fit: cover;
+    }
+
     .login-container,
     .register-container {
         width: 100%;
-        max-width: 800px;
+        max-width: 600px;
     }
 
     .login-brand,
@@ -162,6 +211,12 @@ li {
 }
 
 @media (max-width: 768px) {
+
+    .sidebar-q-left,
+    .sidebar-q-right {
+        display: none;
+    }
+
     .header-nav {
         display: none;
     }

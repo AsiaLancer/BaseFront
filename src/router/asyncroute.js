@@ -11,7 +11,7 @@ export const asyncRoutes = [
             {
                 path: 'dashboard',
                 name: 'Dashboard',
-                component: () => import('@/views/vr4l/Dashboard.vue'),
+                component: () => import('@/views/curse/Dashboard.vue'),
                 meta: {
                     title: '仪表盘',
                     icon: 'iconfont icon-icon-test4',
@@ -24,12 +24,12 @@ export const asyncRoutes = [
         path: '/users',
         component: () => import('@/components/layout/Layout.vue'),
         redirect: '/users/list',
-        meta: { requiresAuth: true, roles: ['admin', 'user-manager'] },
+        meta: { requiresAuth: true, roles: ['admin'] },
         children: [
             {
                 path: 'list',
                 name: 'UserList',
-                component: () => import('@/views/vr4l/UserList.vue'),
+                component: () => import('@/views/curse/UserList.vue'),
                 meta: {
                     title: '用户列表',
                     icon: 'user',
@@ -39,7 +39,7 @@ export const asyncRoutes = [
             {
                 path: ':id',
                 name: 'UserDetail',
-                component: () => import('@/views/vr4l/UserDetail.vue'),
+                component: () => import('@/views/curse/UserDetail.vue'),
                 meta: {
                     title: '用户详情',
                     permission: 'user:view'
@@ -55,7 +55,7 @@ export const asyncRoutes = [
             {
                 path: '',
                 name: 'Settings',
-                component: () => import('@/views/vr4l/Settings.vue'),
+                component: () => import('@/views/curse/Settings.vue'),
                 meta: {
                     title: '系统设置',
                     icon: 'setting',

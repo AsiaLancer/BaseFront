@@ -69,7 +69,7 @@ export function clear() {
  * @returns {boolean} - 是否存在数据
  */
 export function hasItem(key) {
-    return getItem(STORAGE_PREFIX + key) !== null
+    return getItem(key) !== null
 }
 
 /**

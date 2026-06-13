@@ -11,7 +11,7 @@ export const asyncRoutes = [
             {
                 path: 'dashboard',
                 name: 'Dashboard',
-                component: () => import('@/views/curse/Dashboard.vue'),
+                component: () => import('@/views/dashboard/Dashboard.vue'),
                 meta: {
                     title: '仪表盘',
                     icon: 'iconfont icon-icon-test4',
@@ -29,7 +29,7 @@ export const asyncRoutes = [
             {
                 path: 'list',
                 name: 'UserList',
-                component: () => import('@/views/curse/UserList.vue'),
+                component: () => import('@/views/user/UserList.vue'),
                 meta: {
                     title: '用户列表',
                     icon: 'user',
@@ -39,7 +39,7 @@ export const asyncRoutes = [
             {
                 path: ':id',
                 name: 'UserDetail',
-                component: () => import('@/views/curse/UserDetail.vue'),
+                component: () => import('@/views/user/UserDetail.vue'),
                 meta: {
                     title: '用户详情',
                     permission: 'user:view'
@@ -55,7 +55,7 @@ export const asyncRoutes = [
             {
                 path: '',
                 name: 'Settings',
-                component: () => import('@/views/curse/Settings.vue'),
+                component: () => import('@/views/setting/Settings.vue'),
                 meta: {
                     title: '系统设置',
                     icon: 'setting',

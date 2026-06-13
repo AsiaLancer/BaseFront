@@ -194,7 +194,7 @@
                 <div class="banner">
                     <ul class="banner-list">
                         <li>
-                            <img src="../assets/imgs/xiana1.jpg" alt="">
+                            <img src="@/assets/imgs/xiana1.jpg" alt="">
                         </li>
                     </ul>
                     <ul class="circle">
@@ -233,7 +233,7 @@
                     <ul>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn1.png" alt="">
+                                <img src="@/assets/imgs/xn1.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像秋天的风，吹得人心里清清凉凉的想要永远爱你。</h2>
                                 <p class="item-price">
                                     ￥199
@@ -242,7 +242,7 @@
                         </li>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn2.png" alt="">
+                                <img src="@/assets/imgs/xn2.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像晴天的太阳，暖得人心里暖暖的想要永远爱你。</h2>
                                 <p class="item-price">
                                     ￥299
@@ -251,7 +251,7 @@
                         </li>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn3.png" alt="">
+                                <img src="@/assets/imgs/xn3.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像春天的花，美得人心里开开心心的想要永远爱你。</h2>
                                 <p class="item-price">
                                     ￥399
@@ -260,7 +260,7 @@
                         </li>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn4.png" alt="">
+                                <img src="@/assets/imgs/xn4.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像冬天的雪，洁白得人心里干干净净的想要永远爱你。</h2>
                                 <p class="item-price">
                                     ￥499
@@ -288,7 +288,7 @@
                     <ul>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn5.png" alt="">
+                                <img src="@/assets/imgs/xn5.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像秋天的风，吹得人心里清清凉凉的想要永远爱你。</h2>
                                 <p class="item-price">
                                     ￥666
@@ -297,7 +297,7 @@
                         </li>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn6.png" alt="">
+                                <img src="@/assets/imgs/xn6.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像晴天的太阳，暖得人心里暖暖的想要永远爱你。</h2>
                                 <p class="item-price">
                                     ￥299
@@ -306,7 +306,7 @@
                         </li>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn7.png" alt="">
+                                <img src="@/assets/imgs/xn7.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像春天的花，美得人心里开开心心的想要永远爱你。</h2>
                                 <p class="item-price">
                                     ￥399
@@ -315,7 +315,7 @@
                         </li>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn8.png" alt="">
+                                <img src="@/assets/imgs/xn8.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像冬天的雪，洁白得人心里干干净净的想要永远爱你。</h2>
                                 <p class="item-price">
                                     ￥499
@@ -343,7 +343,7 @@
                     <ul>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn9.png" alt="">
+                                <img src="@/assets/imgs/xn9.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像秋天的风，吹得人心里清清凉凉的想要永远爱你。</h2>
                                 <p class="item-price">
                                     ￥666
@@ -352,7 +352,7 @@
                         </li>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn10.png" alt="">
+                                <img src="@/assets/imgs/xn10.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像晴天的太阳，暖得人心里暖暖的想要永远爱你。</h2>
                                 <p class="item-price">
                                     ￥299
@@ -361,7 +361,7 @@
                         </li>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn11.png" alt="">
+                                <img src="@/assets/imgs/xn11.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像春天的花，美得人心里开开心心的想要永远爱你。</h2>
                                 <p class="item-price">
                                     ￥399
@@ -370,7 +370,7 @@
                         </li>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn12.png" alt="">
+                                <img src="@/assets/imgs/xn12.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像冬天的雪，洁白得人心里干干净净的想要永远爱你。</h2>
                                 <p class="item-price">
                                     ￥499
@@ -379,7 +379,7 @@
                         </li>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn1.png" alt="">
+                                <img src="@/assets/imgs/xn1.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像四季的美，美得人心里干干净净的想要永远爱你。</h2>
                                 <p class="item-price">
                                     ￥599
@@ -411,13 +411,13 @@
                 </div>
                 <div class="shopTerritory-b">
                     <a class="left-img" href="">
-                        <img src="../assets/imgs/xn13.png" alt="">
+                        <img src="@/assets/imgs/xn13.png" alt="">
                     </a>
                     <div class="shopTerritory-b-item">
                         <ul>
                             <li>
                                 <a href="">
-                                    <img src="../assets/imgs/xn14.png" alt="">
+                                    <img src="@/assets/imgs/xn14.png" alt="">
                                     <h2 class="item-name">娜娜子爱你</h2>
                                     <p class="item-price">
                                         ￥666
@@ -429,7 +429,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <img src="../assets/imgs/xn15.png" alt="">
+                                    <img src="@/assets/imgs/xn15.png" alt="">
                                     <h2 class="item-name">娜娜子爱你</h2>
                                     <p class="item-price">
                                         ￥666
@@ -441,7 +441,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <img src="../assets/imgs/xn16.png" alt="">
+                                    <img src="@/assets/imgs/xn16.png" alt="">
                                     <h2 class="item-name">娜娜子爱你</h2>
                                     <p class="item-price">
                                         ￥666
@@ -453,7 +453,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <img src="../assets/imgs/xn17.png" alt="">
+                                    <img src="@/assets/imgs/xn17.png" alt="">
                                     <h2 class="item-name">娜娜子爱你</h2>
                                     <p class="item-price">
                                         ￥666
@@ -465,7 +465,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <img src="../assets/imgs/xn18.png" alt="">
+                                    <img src="@/assets/imgs/xn18.png" alt="">
                                     <h2 class="item-name">娜娜子爱你</h2>
                                     <p class="item-price">
                                         ￥666
@@ -477,7 +477,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <img src="../assets/imgs/xn19.png" alt="">
+                                    <img src="@/assets/imgs/xn19.png" alt="">
                                     <h2 class="item-name">娜娜子爱你</h2>
                                     <p class="item-price">
                                         ￥666
@@ -489,7 +489,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <img src="../assets/imgs/xn20.png" alt="">
+                                    <img src="@/assets/imgs/xn20.png" alt="">
                                     <h2 class="item-name">娜娜子爱你</h2>
                                     <p class="item-price">
                                         ￥666
@@ -501,7 +501,7 @@
                             </li>
                             <li>
                                 <a href="">
-                                    <img src="../assets/imgs/xn21.png" alt="">
+                                    <img src="@/assets/imgs/xn21.png" alt="">
                                     <h2 class="item-name">娜娜子爱你</h2>
                                     <p class="item-price">
                                         ￥666
@@ -533,7 +533,7 @@
                     <ul>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn22.png" alt="">
+                                <img src="@/assets/imgs/xn22.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像秋天的风，吹得人心里清清凉凉的想要永远爱你。</h2>
                             </a>
                             <div class="iconbox">
@@ -543,7 +543,7 @@
                         </li>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn23.png" alt="">
+                                <img src="@/assets/imgs/xn23.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像冬天的雪，洁白得人心里干干净净的想要永远爱你。</h2>
                             </a>
 
@@ -555,7 +555,7 @@
                         </li>
                         <li>
                             <a href="">
-                                <img src="../assets/imgs/xn7.png" alt="">
+                                <img src="@/assets/imgs/xn7.png" alt="">
                                 <h2 class="item-name">娜娜子爱你，你像春天的阳光，温暖得人心里干干净净的想要永远爱你。</h2>
                             </a>
                             <div class="iconbox">
@@ -689,13 +689,13 @@
                 <div class="service-right">
                     <ul>
                         <li>
-                            <img src="../assets/imgs/xn1.png" alt="">
+                            <img src="@/assets/imgs/xn1.png" alt="">
                             <p>
                                 鲁巴公众号
                             </p>
                         </li>
                         <li>
-                            <img src="../assets/imgs/xn1.png" alt="">
+                            <img src="@/assets/imgs/xn1.png" alt="">
                             <p>
                                 鲁巴克内码
                             </p>
@@ -750,7 +750,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('../assets/imgs/xiana1.jpg');
+    background-image: url('@/assets/imgs/xiana1.jpg');
     background-size: cover;
     /* 这里设置透明度，0-1之间的值，值越小越透明 */
     z-index: -1;
@@ -1320,7 +1320,7 @@
 .logo h1 {
     width: 100%;
     height: 100%;
-    background-image: url('../assets/imgs/xiana1.jpg');
+    background-image: url('@/assets/imgs/xiana1.jpg');
     background-size: cover;
 }
 

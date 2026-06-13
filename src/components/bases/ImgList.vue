@@ -4,19 +4,19 @@
 
 <template>
     <div class="img-list-container">
-        <img src="../assets/imgs/xn20.png" alt="">
-        <img src="../assets/imgs/xn21.png" alt="">
-        <img src="../assets/imgs/xn22.png" alt="">
-        <img src="../assets/imgs/xn23.png" alt="">
-        <img src="../assets/imgs/xn24.png" alt="">
-        <img src="../assets/imgs/xn25.png" alt="">
-        <img src="../assets/imgs/xn26.png" alt="">
-        <img src="../assets/imgs/xn27.png" alt="">
-        <img src="../assets/imgs/xn28.png" alt="">
-        <img src="../assets/imgs/xn29.png" alt="">
-        <img src="../assets/imgs/xn30.png" alt="">
-        <img src="../assets/imgs/xn31.png" alt="">
-        <img src="../assets/imgs/xn32.png" alt="">
+        <img src="@/assets/imgs/xn20.png" alt="">
+        <img src="@/assets/imgs/xn21.png" alt="">
+        <img src="@/assets/imgs/xn22.png" alt="">
+        <img src="@/assets/imgs/xn23.png" alt="">
+        <img src="@/assets/imgs/xn24.png" alt="">
+        <img src="@/assets/imgs/xn25.png" alt="">
+        <img src="@/assets/imgs/xn26.png" alt="">
+        <img src="@/assets/imgs/xn27.png" alt="">
+        <img src="@/assets/imgs/xn28.png" alt="">
+        <img src="@/assets/imgs/xn29.png" alt="">
+        <img src="@/assets/imgs/xn30.png" alt="">
+        <img src="@/assets/imgs/xn31.png" alt="">
+        <img src="@/assets/imgs/xn32.png" alt="">
     </div>
 </template>
 

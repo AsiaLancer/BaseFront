@@ -9,6 +9,8 @@ import 'element-plus/dist/index.css'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import './common.js'
 import '@/styles/global.css'
+import '@/styles/design-tokens.css'
+import '@/styles/retro-future.css'
 
 const app = createApp(App)
 app.config.errorHandler = (err, instance, info) => {
@@ -29,4 +31,4 @@ app.directive('highlight', {
 app.use(ElementPlus, {
     locale: zhCn,
 })
-app.use(pinia).use(router).use(ElementPlus).mount('#app')
+app.use(pinia).use(router).mount('#app')

@@ -443,7 +443,7 @@
             </div>
         </div>
         <div class="middle-img">
-            <img src="../assets/imgs/im_00002_.png" alt="">你好
+            <img src="@/assets/imgs/im_00002_.png" alt="">你好
         </div>
         <div class="position-r">
             <div class="position-r-content">
@@ -2087,7 +2087,7 @@ div[class^='roll-box'] {
 }
 
 .box4 {
-    background-image: url('../assets/imgs/im_00002_.png');
+    background-image: url('@/assets/imgs/im_00002_.png');
     background-size: cover;
     background-repeat: no-repeat;
 }

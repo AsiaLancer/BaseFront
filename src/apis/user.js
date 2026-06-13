@@ -63,8 +63,8 @@ const userList = [
     },
     {
         id: '4',
-        username: 'student',
-        email: 'student@moxue.com',
+        username: 'student2',
+        email: 'student2@moxue.com',
         password: '123456',
         nickname: '墨撒旦阿萨',
         avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=student',

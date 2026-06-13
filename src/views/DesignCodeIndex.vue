@@ -13,50 +13,50 @@ const handleSearch = () => {
 
         <div class="design-code-header design-code-wrapper">
             <a href="">
-                <img src="../assets/imgs/xn1.svg" alt="">
+                <img src="@/assets/imgs/xn1.svg" alt="">
             </a>
             <div class="design-code-nav">
                 <a href="">
                     <button>
-                        <img src="../assets/imgs/xn1.png" alt="">
+                        <img src="@/assets/imgs/xn1.png" alt="">
                         <p>Code</p>
                     </button>
                 </a>
                 <a href="">
                     <button>
-                        <img src="../assets/imgs/xn2.png" alt="">
+                        <img src="@/assets/imgs/xn2.png" alt="">
                         <p>Design</p>
                     </button>
                 </a>
                 <a href="">
                     <button>
-                        <img src="../assets/imgs/xn3.png" alt="">
+                        <img src="@/assets/imgs/xn3.png" alt="">
                         <p>Get</p>
                     </button>
                 </a>
                 <a href="">
                     <button>
-                        <img src="../assets/imgs/xn4.png" alt="">
+                        <img src="@/assets/imgs/xn4.png" alt="">
                         <p>Code</p>
                     </button>
                 </a>
                 <a href="">
                     <button>
-                        <img src="../assets/imgs/xn5.png" alt="">
+                        <img src="@/assets/imgs/xn5.png" alt="">
                     </button>
                 </a>
                 <a href="">
                     <button>
-                        <img src="../assets/imgs/xn6.png" alt="">
+                        <img src="@/assets/imgs/xn6.png" alt="">
                     </button>
                 </a>
                 <a href="">
                     <button>
-                        <img src="../assets/imgs/xn7.png" alt="">
+                        <img src="@/assets/imgs/xn7.png" alt="">
                     </button>
                 </a>
             </div>
-            <img id="bread" src="../assets/imgs/xn8.png" alt="">
+            <img id="bread" src="@/assets/imgs/xn8.png" alt="">
         </div>
         <div class="design-code-course design-code-wrapper">
             <div class="design-code-course-content">
@@ -67,25 +67,25 @@ const handleSearch = () => {
             <div class="design-code-course-search">
                 <ul>
                     <li>
-                        <img src="../assets/imgs/xn9.png" alt="">
+                        <img src="@/assets/imgs/xn9.png" alt="">
                     </li>
                     <li>
-                        <img src="../assets/imgs/xn10.png" alt="">
+                        <img src="@/assets/imgs/xn10.png" alt="">
                     </li>
                     <li>
-                        <img src="../assets/imgs/xn11.png" alt="">
+                        <img src="@/assets/imgs/xn11.png" alt="">
                     </li>
                     <li>
-                        <img src="../assets/imgs/xn12.png" alt="">
+                        <img src="@/assets/imgs/xn12.png" alt="">
                     </li>
                     <li>
-                        <img src="../assets/imgs/xn13.png" alt="">
+                        <img src="@/assets/imgs/xn13.png" alt="">
                     </li>
                     <li>
-                        <img src="../assets/imgs/xn14.png" alt="">
+                        <img src="@/assets/imgs/xn14.png" alt="">
                     </li>
                     <li>
-                        <img src="../assets/imgs/xn15.png" alt="">
+                        <img src="@/assets/imgs/xn15.png" alt="">
                     </li>
                 </ul>
                 <div class="design-code-search-input">
@@ -181,17 +181,17 @@ const handleSearch = () => {
                 <div class="design-code-card-item">
                     <div class="design-code-card-item-title">
                         <div class="design-code-card-item-img-left">
-                            <img src="../assets/imgs/xn27.png" alt="">
+                            <img src="@/assets/imgs/xn27.png" alt="">
                         </div>
                         <div class="design-code-card-item-img-right">
-                            <img src="../assets/imgs/xiana9.png" alt="">
-                            <img src="../assets/imgs/xiana10.png" alt="">
+                            <img src="@/assets/imgs/xiana9.png" alt="">
+                            <img src="@/assets/imgs/xiana10.png" alt="">
                         </div>
                     </div>
                     <div class="design-code-card-item-content">
                         <h2>UI Design for Web and Desktop</h2>
                         <p>15 videos - 2 hours</p>
-                        <img src="../assets/imgs/xn19.png" alt="">
+                        <img src="@/assets/imgs/xn19.png" alt="">
                     </div>
                 </div>
             </div>
@@ -199,17 +199,17 @@ const handleSearch = () => {
                 <div class="design-code-card-item">
                     <div class="design-code-card-item-title">
                         <div class="design-code-card-item-img-left">
-                            <img src="../assets/imgs/xn25.png" alt="">
+                            <img src="@/assets/imgs/xn25.png" alt="">
                         </div>
                         <div class="design-code-card-item-img-right">
-                            <img src="../assets/imgs/xiana9.png" alt="">
-                            <img src="../assets/imgs/xiana10.png" alt="">
+                            <img src="@/assets/imgs/xiana9.png" alt="">
+                            <img src="@/assets/imgs/xiana10.png" alt="">
                         </div>
                     </div>
                     <div class="design-code-card-item-content">
                         <h2>UI Design for Web and Desktop</h2>
                         <p>15 videos - 2 hours</p>
-                        <img src="../assets/imgs/xn19.png" alt="">
+                        <img src="@/assets/imgs/xn19.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-course-item-content">
@@ -300,225 +300,225 @@ const handleSearch = () => {
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn9.png" alt="">
+                        <img src="@/assets/imgs/xn9.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn21.png" alt="">
+                        <img src="@/assets/imgs/xn21.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn17.png" alt="">
+                        <img src="@/assets/imgs/xn17.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn18.png" alt="">
+                        <img src="@/assets/imgs/xn18.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn19.png" alt="">
+                        <img src="@/assets/imgs/xn19.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn16.png" alt="">
+                        <img src="@/assets/imgs/xn16.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn15.png" alt="">
+                        <img src="@/assets/imgs/xn15.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn14.png" alt="">
+                        <img src="@/assets/imgs/xn14.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn5.png" alt="">
+                        <img src="@/assets/imgs/xn5.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn7.png" alt="">
+                        <img src="@/assets/imgs/xn7.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn14.png" alt="">
+                        <img src="@/assets/imgs/xn14.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn25.png" alt="">
+                        <img src="@/assets/imgs/xn25.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn27.png" alt="">
+                        <img src="@/assets/imgs/xn27.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
             <div class="design-code-card-item">
                 <div class="design-code-card-item-title">
                     <div class="design-code-card-item-img-left">
-                        <img src="../assets/imgs/xn26.png" alt="">
+                        <img src="@/assets/imgs/xn26.png" alt="">
                     </div>
                     <div class="design-code-card-item-img-right">
-                        <img src="../assets/imgs/xiana9.png" alt="">
-                        <img src="../assets/imgs/xiana10.png" alt="">
+                        <img src="@/assets/imgs/xiana9.png" alt="">
+                        <img src="@/assets/imgs/xiana10.png" alt="">
                     </div>
                 </div>
                 <div class="design-code-card-item-content">
                     <h2>UI Design for Web and Desktop</h2>
                     <p>15 videos - 2 hours</p>
-                    <img src="../assets/imgs/xn19.png" alt="">
+                    <img src="@/assets/imgs/xn19.png" alt="">
                 </div>
             </div>
         </div>

@@ -3,77 +3,77 @@
         <ul class="cat-box-list">
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn1.png" alt="">
+                    <img src="@/assets/imgs/xn1.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn2.png" alt="">
+                    <img src="@/assets/imgs/xn2.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn3.png" alt="">
+                    <img src="@/assets/imgs/xn3.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn4.png" alt="">
+                    <img src="@/assets/imgs/xn4.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn5.png" alt="">
+                    <img src="@/assets/imgs/xn5.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn6.png" alt="">
+                    <img src="@/assets/imgs/xn6.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn7.png" alt="">
+                    <img src="@/assets/imgs/xn7.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn8.png" alt="">
+                    <img src="@/assets/imgs/xn8.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn9.png" alt="">
+                    <img src="@/assets/imgs/xn9.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn10.png" alt="">
+                    <img src="@/assets/imgs/xn10.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn11.png" alt="">
+                    <img src="@/assets/imgs/xn11.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn12.png" alt="">
+                    <img src="@/assets/imgs/xn12.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn13.png" alt="">
+                    <img src="@/assets/imgs/xn13.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn14.png" alt="">
+                    <img src="@/assets/imgs/xn14.png" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="../assets/imgs/xn15.png" alt="">
+                    <img src="@/assets/imgs/xn15.png" alt="">
                 </a>
             </li>
         </ul>

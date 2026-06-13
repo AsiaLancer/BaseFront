@@ -5,7 +5,7 @@ import { usePermissionStore } from '@/stores/permission'
 import { ElMessage } from 'element-plus'
 
 // 白名单
-const whiteList = ['/login', '/404', '/403', '/register']
+const whiteList = ['/login', '/404', '/403', '/register', '/course', '/course/home']
 
 // 递归过滤路由
 function filterRoutes(routes, roles) {
@@ -48,7 +48,6 @@ router.beforeEach(async (to, from, next) => {
 
     const userStore = useUserStore()
     const permissionStore = usePermissionStore()
-
     // 2. 白名单路由直接通过
     if (whiteList.includes(to.path)) {
         next()

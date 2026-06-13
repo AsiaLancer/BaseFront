@@ -1,0 +1,273 @@
+/* ═══════════════════════════════════════════════════════════════
+   MOXUE DESIGN SYSTEM v2.0
+   Centralized tokens — single source of truth for all visual decisions
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+    /* ══════════ COLOR PALETTE ══════════ */
+
+    /* ─── Brand Core ─── */
+    --brand-primary:       #00e5ff;
+    --brand-primary-hover: #33eaff;
+    --brand-secondary:     #ff2d95;
+    --brand-accent:        #ffb800;
+    --brand-purple:        #a855f7;
+    --brand-lime:          #39ff14;
+
+    /* ─── Surfaces (Dark — default) ─── */
+    --surface-root:        #060918;
+    --surface-raised:      #0d1130;
+    --surface-overlay:     #111640;
+    --surface-glass:       rgba(255, 255, 255, 0.03);
+    --surface-glass-hover: rgba(255, 255, 255, 0.06);
+    --surface-glass-active:rgba(0, 229, 255, 0.06);
+
+    /* ─── Borders ─── */
+    --border-subtle:       rgba(255, 255, 255, 0.05);
+    --border-default:      rgba(255, 255, 255, 0.08);
+    --border-emphasis:     rgba(0, 229, 255, 0.2);
+    --border-glow:         rgba(0, 229, 255, 0.4);
+
+    /* ─── Text ─── */
+    --text-primary:        #e8e4f0;
+    --text-secondary:      #94a3b8;
+    --text-muted:          #64748b;
+    --text-inverse:        #060918;
+
+    /* ─── Semantic ─── */
+    --color-success:       #39ff14;
+    --color-warning:       #ffb800;
+    --color-error:         #ff2d95;
+    --color-info:          #00e5ff;
+
+    /* ══════════ TYPOGRAPHY SCALE ══════════ */
+    --font-display:  'Orbitron', 'Space Grotesk', system-ui, sans-serif;
+    --font-heading:  'Space Grotesk', 'Noto Sans SC', system-ui, sans-serif;
+    --font-body:     'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+    --font-mono:     'JetBrains Mono', 'Fira Code', monospace;
+
+    --text-xs:   0.6875rem;   /* 11px */
+    --text-sm:   0.8125rem;   /* 13px */
+    --text-base: 0.9375rem;   /* 15px */
+    --text-md:   1.0625rem;   /* 17px */
+    --text-lg:   1.25rem;     /* 20px */
+    --text-xl:   1.5rem;      /* 24px */
+    --text-2xl:  1.875rem;    /* 30px */
+    --text-3xl:  2.5rem;      /* 40px */
+    --text-4xl:  3.25rem;     /* 52px */
+
+    --leading-tight:  1.15;
+    --leading-snug:   1.35;
+    --leading-normal: 1.6;
+    --leading-relaxed:1.75;
+
+    --tracking-tight:  -0.02em;
+    --tracking-normal:  0;
+    --tracking-wide:    0.02em;
+    --tracking-ultra:   0.08em;
+
+    /* ══════════ SPACING SCALE (4px base) ══════════ */
+    --space-0:  0;
+    --space-1:  0.25rem;  /* 4px  */
+    --space-2:  0.5rem;   /* 8px  */
+    --space-3:  0.75rem;  /* 12px */
+    --space-4:  1rem;     /* 16px */
+    --space-5:  1.25rem;  /* 20px */
+    --space-6:  1.5rem;   /* 24px */
+    --space-8:  2rem;     /* 32px */
+    --space-10: 2.5rem;   /* 40px */
+    --space-12: 3rem;     /* 48px */
+    --space-16: 4rem;     /* 64px */
+    --space-20: 5rem;     /* 80px */
+
+    /* Section */
+    --section-y: var(--space-20);
+    --section-gap: var(--space-6);
+    --container-max: 75rem;  /* 1200px */
+    --container-px: var(--space-6);
+
+    /* ══════════ SHADOWS ══════════ */
+    --shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md:   0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg:   0 12px 40px rgba(0, 0, 0, 0.5);
+    --shadow-xl:   0 20px 64px rgba(0, 0, 0, 0.6);
+    --shadow-glow-sm: 0 0 16px rgba(0, 229, 255, 0.08);
+    --shadow-glow-md: 0 0 32px rgba(0, 229, 255, 0.12);
+    --shadow-glow-lg: 0 0 64px rgba(0, 229, 255, 0.15);
+    --shadow-glow-magenta: 0 0 32px rgba(255, 45, 149, 0.1);
+
+    /* ══════════ BORDER RADIUS ══════════ */
+    --radius-xs:   0.25rem;  /* 4px  */
+    --radius-sm:   0.375rem; /* 6px  */
+    --radius-md:   0.5rem;   /* 8px  */
+    --radius-lg:   0.75rem;  /* 12px */
+    --radius-xl:   1rem;     /* 16px */
+    --radius-2xl:  1.25rem;  /* 20px */
+    --radius-full: 9999px;
+
+    /* ══════════ TRANSITIONS ══════════ */
+    --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in:      cubic-bezier(0.4, 0, 1, 1);
+    --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --duration-75:  75ms;
+    --duration-100: 100ms;
+    --duration-150: 150ms;
+    --duration-200: 200ms;
+    --duration-300: 300ms;
+    --duration-500: 500ms;
+    --duration-700: 700ms;
+    --duration-1000:1000ms;
+
+    /* ══════════ Z-INDEX ══════════ */
+    --z-base:     0;
+    --z-raised:   10;
+    --z-sticky:   100;
+    --z-overlay:  200;
+    --z-modal:    300;
+    --z-toast:    400;
+    --z-tooltip:  500;
+
+    /* ══════════ GLASSMORPHISM TOKENS ══════════ */
+    --glass-bg:           rgba(255, 255, 255, 0.03);
+    --glass-border:       rgba(255, 255, 255, 0.06);
+    --glass-blur:         12px;
+    --glass-saturate:     120%;
+    --glass-shadow:       0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DARK MODE (explicit class — overrides when not system-preferred)
+   ═══════════════════════════════════════════════════════════════ */
+:root.theme-dark {
+    --surface-root:       #060918;
+    --surface-raised:     #0d1130;
+    --surface-overlay:    #111640;
+    --text-primary:       #e8e4f0;
+    --text-secondary:     #94a3b8;
+    --text-muted:         #64748b;
+    --border-subtle:      rgba(255, 255, 255, 0.05);
+    --border-default:     rgba(255, 255, 255, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --surface-root:       #060918;
+        --surface-raised:     #0d1130;
+        --surface-overlay:    #111640;
+        --text-primary:       #e8e4f0;
+        --text-secondary:     #94a3b8;
+        --text-muted:         #64748b;
+        --border-subtle:      rgba(255, 255, 255, 0.05);
+        --border-default:     rgba(255, 255, 255, 0.08);
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIGHT MODE
+   ═══════════════════════════════════════════════════════════════ */
+:root.theme-light {
+    --surface-root:       #f8f9fc;
+    --surface-raised:     #ffffff;
+    --surface-overlay:    #f1f3f8;
+    --surface-glass:      rgba(255, 255, 255, 0.7);
+    --surface-glass-hover:rgba(255, 255, 255, 0.85);
+    --surface-glass-active:rgba(0, 180, 220, 0.08);
+    --text-primary:       #1a1d2e;
+    --text-secondary:     #4a5568;
+    --text-muted:         #8899aa;
+    --text-inverse:       #f8f9fc;
+    --border-subtle:      rgba(0, 0, 0, 0.06);
+    --border-default:     rgba(0, 0, 0, 0.1);
+    --border-emphasis:    rgba(0, 180, 220, 0.3);
+    --border-glow:        rgba(0, 200, 240, 0.5);
+    --glass-bg:           rgba(255, 255, 255, 0.6);
+    --glass-border:       rgba(0, 0, 0, 0.08);
+    --shadow-sm:          0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-md:          0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg:          0 12px 40px rgba(0, 0, 0, 0.1);
+    --shadow-xl:          0 20px 64px rgba(0, 0, 0, 0.12);
+    --shadow-glow-sm:     0 0 16px rgba(0, 180, 220, 0.12);
+    --shadow-glow-md:     0 0 32px rgba(0, 180, 220, 0.16);
+    --shadow-glow-lg:     0 0 64px rgba(0, 180, 220, 0.2);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME TRANSITION
+   ═══════════════════════════════════════════════════════════════ */
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+    transition: background-color 0.4s var(--ease-out),
+                border-color 0.4s var(--ease-out),
+                color 0.3s var(--ease-out),
+                box-shadow 0.4s var(--ease-out) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GLASSMORPHISM UTILITIES
+   ═══════════════════════════════════════════════════════════════ */
+.glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    box-shadow: var(--glass-shadow);
+}
+
+.glass-interactive {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    transition: border-color var(--duration-200) var(--ease-out),
+                background var(--duration-200) var(--ease-out),
+                box-shadow var(--duration-200) var(--ease-out),
+                transform var(--duration-200) var(--ease-out);
+    cursor: pointer;
+}
+.glass-interactive:hover {
+    border-color: var(--border-emphasis);
+    background: var(--surface-glass-hover);
+    box-shadow: var(--shadow-glow-sm), var(--shadow-md);
+    transform: translateY(-2px);
+}
+.glass-interactive:focus-visible {
+    outline: 2px solid var(--brand-primary);
+    outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BRAND ZONE
+   ═══════════════════════════════════════════════════════════════ */
+.brand-zone {
+    display: flex; align-items: baseline; gap: var(--space-3);
+    user-select: none; cursor: pointer;
+}
+.brand-logo {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    letter-spacing: var(--tracking-ultra);
+    color: var(--brand-primary);
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+}
+.brand-tagline {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE OVERRIDES
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    :root {
+        --section-y: var(--space-12);
+        --container-px: var(--space-4);
+    }
+}

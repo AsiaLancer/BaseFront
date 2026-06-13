@@ -13,21 +13,21 @@
         <div class="nav">
             <div class="nav-item">
                 <a href="#">
-                    <img src="../../assets/imgs/xn1.png" alt="">
+                    <img src="@/assets/imgs/xn1.png" alt="">
                     <h4>冰火</h4>
                     <p>问专家</p>
                 </a>
             </div>
             <div class="nav-item">
                 <a href="#">
-                    <img src="../../assets/imgs/xn6.png" alt="">
+                    <img src="@/assets/imgs/xn6.png" alt="">
                     <h4>龙炎</h4>
                     <p>问程序</p>
                 </a>
             </div>
             <div class="nav-item">
                 <a href="#">
-                    <img src="../../assets/imgs/xn5.png" alt="">
+                    <img src="@/assets/imgs/xn5.png" alt="">
                     <h4>海礁</h4>
                     <p>问专家</p>
                 </a>
@@ -36,31 +36,31 @@
         <div class="nav nav-bottom">
             <div class="nav-item">
                 <a href="#">
-                    <img src="../../assets/imgs/xn1.png" alt="">
+                    <img src="@/assets/imgs/xn1.png" alt="">
                     <p>问医生</p>
                 </a>
             </div>
             <div class="nav-item">
                 <a href="#">
-                    <img src="../../assets/imgs/xn6.png" alt="">
+                    <img src="@/assets/imgs/xn6.png" alt="">
                     <p>问程序</p>
                 </a>
             </div>
             <div class="nav-item">
                 <a href="#">
-                    <img src="../../assets/imgs/xn5.png" alt="">
+                    <img src="@/assets/imgs/xn5.png" alt="">
                     <p>问专家</p>
                 </a>
             </div>
             <div class="nav-item">
                 <a href="#">
-                    <img src="../../assets/imgs/xn5.png" alt="">
+                    <img src="@/assets/imgs/xn5.png" alt="">
                     <p>问兴趣</p>
                 </a>
             </div>
         </div>
         <div class="banner">
-            <img src="../../assets/imgs/xiana2.png" alt="">
+            <img src="@/assets/imgs/xiana2.png" alt="">
         </div>
         <div class="content">
             <div class="tabs">
@@ -86,7 +86,7 @@
             <div class="content-items">
                 <div class="content-item">
                     <div class="content-item-title">
-                        <img src="../../assets/imgs/xn1.png" alt="">
+                        <img src="@/assets/imgs/xn1.png" alt="">
                         <div class="content-item-title-text">
                             <h3>王医生</h3>
                             <ul>
@@ -116,25 +116,25 @@
                         </p>
                         <ul class="content-item-content-imglist">
                             <li>
-                                <img src="../../assets/imgs/xn20.png" alt="">
+                                <img src="@/assets/imgs/xn20.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn21.png" alt="">
+                                <img src="@/assets/imgs/xn21.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn22.png" alt="">
+                                <img src="@/assets/imgs/xn22.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn23.png" alt="">
+                                <img src="@/assets/imgs/xn23.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn24.png" alt="">
+                                <img src="@/assets/imgs/xn24.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn25.png" alt="">
+                                <img src="@/assets/imgs/xn25.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn26.png" alt="">
+                                <img src="@/assets/imgs/xn26.png" alt="">
                             </li>
                         </ul>
                         <ul class="content-item-content-footer">
@@ -151,7 +151,7 @@
                 </div>
                 <div class="content-item">
                     <div class="content-item-title">
-                        <img src="../../assets/imgs/xn1.png" alt="">
+                        <img src="@/assets/imgs/xn1.png" alt="">
                         <div class="content-item-title-text">
                             <h3>王医生</h3>
                             <ul>
@@ -181,16 +181,16 @@
                         </p>
                         <ul class="content-item-content-imglist">
                             <li>
-                                <img src="../../assets/imgs/xn14.png" alt="">
+                                <img src="@/assets/imgs/xn14.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn15.png" alt="">
+                                <img src="@/assets/imgs/xn15.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn16.png" alt="">
+                                <img src="@/assets/imgs/xn16.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn17.png" alt="">
+                                <img src="@/assets/imgs/xn17.png" alt="">
                             </li>
                         </ul>
                         <ul class="content-item-content-footer">
@@ -207,7 +207,7 @@
                 </div>
                 <div class="content-item">
                     <div class="content-item-title">
-                        <img src="../../assets/imgs/xn1.png" alt="">
+                        <img src="@/assets/imgs/xn1.png" alt="">
                         <div class="content-item-title-text">
                             <h3>王医生</h3>
                             <ul>
@@ -237,16 +237,16 @@
                         </p>
                         <ul class="content-item-content-imglist">
                             <li>
-                                <img src="../../assets/imgs/xn7.png" alt="">
+                                <img src="@/assets/imgs/xn7.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn8.png" alt="">
+                                <img src="@/assets/imgs/xn8.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn9.png" alt="">
+                                <img src="@/assets/imgs/xn9.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn10.png" alt="">
+                                <img src="@/assets/imgs/xn10.png" alt="">
                             </li>
                         </ul>
                         <ul class="content-item-content-footer">
@@ -263,7 +263,7 @@
                 </div>
                 <div class="content-item">
                     <div class="content-item-title">
-                        <img src="../../assets/imgs/xn1.png" alt="">
+                        <img src="@/assets/imgs/xn1.png" alt="">
                         <div class="content-item-title-text">
                             <h3>王医生</h3>
                             <ul>
@@ -293,16 +293,16 @@
                         </p>
                         <ul class="content-item-content-imglist">
                             <li>
-                                <img src="../../assets/imgs/xn24.png" alt="">
+                                <img src="@/assets/imgs/xn24.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn25.png" alt="">
+                                <img src="@/assets/imgs/xn25.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn26.png" alt="">
+                                <img src="@/assets/imgs/xn26.png" alt="">
                             </li>
                             <li>
-                                <img src="../../assets/imgs/xn27.png" alt="">
+                                <img src="@/assets/imgs/xn27.png" alt="">
                             </li>
                         </ul>
                         <ul class="content-item-content-footer">
@@ -322,22 +322,22 @@
         <div class="footer">
             <ul>
                 <li class="active">
-                    <img src="../../assets/imgs/xn11.png" alt="">
+                    <img src="@/assets/imgs/xn11.png" alt="">
                     <p>首页</p>
                 </li>
                 <li>
-                    <img src="../../assets/imgs/xn12.png" alt="">
+                    <img src="@/assets/imgs/xn12.png" alt="">
                     <p>关注</p>
                 </li>
                 <li class="footer-plus">
                     <p>+</p>
                 </li>
                 <li>
-                    <img src="../../assets/imgs/xn13.png" alt="">
+                    <img src="@/assets/imgs/xn13.png" alt="">
                     <p>分类</p>
                 </li>
                 <li>
-                    <img src="../../assets/imgs/xn14.png" alt="">
+                    <img src="@/assets/imgs/xn14.png" alt="">
                     <p>我的</p>
                 </li>
             </ul>

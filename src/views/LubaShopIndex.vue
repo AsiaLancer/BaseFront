@@ -85,7 +85,7 @@
 .logo h1 {
     width: 100%;
     height: 100%;
-    background-image: url('../assets/imgs/im_00005_.png');
+    background-image: url('@/assets/imgs/im_00005_.png');
 }
 
 .logo h1 a {

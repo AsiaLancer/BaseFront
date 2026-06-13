@@ -21,7 +21,10 @@ body {
     font-size: var(--font-size-base);
     line-height: 1.6;
     color: var(--text-primary);
-    background: var(--gradient-bg);
+    background:
+        /* url('../assets/imgs/bg.png'); */
+        var(--gradient-bg);
+    background-size: cover;
     background-attachment: fixed;
     min-height: 100vh;
 }
@@ -138,6 +141,20 @@ input:-webkit-autofill:active {
     color: var(--text-secondary);
     line-height: 1.6;
 }
+
+.layout-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    min-height: var(--header-height);
+}
+
+.layout-body {
+    min-height: calc(100vh - var(--header-height));
+}
+
 
 @media (max-width: 1024px) {
 

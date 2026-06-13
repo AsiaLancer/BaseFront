@@ -141,32 +141,55 @@ const viewRoutes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/curse/Login.vue'), // 使用相对路径
+    component: () => import('@/views/login/Login.vue'), // 使用相对路径
     meta: { title: '登录', hidden: true }
   },
   {
     path: '/register',
     name: 'Register',
-    component: () => import('@/views/curse/Register.vue'), // 使用相对路径
+    component: () => import('@/views/register/Register.vue'), // 使用相对路径
     meta: { title: '注册', hidden: true }
   },
   {
-    path: '/curse',
-    component: () => import('@/components/layout/curselayout/CurseLayou.vue'), // 使用相对路径
-    redirect: '/curse/home',
+    path: '/course',
+    component: () => import('@/components/layout/courselayout/CourseLayout.vue'), // 使用相对路径
+    redirect: '/course/home',
     children: [
       {
         path: 'home',
-        name: 'CurseHome',
-        component: () => import('@/views/curse/CurseHome.vue'), // 使用相对路径
+        name: 'CourseHome',
+        component: () => import('@/views/course/CourseHome.vue'), // 使用相对路径
         meta: { title: '课程首页' }
+      },
+      {
+        path: 'profile',
+        name: 'UserProfile',
+        component: () => import('@/views/user/UserProfile.vue'), // 使用相对路径
+        meta: { title: '个人主页' }
+      },
+      {
+        path: 'aichat',
+        name: 'Aichat',
+        component: () => import('@/views/ai/Aichat.vue'), // 使用相对路径
+        meta: { title: '智能助手聊天' }
+      },
+      {
+        path: 'settings',
+        name: 'CourseSetting',
+        component: () => import('@/views/course/CourseSetting.vue'), // 使用相对路径
+        meta: { title: '课程设置' }
       }
     ]
   },
   {
+    path: '/',
+    redirect: '/course'
+  }
+  ,
+  {
     path: '/:pathMatch(.*)*',
-    component: () => import('@/views/curse/errors/NotFound.vue'), // 使用相对路径
-    meta: { hidden: true }
+    component: () => import('@/views/course/errors/NotFound.vue'), // 使用相对路径
+    meta: { hidden: true, title: '页面不存在' }
   }
 ]
 

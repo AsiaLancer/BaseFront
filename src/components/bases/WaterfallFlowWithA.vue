@@ -6,58 +6,58 @@
     <div class="waterfall-flow">
         <div class="waterfall-flow-item">
             <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00002_.png" alt="">
+                <img src="@/assets/imgs/im_00002_.png" alt="">
             </a>
             <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00003_.png" alt="">
+                <img src="@/assets/imgs/im_00003_.png" alt="">
             </a>
             <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00004_.png" alt="">
+                <img src="@/assets/imgs/im_00004_.png" alt="">
             </a>
             <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00005_.png" alt="">
-            </a>
-        </div>
-        <div class="waterfall-flow-item">
-            <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00002_.png" alt="">
-            </a>
-            <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00001_.png" alt="">
-            </a>
-            <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00004_.png" alt="">
-            </a>
-            <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00003_.png" alt="">
+                <img src="@/assets/imgs/im_00005_.png" alt="">
             </a>
         </div>
         <div class="waterfall-flow-item">
             <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00001_.png" alt="">
+                <img src="@/assets/imgs/im_00002_.png" alt="">
             </a>
             <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00002_.png" alt="">
+                <img src="@/assets/imgs/im_00001_.png" alt="">
             </a>
             <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00003_.png" alt="">
+                <img src="@/assets/imgs/im_00004_.png" alt="">
             </a>
             <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00004_.png" alt="">
+                <img src="@/assets/imgs/im_00003_.png" alt="">
             </a>
         </div>
         <div class="waterfall-flow-item">
             <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00002_.png" alt="">
+                <img src="@/assets/imgs/im_00001_.png" alt="">
             </a>
             <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00004_.png" alt="">
+                <img src="@/assets/imgs/im_00002_.png" alt="">
             </a>
             <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00001_.png" alt="">
+                <img src="@/assets/imgs/im_00003_.png" alt="">
             </a>
             <a href="https://www.baidu.com">
-                <img src="../assets/imgs/im_00005_.png" alt="">
+                <img src="@/assets/imgs/im_00004_.png" alt="">
+            </a>
+        </div>
+        <div class="waterfall-flow-item">
+            <a href="https://www.baidu.com">
+                <img src="@/assets/imgs/im_00002_.png" alt="">
+            </a>
+            <a href="https://www.baidu.com">
+                <img src="@/assets/imgs/im_00004_.png" alt="">
+            </a>
+            <a href="https://www.baidu.com">
+                <img src="@/assets/imgs/im_00001_.png" alt="">
+            </a>
+            <a href="https://www.baidu.com">
+                <img src="@/assets/imgs/im_00005_.png" alt="">
             </a>
         </div>
     </div>

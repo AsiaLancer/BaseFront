@@ -106,7 +106,7 @@
 </template>
 <script setup>
 import { ref, reactive, computed, onMounted, toRefs, useTemplateRef, onUnmounted } from 'vue'
-import NewNeedLearn from '../components/NewNeedLearn.vue'
+import NewNeedLearn from '@/components/bases/NewNeedLearn.vue'
 import { useCounterStore } from '../../stores/counter.js'
 const titleTag = ref('titletag')
 const isHover = ref(false)

@@ -3,7 +3,7 @@
         <div class="shell">
             <div class="box">
                 <h2 class="title">NO1</h2>
-                <img src="../assets/imgs/im_00002_.png" alt="">
+                <img src="@/assets/imgs/im_00002_.png" alt="">
                 <p class="text">
                     劝君莫惜金缕衣，劝君惜取少年时。
                 </p>
@@ -11,7 +11,7 @@
 
             <div class="box">
                 <h2 class="title">NO2</h2>
-                <img src="../assets/imgs/im_00003_.png" alt="">
+                <img src="@/assets/imgs/im_00003_.png" alt="">
                 <p class="text">
                     劝君莫惜金缕衣，劝君惜取少年时。
                 </p>
@@ -19,7 +19,7 @@
 
             <div class="box">
                 <h2 class="title">NO3</h2>
-                <img src="../assets/imgs/im_00004_.png" alt="">
+                <img src="@/assets/imgs/im_00004_.png" alt="">
                 <p class="text">
                     劝君莫惜金缕衣，劝君惜取少年时。
                 </p>
@@ -27,7 +27,7 @@
 
             <div class="box">
                 <h2 class="title">NO4</h2>
-                <img src="../assets/imgs/im_00005_.png" alt="">
+                <img src="@/assets/imgs/im_00005_.png" alt="">
                 <p class="text">
                     劝君莫惜金缕衣，劝君惜取少年时。
                 </p>
@@ -35,7 +35,7 @@
 
             <div class="box">
                 <h2 class="title">NO5</h2>
-                <img src="../assets/imgs/im_00001_.png" alt="">
+                <img src="@/assets/imgs/im_00001_.png" alt="">
                 <p class="text">
                     闵子然
                 </p>
@@ -44,7 +44,7 @@
 
             <div class="box">
                 <h2 class="title">NO6</h2>
-                <img src="../assets/imgs/im_00006_.png" alt="">
+                <img src="@/assets/imgs/im_00006_.png" alt="">
                 <p class="text">
                     李泰然
                 </p>

@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import { computed, ref } from 'vue'
-import { Search, Sunny, Moon, Bell, User, CaretBottom, ChatDotRound, Setting, SwitchButton } from '@element-plus/icons-vue'
+import { Search, Sunny, Moon, Bell, User, CaretBottom, ArrowRight, Setting, SwitchButton } from '@element-plus/icons-vue'
 import { useTheme } from '@/utils/useTheme'
 import SettingsDrawer from '@/components/common/SettingsDrawer.vue'
 
@@ -45,6 +45,9 @@ function onCmd(cmd) {
                 <span class="aw-logo">MOXUE</span>
                 <span class="aw-tag">AI WORLD</span>
             </button>
+            <router-link to="/course" class="aw-back-link">
+                <el-icon><ArrowRight/></el-icon> 返回墨学
+            </router-link>
             <nav class="aw-nav">
                 <router-link v-for="item in navItems" :key="item.l" :to="item.to"
                     class="aw-nav-link" active-class="aw-nav-active">{{item.l}}</router-link>
@@ -94,6 +97,8 @@ function onCmd(cmd) {
 .aw-brand { display:flex;align-items:baseline;gap:8px;background:none;border:none;cursor:pointer;flex-shrink:0;padding:0; }
 .aw-logo { font-family:var(--font-display);font-size:18px;font-weight:700;color:#00d4ff;letter-spacing:2px; }
 .aw-tag { font-size:10px;color:#8b5cf6;letter-spacing:3px;text-transform:uppercase;border:1px solid rgba(139,92,246,.2);padding:1px 6px;border-radius:4px; }
+.aw-back-link { display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--text-muted);text-decoration:none;padding:6px 12px;border-radius:8px;border:1px solid var(--border-subtle);transition:all .2s;flex-shrink:0; }
+.aw-back-link:hover { color:#00d4ff;border-color:rgba(0,212,255,.2); }
 .aw-nav { display:flex;gap:0; }
 .aw-nav-link { padding:8px 16px;font-size:14px;color:var(--text-secondary);text-decoration:none;border-radius:8px;transition:all .2s; }
 .aw-nav-link:hover { color:var(--text-primary); }

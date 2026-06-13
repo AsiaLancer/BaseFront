@@ -10,6 +10,16 @@ const router = useRouter()
 const cats = ['全部分区','AI技术','编程开发','数学物理','人文历史','艺术设计','音乐舞蹈','游戏电竞','生活日常','知识科普']
 const activeCat = ref('全部分区')
 
+const filteredVideos = computed(() => {
+    if (activeCat.value === '全部分区') return videos
+    return videos.filter(v => v.cat === activeCat.value || activeCat.value === '全部分区')
+})
+
+const filteredLive = computed(() => {
+    if (activeCat.value === '全部分区') return liveStreams
+    return [] // live filtering can be added later
+})
+
 // Hero carousel
 const banners = [
     { t:'探索AI的无限可能',sub:'加入墨学AI世界 · 发现精彩内容',color:'#00d4ff',img:'xn1.png' },
@@ -20,14 +30,14 @@ const bannerIdx = ref(0)
 
 // Videos
 const videos = [
-    { id:1,t:'深度学习入门：从感知机到Transformer',a:'凌风',v:128000,d:'32:15',img:'xn4.png',live:false },
-    { id:2,t:'《道德经》与现代生活哲学',a:'清虚先生',v:89000,d:'24:08',img:'xn5.png',live:false },
-    { id:3,t:'Rust异步编程实战指南',a:'无极',v:67000,d:'45:30',img:'xn6.png',live:false },
-    { id:4,t:'颜体楷书基本笔画精讲',a:'砚田墨香',v:45000,d:'18:22',img:'xn7.png',live:false },
-    { id:5,t:'Kubernetes集群运维实战',a:'程远',v:92000,d:'56:40',img:'xn8.png',live:false },
-    { id:6,t:'Python数据可视化进阶',a:'程远',v:78000,d:'28:15',img:'xn9.png',live:false },
-    { id:7,t:'中国山水画技法入门',a:'丹青妙手',v:34000,d:'22:10',img:'xn10.png',live:false },
-    { id:8,t:'大模型Prompt工程完全指南',a:'凌风',v:156000,d:'38:45',img:'xn11.png',live:false },
+    { id:1,t:'深度学习入门：从感知机到Transformer',a:'凌风',v:128000,d:'32:15',img:'xn4.png',cat:'AI技术' },
+    { id:2,t:'《道德经》与现代生活哲学',a:'清虚先生',v:89000,d:'24:08',img:'xn5.png',cat:'人文历史' },
+    { id:3,t:'Rust异步编程实战指南',a:'无极',v:67000,d:'45:30',img:'xn6.png',cat:'编程开发' },
+    { id:4,t:'颜体楷书基本笔画精讲',a:'砚田墨香',v:45000,d:'18:22',img:'xn7.png',cat:'艺术设计' },
+    { id:5,t:'Kubernetes集群运维实战',a:'程远',v:92000,d:'56:40',img:'xn8.png',cat:'编程开发' },
+    { id:6,t:'Python数据可视化进阶',a:'程远',v:78000,d:'28:15',img:'xn9.png',cat:'编程开发' },
+    { id:7,t:'中国山水画技法入门',a:'丹青妙手',v:34000,d:'22:10',img:'xn10.png',cat:'艺术设计' },
+    { id:8,t:'大模型Prompt工程完全指南',a:'凌风',v:156000,d:'38:45',img:'xn11.png',cat:'AI技术' },
 ]
 
 // Live streams
@@ -93,7 +103,7 @@ onUnmounted(() => { clearInterval(bannerTimer) })
                     <a @click="router.push('/ai-world/videos')">更多 <el-icon><ArrowRight/></el-icon></a>
                 </div>
                 <div class="aw-video-grid">
-                    <div v-for="v in videos" :key="v.id" class="awv-card">
+                    <div v-for="v in filteredVideos" :key="v.id" class="awv-card" @click="router.push('/ai-world/videos')">
                         <div class="awv-cover">
                             <img :src="imgSrc(v.img)" :alt="v.t"/>
                             <span class="awv-duration">{{v.d}}</span>
@@ -114,7 +124,7 @@ onUnmounted(() => { clearInterval(bannerTimer) })
                     <a @click="router.push('/ai-world/live')">更多 <el-icon><ArrowRight/></el-icon></a>
                 </div>
                 <div class="aw-live-grid">
-                    <div v-for="l in liveStreams" :key="l.id" class="awl-card">
+                    <div v-for="l in filteredLive" :key="l.id" class="awl-card" @click="router.push('/ai-world/live')">
                         <div class="awl-cover">
                             <img :src="imgSrc(l.img)" :alt="l.t"/>
                             <span class="awl-badge">🔴 LIVE</span>

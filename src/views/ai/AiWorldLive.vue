@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, nextTick } from 'vue'
+import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { VideoPlay, Star, ArrowRight } from '@element-plus/icons-vue'
 import gsap from 'gsap'
@@ -59,10 +59,13 @@ function imgSrc(n) { return imgM[n] || bn12 }
 
 function fmtViews(n) { return n>=10000?(n/10000).toFixed(1)+'万':n }
 
-onMounted(async () => {
-    await nextTick()
-    gsap.fromTo('.lvl-card', { opacity:0, y:30 }, { opacity:1, y:0, duration:.4, stagger:.05, ease:'power3.out' })
-})
+function animateCards() {
+    nextTick(() => {
+        gsap.fromTo('.lvl-card', { opacity:0, y:20 }, { opacity:1, y:0, duration:.35, stagger:.04, ease:'power3.out' })
+    })
+}
+onMounted(async () => { await nextTick(); animateCards() })
+watch(activeCat, () => animateCards())
 </script>
 
 <template>
@@ -99,7 +102,7 @@ onMounted(async () => {
                     <span v-if="featured.tag" class="lvl-feat-tag">{{featured.tag}}</span>
                     <h2>{{featured.t}}</h2>
                     <p>{{featured.a}} · {{fmtViews(featured.w)}} 观看</p>
-                    <el-button type="primary" round size="large" class="lvl-feat-btn" @click="router.push('/ai-world/video/'+featured.id)">
+                    <el-button type="primary" round size="large" class="lvl-feat-btn" @click="router.push('/ai-world/live/'+featured.id)">
                         进入直播间 <el-icon class="ml-2"><ArrowRight/></el-icon>
                     </el-button>
                 </div>
@@ -114,7 +117,7 @@ onMounted(async () => {
             </div>
             <div class="lvl-grid">
                 <article v-for="live in liveData" :key="live.id" class="lvl-card"
-                    @click="router.push('/ai-world/video/'+live.id)">
+                    @click="router.push('/ai-world/live/'+live.id)">
                     <div class="lvl-card-cover">
                         <img :src="imgSrc(live.img)" :alt="live.t"/>
                         <span class="lvl-card-live">🔴 LIVE</span>
@@ -171,7 +174,7 @@ onMounted(async () => {
 .lvl-sec-head { display:flex;align-items:baseline;gap:12px;margin-bottom:20px; }
 .lvl-sec-head h3 { font-family:var(--font-display);font-size:17px;color:var(--text-primary); }
 .lvl-sec-count { font-size:12px;color:var(--text-muted); }
-.lvl-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:16px; }
+.lvl-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:16px;min-height:400px; }
 .lvl-card { cursor:pointer;transition:all .25s;opacity:0;transform:translateY(30px); }
 .lvl-card:hover { transform:translateY(-4px); }
 .lvl-card-cover { position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:var(--surface-glass); }

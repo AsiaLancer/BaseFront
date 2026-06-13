@@ -258,7 +258,7 @@ onUnmounted(() => {
                 <h2>AI创作精选</h2>
             </div>
             <div class="aw-hv-list">
-                <div v-for="v in hotVideos" :key="v.t" class="aw-hv-card" @click="router.push('/ai-world/video/1')">
+                <div v-for="v in hotVideos" :key="v.t" class="aw-hv-card" @click="router.push('/ai-world/live/1')">
                     <div class="aw-hv-cover"><img :src="v.img" :alt="v.t"/><span class="aw-hv-views">{{v.v}}</span></div>
                     <div class="aw-hv-info"><p>{{v.t}}</p><span>{{v.a}}</span></div>
                 </div>
@@ -287,7 +287,7 @@ onUnmounted(() => {
                 <h2>AI直播间</h2>
             </div>
             <div class="aw-hl-grid">
-                <div v-for="l in hotLives" :key="l.t" class="aw-hl-card" @click="router.push('/ai-world/video/1')">
+                <div v-for="l in hotLives" :key="l.t" class="aw-hl-card" @click="router.push('/ai-world/live/1')">
                     <div class="aw-hl-cover"><img :src="l.img" :alt="l.t"/><span class="aw-hl-badge">🔴 LIVE</span></div>
                     <div class="aw-hl-info"><p>{{l.t}}</p><span>{{l.a}} · {{l.w}}观看</span></div>
                 </div>

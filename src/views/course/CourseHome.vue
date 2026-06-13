@@ -91,6 +91,9 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
 
     <LightningBolt />
 
+    <!-- Noise grain texture -->
+    <div class="noise-grain" aria-hidden="true"></div>
+
     <!-- Parallax shapes -->
     <div class="shapes-layer" aria-hidden="true">
         <span class="shp hexagon"  :style="{transform:`translate3d(${(mx*6).toFixed(1)}px,${(my*6).toFixed(1)}px,0)`}"></span>
@@ -100,33 +103,39 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
         <span class="shp triangle" :style="{transform:`translate3d(${(mx*24).toFixed(1)}px,${(my*24).toFixed(1)}px,0)`}"></span>
     </div>
 
-    <!-- ═══════ HERO ═══════ -->
+    <!-- ═══════ HERO — Z-pattern ═══════ -->
     <section class="hero">
-        <div class="hero-inner">
-            <p class="hero-badge"><span class="badge-dot"></span>MOXUE ACADEMY<span class="badge-dot"></span></p>
-            <h1 class="hero-title">
-                <span class="ht-1">学贯古今</span>
-                <span class="ht-2">智启未来</span>
-            </h1>
-            <p class="hero-desc">
-                面向全龄段的通识教育平台&ensp;·&ensp;从人文经典到 AI 前沿&ensp;·&ensp;以科技重新定义学习
-            </p>
-            <div class="hero-search-line hero-search">
-                <label for="hero-search" class="sr-only">搜索课程</label>
-                <el-input id="hero-search" v-model="query" size="large" placeholder="搜索课程、讲师、学习路径…" :prefix-icon="Search" autocomplete="off" spellcheck="false" class="hero-input" />
-                <el-button type="primary" size="large" round class="hero-search-btn">探索课程 <el-icon class="ml-2"><ArrowRight/></el-icon></el-button>
+        <div class="hero-wrap">
+            <!-- Z-LEFT: brand + title + trust -->
+            <div class="hero-left">
+                <p class="hero-badge"><span class="badge-dot"></span>MOXUE ACADEMY<span class="badge-dot"></span></p>
+                <h1 class="hero-title">
+                    <span class="ht-1">学贯古今</span>
+                    <span class="ht-2">智启未来</span>
+                </h1>
+                <p class="hero-desc">
+                    面向全龄段的通识教育平台&ensp;·&ensp;从人文经典到 AI 前沿&ensp;·&ensp;以科技重新定义学习
+                </p>
+                <div class="hero-trust">
+                    <span class="ht-stat"><b>128+</b> 课程</span><span class="ht-dot">·</span>
+                    <span class="ht-stat"><b>52K+</b> 学员</span><span class="ht-dot">·</span>
+                    <span class="ht-stat"><b>4.9</b> 满意度</span>
+                </div>
             </div>
-            <div class="hero-cta">
-                <template v-if="!logged">
-                    <el-button type="primary" size="large" round @click="go('register')">免费注册 <el-icon class="ml-2"><ArrowRight/></el-icon></el-button>
-                    <el-button size="large" round class="cta-ghost" @click="go('login')">登录已有账号</el-button>
-                </template>
-                <el-button v-else type="primary" size="large" round @click="go('ai')">进入 AI 学伴 <el-icon class="ml-2"><ChatDotRound/></el-icon></el-button>
-            </div>
-            <div class="hero-trust">
-                <span class="ht-stat"><b>128+</b> 课程</span><span class="ht-dot">·</span>
-                <span class="ht-stat"><b>52K+</b> 学员</span><span class="ht-dot">·</span>
-                <span class="ht-stat"><b>4.9</b> 满意度</span>
+            <!-- Z-RIGHT: search + CTA -->
+            <div class="hero-right">
+                <div class="hero-search-card hero-search">
+                    <label for="hero-search" class="sr-only">搜索课程</label>
+                    <el-input id="hero-search" v-model="query" size="large" placeholder="搜索课程、讲师、学习路径…" :prefix-icon="Search" autocomplete="off" spellcheck="false" class="hero-input" />
+                    <el-button type="primary" size="large" round class="hero-search-btn">探索课程 <el-icon class="ml-2"><ArrowRight/></el-icon></el-button>
+                </div>
+                <div class="hero-cta">
+                    <template v-if="!logged">
+                        <el-button type="primary" size="large" round @click="go('register')">免费注册 <el-icon class="ml-2"><ArrowRight/></el-icon></el-button>
+                        <el-button size="large" round class="cta-ghost" @click="go('login')">登录已有账号</el-button>
+                    </template>
+                    <el-button v-else type="primary" size="large" round @click="go('ai')">进入 AI 学伴 <el-icon class="ml-2"><ChatDotRound/></el-icon></el-button>
+                </div>
             </div>
         </div>
     </section>
@@ -246,12 +255,16 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
 /* ═══════════════════════════════════════════
    Retro-Future · Clean · Centered
    ═══════════════════════════════════════════ */
-.site { min-height:100vh; background:var(--color-space-950); opacity:0; transition:opacity .5s; overflow:hidden; }
+.site { min-height:100vh; background:var(--surface-root); opacity:0; transition:opacity .5s; overflow:hidden; }
 .site.ready { opacity:1; }
+
+/* Grain texture */
+.noise-grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px}
+@media(max-width:768px){.noise-grain{display:none}}
 .sec { max-width:1200px; margin:0 auto; padding:88px 28px; position:relative; z-index:1; }
 
 /* Loader */
-.loader { position:fixed; inset:0; z-index:999; display:flex; align-items:center; justify-content:center; background:var(--color-space-950); }
+.loader { position:fixed; inset:0; z-index:999; display:flex; align-items:center; justify-content:center; background:var(--surface-root); }
 .loader-ring { width:32px; height:32px; border:2px solid rgba(255,255,255,.06); border-top-color:#00e5ff; border-radius:50%; animation:spin .8s linear infinite; }
 @keyframes spin{to{transform:rotate(360deg)}}
 .load-out-leave-active{transition:opacity .3s}
@@ -267,23 +280,25 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
 .triangle{ bottom:18%; left:12%; width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:24px solid rgba(0,229,255,.025);background:transparent;border-top:none; }
 @media(max-width:768px){.shapes-layer{display:none}}
 
-/* Hero */
-.hero { position:relative; z-index:1; min-height:88vh; display:flex; align-items:center; justify-content:center; padding:100px 0 80px; }
-.hero-inner { width:100%; max-width:700px; margin:0 auto; padding:0 28px; text-align:center; }
+/* Hero — Z-pattern */
+.hero { position:relative; z-index:1; min-height:88vh; display:flex; align-items:center; padding:100px 0 80px; }
+.hero-wrap { width:100%; max-width:1200px; margin:0 auto; padding:0 32px; display:flex; align-items:center; gap:64px; }
+.hero-left { flex:1 1 55%; min-width:0; }
+.hero-right { flex:0 0 380px; display:flex; flex-direction:column; gap:18px; }
 .hero-badge { display:inline-flex;align-items:center;gap:10px;margin-bottom:28px;font-family:var(--font-display);font-size:10px;letter-spacing:5px;color:rgba(0,229,255,.7);text-transform:uppercase;padding:6px 18px;border:1px solid rgba(0,229,255,.1);border-radius:9999px;background:rgba(0,229,255,.03); }
 .badge-dot{width:4px;height:4px;border-radius:50%;background:#00e5ff;box-shadow:0 0 8px rgba(0,229,255,.5)}
 .hero-title{margin-bottom:24px}
 .ht-1{display:block;font-family:var(--font-display);font-size:56px;font-weight:800;color:var(--text-primary);line-height:1.1;letter-spacing:-1px}
-.ht-2{display:block;font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1.1;letter-spacing:-1px;background:linear-gradient(135deg,#00e5ff,#ff2d95,#ffb800,#00e5ff);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:accent 5s ease-in-out infinite}
+.ht-2{display:block;font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1.1;letter-spacing:-1px;background:linear-gradient(135deg,#00e5ff 0%,#00e5ff 40%,#ffb800 70%,#00e5ff 100%);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:accent 5s ease-in-out infinite}
 @keyframes accent{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.hero-desc{font-size:16px;color:var(--text-secondary);line-height:1.8;margin-bottom:36px}
-.hero-search-line{display:flex;gap:10px;max-width:560px;margin:0 auto 24px;padding:6px;border-radius:16px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(12px)}
+.hero-desc{font-size:16px;color:var(--text-secondary);line-height:1.8;margin-bottom:32px;max-width:480px}
+.hero-search-card{display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:16px;background:var(--surface-glass);border:1px solid var(--border-default);backdrop-filter:blur(12px)}
 .hero-input{flex:1;--el-input-bg-color:transparent;--el-input-border-color:transparent;--el-input-hover-border-color:transparent;--el-input-focus-border-color:transparent;--el-input-text-color:var(--text-primary);--el-input-placeholder-color:var(--text-muted)}
 .hero-input :deep(.el-input__wrapper){border-radius:12px!important;box-shadow:none!important;height:48px!important;background:transparent!important;padding-left:6px}
-.hero-search-btn{height:48px;font-size:15px;padding:0 24px;flex-shrink:0}
-.hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.cta-ghost{--el-button-text-color:var(--text-secondary);height:48px;border-color:rgba(255,255,255,.08)!important}
-.hero-trust{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:36px;font-size:13px;color:var(--text-muted)}
+.hero-search-btn{height:48px;font-size:15px;padding:0 24px}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap}
+.cta-ghost{--el-button-text-color:var(--text-secondary);height:48px;border-color:var(--border-default)!important}
+.hero-trust{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-muted)}
 .ht-stat b{color:var(--text-secondary);font-family:var(--font-display);font-size:15px;margin-right:3px}
 .ht-dot{color:rgba(0,229,255,.3);margin:0 8px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
@@ -300,7 +315,7 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
 
 /* Categories */
 .cat-bar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.cat-chip{display:inline-flex;align-items:center;gap:8px;padding:9px 20px;background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.05);border-radius:9999px;cursor:pointer;color:var(--text-secondary);font-size:14px;transition:all .25s;opacity:0;transform:translateY(40px);outline:none;touch-action:manipulation}
+.cat-chip{display:inline-flex;align-items:center;gap:8px;padding:9px 20px;background:var(--surface-glass);border:1px solid var(--border-subtle);border-radius:9999px;cursor:pointer;color:var(--text-secondary);font-size:14px;transition:all .25s;opacity:0;transform:translateY(40px);outline:none;touch-action:manipulation}
 .cat-chip:focus-visible{outline:2px solid #00e5ff;outline-offset:2px}
 .cat-chip.active,.cat-chip:hover{border-color:rgba(0,229,255,.4);color:var(--text-primary);background:rgba(0,229,255,.04);box-shadow:0 0 24px rgba(0,229,255,.08)}
 .cat-chip-ic{font-size:15px;flex-shrink:0}
@@ -308,10 +323,10 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
 
 /* Course cards */
 .course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.c-card{border-radius:16px;overflow:hidden;cursor:pointer;background:rgba(255,255,255,.012);border:1px solid rgba(255,255,255,.04);transition:all .3s;opacity:0;transform:translateY(80px);outline:none;touch-action:manipulation}
+.c-card{border-radius:16px;overflow:hidden;cursor:pointer;background:var(--surface-glass);border:1px solid var(--border-subtle);transition:all .3s;opacity:0;transform:translateY(80px);outline:none;touch-action:manipulation}
 .c-card:focus-visible{outline:2px solid #00e5ff;outline-offset:2px}
-.c-card:hover{border-color:rgba(0,229,255,.2);box-shadow:0 20px 60px rgba(0,0,0,.45)}
-.cc-cover{position:relative;aspect-ratio:800/500;overflow:hidden;background:rgba(255,255,255,.015)}
+.c-card:hover{border-color:var(--border-emphasis);box-shadow:var(--shadow-lg)}
+.cc-cover{position:relative;aspect-ratio:800/500;overflow:hidden;background:var(--surface-glass)}
 .cc-cover img{width:100%;height:100%;object-fit:cover;transition:transform .6s,opacity .5s;opacity:0}
 .cc-cover img.loaded{opacity:1}
 .c-card:hover .cc-cover img{transform:scale(1.04)}
@@ -325,11 +340,11 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
 .cc-title{font-size:16px;color:var(--text-primary);font-weight:500;margin-bottom:10px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .cc-auth{display:flex;gap:8px;align-items:baseline;margin-bottom:16px;font-size:13px;color:var(--text-primary)}
 .cc-role{font-size:11px;color:var(--text-muted)}
-.cc-foot{display:flex;gap:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.03);font-size:12px;color:var(--text-muted);align-items:center}
+.cc-foot{display:flex;gap:16px;padding-top:14px;border-top:1px solid var(--border-subtle);font-size:12px;color:var(--text-muted);align-items:center}
 .cc-rating{display:inline-flex;align-items:center;gap:4px;color:#ffb800;font-weight:500}
 
 /* AI */
-.ai-panel{display:flex;align-items:center;gap:64px;padding:56px 64px;border-radius:20px;background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.04);opacity:0;transform:translateY(60px)}
+.ai-panel{display:flex;align-items:center;gap:64px;padding:56px 64px;border-radius:20px;background:var(--surface-glass);border:1px solid var(--border-subtle);opacity:0;transform:translateY(60px)}
 .ai-visual{position:relative;flex-shrink:0;width:160px;height:160px;display:flex;align-items:center;justify-content:center}
 .ai-core{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.06),transparent 70%);animation:corePulse 3s ease-in-out infinite}
 @keyframes corePulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.15);opacity:1}}
@@ -344,7 +359,7 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
 
 /* Paths */
 .path-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.p-card{position:relative;border-radius:14px;padding:26px;cursor:pointer;overflow:hidden;background:rgba(255,255,255,.012);border:1px solid rgba(255,255,255,.04);transition:all .3s;opacity:0;transform:translateY(60px);outline:none;touch-action:manipulation}
+.p-card{position:relative;border-radius:14px;padding:26px;cursor:pointer;overflow:hidden;background:var(--surface-glass);border:1px solid var(--border-subtle);transition:all .3s;opacity:0;transform:translateY(60px);outline:none;touch-action:manipulation}
 .p-card:focus-visible{outline:2px solid var(--pc);outline-offset:2px}
 .p-card:hover{border-color:var(--pc);transform:translateY(-6px);box-shadow:0 10px 32px rgba(0,0,0,.35)}
 .p-accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--pc);opacity:.35;transition:opacity .3s}
@@ -353,7 +368,7 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
 .p-title{font-size:16px;color:var(--text-primary);font-weight:600;margin-bottom:8px}
 .p-desc{font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:14px}
 .p-meta{font-size:11px;color:var(--text-muted);margin-bottom:14px}
-.p-track{height:3px;background:rgba(255,255,255,.03);border-radius:2px;margin-bottom:14px}
+.p-track{height:3px;background:var(--border-subtle);border-radius:2px;margin-bottom:14px}
 .p-fill{height:100%;border-radius:2px;transition:width 1.2s ease}
 .p-link{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--pc);font-weight:500}
 .p-link-ar{transition:transform .25s}
@@ -368,7 +383,7 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
 .stat-lab{font-size:13px;color:var(--text-muted);margin-top:8px;display:block;letter-spacing:2px;text-transform:uppercase}
 
 /* Footer */
-.footer{border-top:1px solid rgba(255,255,255,.03);position:relative;z-index:1}
+.footer{border-top:1px solid var(--border-subtle);position:relative;z-index:1}
 .footer-grid{max-width:1200px;margin:0 auto;padding:60px 28px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:32px}
 .footer-logo{font-family:var(--font-display);font-size:20px;font-weight:700;letter-spacing:4px;color:#00e5ff;display:block;margin-bottom:12px}
 .footer-brand p{font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;max-width:240px}
@@ -379,9 +394,11 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
 .footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
 .footer-col a{font-size:13px;color:var(--text-secondary);text-decoration:none;transition:color .2s}
 .footer-col a:hover{color:#00e5ff}
-.footer-bar{max-width:1200px;margin:0 auto;padding:18px 28px;border-top:1px solid rgba(255,255,255,.03);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);flex-wrap:wrap;gap:8px}
+.footer-bar{max-width:1200px;margin:0 auto;padding:18px 28px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);flex-wrap:wrap;gap:8px}
 
 @media(max-width:1024px){
+    .hero-wrap{flex-direction:column;gap:40px;padding:0 24px}
+    .hero-right{flex:1;width:100%;max-width:440px}
     .ht-1,.ht-2{font-size:40px}
     .course-grid{grid-template-columns:repeat(2,1fr)}
     .path-grid{grid-template-columns:repeat(2,1fr)}
@@ -391,8 +408,9 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
 @media(max-width:768px){
     .sec{padding:56px 16px}
     .hero{min-height:auto;padding:60px 0 50px}
+    .hero-right{max-width:100%}
     .ht-1,.ht-2{font-size:30px}
-    .hero-search-line{flex-direction:column;padding:8px;gap:8px}
+    .hero-search-card{padding:16px}
     .hero-search-btn{width:100%}
     .course-grid{grid-template-columns:1fr}
     .path-grid{grid-template-columns:1fr}

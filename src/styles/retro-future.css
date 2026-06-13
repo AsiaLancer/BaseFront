@@ -75,8 +75,8 @@
    ═══════════════════════════════════════════ */
 @layer base {
     html {
-        background: var(--color-space-950);
-        color: var(--color-text-primary);
+        background: var(--surface-root, #060918);
+        color: var(--text-primary, #e8e4f0);
         font-family: var(--font-body);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -88,7 +88,7 @@
             radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,229,255,.04) 0%, transparent 60%),
             linear-gradient(rgba(0,229,255,.03) 1px, transparent 1px),
             linear-gradient(90deg, rgba(0,229,255,.03) 1px, transparent 1px),
-            var(--color-space-950);
+            var(--surface-root, #060918);
         background-size: 100% 100%, 60px 60px, 60px 60px;
     }
 }

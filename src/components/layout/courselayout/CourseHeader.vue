@@ -116,14 +116,17 @@ function onCmd(cmd) {
 /* ═══════════ STICKY GLASS NAVBAR ═══════════ */
 .nav-sticky {
     position: sticky; top: 0; z-index: 100; height: 64px;
-    background: transparent;
+    background: color-mix(in srgb, var(--surface-root, #ffffff) 85%, transparent);
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    border-bottom: 1px solid var(--border-subtle);
     transition: background .3s, backdrop-filter .3s, box-shadow .3s;
 }
 .nav-sticky.nav-scrolled {
-    background: color-mix(in srgb, var(--surface-root) 78%, transparent);
+    background: color-mix(in srgb, var(--surface-root, #ffffff) 92%, transparent);
     backdrop-filter: blur(16px) saturate(120%);
     -webkit-backdrop-filter: blur(16px) saturate(120%);
-    box-shadow: 0 1px 0 var(--border-subtle), 0 4px 24px rgba(0,0,0,.15);
+    box-shadow: 0 1px 0 var(--border-subtle), 0 4px 24px rgba(0,0,0,.08);
 }
 .nav-inner { max-width:1200px; margin:0 auto; padding:0 24px; height:100%; display:flex; align-items:center; gap:24px; }
 

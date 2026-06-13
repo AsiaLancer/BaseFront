@@ -29,6 +29,13 @@ const gifts = [
 const giftLog = ref([])
 const flyingGifts = ref([])
 const showGiftPanel = ref(false)
+const showControls = ref(false)
+let hideTimer = null
+function onPlayerMove() {
+    showControls.value = true
+    clearTimeout(hideTimer)
+    hideTimer = setTimeout(() => { showControls.value = false }, 3000)
+}
 
 function sendGift(gift) {
     giftLog.value.unshift({ u:'我', g:gift.name, color:gift.color })
@@ -124,7 +131,7 @@ import liveVideo from '@/assets/media111.mp4'
     <div class="lr-body">
         <!-- Main: video -->
         <div class="lr-main">
-            <div class="lr-player" @dblclick="sendHeart">
+            <div class="lr-player" @dblclick="sendHeart" @mousemove="onPlayerMove" @mouseleave="showControls=false">
                 <video :src="liveVideo" autoplay muted loop class="lr-video"></video>
 
                 <!-- Danmaku layer -->
@@ -140,33 +147,47 @@ import liveVideo from '@/assets/media111.mp4'
                 <div class="lr-player-top">
                     <span class="lr-live-tag">🔴 LIVE</span>
                     <span class="lr-viewer-count">{{viewers.toLocaleString()}} 观看</span>
-                    <div class="lr-quality-wrap">
-                        <button class="lr-quality-btn" @click="showQuality=!showQuality">{{quality}}</button>
-                        <div v-if="showQuality" class="lr-quality-menu">
-                            <span v-for="q in qualities" :key="q" :class="{active:quality===q}" @click="quality=q;showQuality=false">{{q}}</span>
+                </div>
+
+                <!-- Bottom control bar — hover to show -->
+                <div class="lr-controls" :class="{show:showControls}">
+                    <div class="lr-ctrl-row">
+                        <button class="lr-ctrl-btn" @click="showGiftPanel=true">🎁 礼物</button>
+                        <button class="lr-ctrl-btn" @click="danmakuOn=!danmakuOn">{{danmakuOn?'弹幕开':'弹幕关'}}</button>
+                        <button class="lr-ctrl-btn" @click="showQuality=true">画质</button>
+                        <button class="lr-ctrl-btn">🔊</button>
+                        <button class="lr-ctrl-btn">⛶</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gift popup -->
+            <Transition name="modal">
+            <div v-if="showGiftPanel" class="lr-modal-mask" @click.self="showGiftPanel=false">
+                <div class="lr-modal">
+                    <div class="lr-modal-head"><h3>送礼物</h3><button @click="showGiftPanel=false">✕</button></div>
+                    <div class="lr-gift-grid">
+                        <div v-for="g in gifts" :key="g.name" class="lr-gift-card" @click="sendGift(g);showGiftPanel=false">
+                            <span class="lr-gc-icon">{{g.icon}}</span>
+                            <span class="lr-gc-name">{{g.name}}</span>
+                            <span class="lr-gc-price">{{g.price}}币</span>
                         </div>
                     </div>
                 </div>
+            </div>
+            </Transition>
 
-                <!-- Bottom gift bar -->
-                <div class="lr-player-bottom">
-                    <div class="lr-gift-bar">
-                        <button v-for="g in gifts" :key="g.name" class="lr-gift-chip" @click="sendGift(g)">
-                            <span>{{g.icon}}</span><span>{{g.name}}</span>
-                        </button>
-                        <button class="lr-gift-more" @click="showGiftPanel=!showGiftPanel"><el-icon><Present/></el-icon></button>
+            <!-- Quality popup -->
+            <Transition name="modal">
+            <div v-if="showQuality" class="lr-modal-mask" @click.self="showQuality=false">
+                <div class="lr-modal lr-modal-sm">
+                    <div class="lr-modal-head"><h3>画质选择</h3><button @click="showQuality=false">✕</button></div>
+                    <div class="lr-quality-list">
+                        <span v-for="q in qualities" :key="q" :class="{active:quality===q}" @click="quality=q;showQuality=false">{{q}}</span>
                     </div>
                 </div>
             </div>
-
-            <!-- Gift panel -->
-            <div v-if="showGiftPanel" class="lr-gift-panel">
-                <div v-for="g in gifts" :key="g.name" class="lr-gift-item" @click="sendGift(g);showGiftPanel=false">
-                    <span class="lr-gi-icon">{{g.icon}}</span>
-                    <span class="lr-gi-name">{{g.name}}</span>
-                    <span class="lr-gi-price">{{g.price}}币</span>
-                </div>
-            </div>
+            </Transition>
 
             <!-- Description -->
             <div class="lr-desc-card">
@@ -254,29 +275,39 @@ import liveVideo from '@/assets/media111.mp4'
 @keyframes giftUp { 0%{transform:translateY(0) scale(.5);opacity:1} 50%{transform:scale(1.2)} 100%{transform:translateY(-200px) scale(1);opacity:0} }
 
 /* Player top */
-.lr-player-top { position:absolute;top:16px;left:16px;right:16px;display:flex;gap:10px;z-index:3; }
+.lr-player-top { position:absolute;top:16px;left:16px;display:flex;gap:10px;z-index:3; }
 .lr-live-tag { padding:4px 12px;border-radius:6px;font-size:12px;background:#f87171;color:#fff;font-weight:600; }
 .lr-viewer-count { padding:4px 10px;border-radius:6px;font-size:12px;background:rgba(0,0,0,.5);color:#fff; }
-.lr-quality-wrap { position:relative;margin-left:auto; }
-.lr-quality-btn { padding:4px 12px;border-radius:6px;font-size:12px;background:rgba(0,0,0,.5);color:#fff;border:none;cursor:pointer; }
-.lr-quality-menu { position:absolute;bottom:36px;right:0;background:rgba(0,0,0,.9);border-radius:8px;padding:4px;display:flex;flex-direction:column;gap:2px;min-width:120px; }
-.lr-quality-menu span { padding:6px 12px;font-size:12px;color:#fff;cursor:pointer;border-radius:4px; }
-.lr-quality-menu span:hover,.lr-quality-menu span.active { background:rgba(0,212,255,.2);color:#00d4ff; }
 
-/* Player bottom */
-.lr-player-bottom { position:absolute;bottom:0;left:0;right:0;padding:12px 16px;z-index:3; }
-.lr-gift-bar { display:flex;gap:6px;justify-content:center;flex-wrap:wrap; }
-.lr-gift-chip { display:flex;align-items:center;gap:4px;padding:5px 12px;border-radius:9999px;font-size:12px;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);cursor:pointer;transition:all .2s; }
-.lr-gift-chip:hover { background:rgba(255,255,255,.2); }
-.lr-gift-more { display:flex;align-items:center;gap:4px;padding:5px 12px;border-radius:9999px;font-size:12px;color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);cursor:pointer; }
+/* Bottom control bar — auto-hide, shows on hover */
+.lr-controls { position:absolute;bottom:0;left:0;right:0;z-index:3;opacity:0;transform:translateY(100%);transition:opacity .3s,transform .3s;background:linear-gradient(transparent,rgba(0,0,0,.8));padding:40px 20px 16px; }
+.lr-controls.show { opacity:1;transform:translateY(0); }
+.lr-ctrl-row { display:flex;gap:8px;justify-content:center; }
+.lr-ctrl-btn { padding:6px 18px;border-radius:8px;font-size:13px;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);cursor:pointer;transition:all .2s; }
+.lr-ctrl-btn:hover { background:rgba(255,255,255,.2); }
 
-/* Gift panel */
-.lr-gift-panel { display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px;border-radius:14px;background:var(--surface-glass);border:1px solid var(--border-subtle);margin-bottom:16px; }
-.lr-gift-item { text-align:center;padding:12px 8px;border-radius:10px;cursor:pointer;transition:all .2s; }
-.lr-gift-item:hover { background:var(--surface-glass-hover); }
-.lr-gi-icon { font-size:28px;display:block;margin-bottom:4px; }
-.lr-gi-name { font-size:12px;color:var(--text-secondary);display:block; }
-.lr-gi-price { font-size:10px;color:var(--text-muted); }
+/* Modal popups */
+.lr-modal-mask { position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center; }
+.lr-modal { width:400px;max-width:90vw;background:var(--surface-root);border:1px solid var(--border-subtle);border-radius:20px;overflow:hidden; }
+.lr-modal-sm { width:280px; }
+.lr-modal-head { display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--border-subtle); }
+.lr-modal-head h3 { font-family:var(--font-display);font-size:15px;color:var(--text-primary); }
+.lr-modal-head button { background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:16px;padding:2px 8px;border-radius:6px; }
+.lr-modal-head button:hover { background:var(--surface-glass-hover);color:var(--text-primary); }
+.lr-gift-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:20px; }
+.lr-gift-card { text-align:center;padding:16px 8px;border-radius:12px;cursor:pointer;transition:all .2s;border:1px solid transparent; }
+.lr-gift-card:hover { background:var(--surface-glass-hover);border-color:rgba(0,212,255,.15); }
+.lr-gc-icon { font-size:30px;display:block;margin-bottom:6px; }
+.lr-gc-name { font-size:13px;color:var(--text-secondary);display:block; }
+.lr-gc-price { font-size:11px;color:var(--text-muted); }
+.lr-quality-list { display:flex;flex-direction:column;padding:8px; }
+.lr-quality-list span { padding:12px 18px;font-size:14px;color:var(--text-secondary);cursor:pointer;border-radius:8px;transition:all .15s; }
+.lr-quality-list span:hover,.lr-quality-list span.active { background:rgba(0,212,255,.06);color:#00d4ff; }
+
+.modal-enter-active,.modal-leave-active { transition:opacity .2s; }
+.modal-enter-active .lr-modal,.modal-leave-active .lr-modal { transition:transform .2s ease; }
+.modal-enter-from,.modal-leave-to { opacity:0; }
+.modal-enter-from .lr-modal,.modal-leave-to .lr-modal { transform:scale(.95); }
 
 /* Description */
 .lr-desc-card { padding:20px;border-radius:14px;background:var(--surface-glass);border:1px solid var(--border-subtle); }

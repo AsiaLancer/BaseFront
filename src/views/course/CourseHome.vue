@@ -64,7 +64,10 @@ function cardIn(_,el){gsap.to(el,{y:-6,dur:.3,ease:'power3.out'})}
 function cardOut(_,el){gsap.to(el,{y:0,dur:.2,ease:'power2.in'})}
 function onKey(fn){return e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fn()}}}
 function imgLoad(e){e.target.classList.add('loaded')}
-function go(l){['login','register','ai'].includes(l)?router.push(l==='ai'?'/course/aichat':'/'+l):null}
+function go(l){
+    const routes = {login:'/login',register:'/register',ai:'/course/aichat',courses:'/course/courses'}
+    if(routes[l]) router.push(routes[l])
+}
 
 onMounted(async()=>{
     setTimeout(()=>loading.value=false,800)
@@ -171,7 +174,7 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
     <section ref="crsRf" class="sec">
         <header class="sec-head">
             <h2 class="sec-h2">精选课程<span class="sec-h2-sub"> · 跨学科精选，从经典到前沿</span></h2>
-            <a href="#" class="sec-link" @click.prevent>全部课程 <el-icon><ArrowRight/></el-icon></a>
+            <a class="sec-link" @click="go('courses')">全部课程 <el-icon><ArrowRight/></el-icon></a>
         </header>
         <div class="course-grid">
             <article v-for="c in filtered" :key="c.id" class="c-card" tabindex="0"

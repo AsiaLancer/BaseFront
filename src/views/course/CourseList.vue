@@ -1,42 +1,80 @@
 <script setup>
 import { ref, computed, onMounted, nextTick, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import { Search, Collection, Reading, MagicStick, Monitor, Cpu, Star } from '@element-plus/icons-vue'
 import gsap from 'gsap'
+
+const router = useRouter()
 
 // ─── Mock API layer — swap these functions when backend is ready ───
 const delay = (ms=300) => new Promise(r => setTimeout(r, ms))
 
+// Local images — Vite resolves static paths
+const imgs = {
+    1: new URL('@/assets/imgs/xn1.png', import.meta.url).href,
+    2: new URL('@/assets/imgs/xn2.png', import.meta.url).href,
+    3: new URL('@/assets/imgs/xn3.png', import.meta.url).href,
+    4: new URL('@/assets/imgs/xn4.png', import.meta.url).href,
+    5: new URL('@/assets/imgs/xn5.png', import.meta.url).href,
+    6: new URL('@/assets/imgs/xn6.png', import.meta.url).href,
+    7: new URL('@/assets/imgs/xn7.png', import.meta.url).href,
+    8: new URL('@/assets/imgs/xn8.png', import.meta.url).href,
+    9: new URL('@/assets/imgs/xn9.png', import.meta.url).href,
+    10:new URL('@/assets/imgs/xn10.png',import.meta.url).href,
+    11:new URL('@/assets/imgs/xn11.png',import.meta.url).href,
+    12:new URL('@/assets/imgs/xn12.png',import.meta.url).href,
+    13:new URL('@/assets/imgs/xn13.png',import.meta.url).href,
+    14:new URL('@/assets/imgs/xn14.png',import.meta.url).href,
+    15:new URL('@/assets/imgs/xn15.png',import.meta.url).href,
+    16:new URL('@/assets/imgs/xn16.png',import.meta.url).href,
+    17:new URL('@/assets/imgs/xn17.png',import.meta.url).href,
+    18:new URL('@/assets/imgs/xn18.png',import.meta.url).href,
+    19:new URL('@/assets/imgs/xn19.png',import.meta.url).href,
+    20:new URL('@/assets/imgs/xn20.png',import.meta.url).href,
+    21:new URL('@/assets/imgs/xn21.png',import.meta.url).href,
+    22:new URL('@/assets/imgs/xn22.png',import.meta.url).href,
+    23:new URL('@/assets/imgs/xn23.png',import.meta.url).href,
+    24:new URL('@/assets/imgs/xn24.png',import.meta.url).href,
+    25:new URL('@/assets/imgs/xn25.png',import.meta.url).href,
+    26:new URL('@/assets/imgs/xn26.png',import.meta.url).href,
+    27:new URL('@/assets/imgs/xn27.png',import.meta.url).href,
+    28:new URL('@/assets/imgs/xn28.png',import.meta.url).href,
+    29:new URL('@/assets/imgs/xn29.png',import.meta.url).href,
+    30:new URL('@/assets/imgs/xn30.png',import.meta.url).href,
+}
+function courseImg(id) { return imgs[id] || imgs[1] }
+
 const mockCourses = [
-    { id:1,cat:'humanities',t:'《论语》精读二十讲',a:'墨韵先生',r:'国学院教授',n:12580,rt:4.9,p:'免费',lv:'入门',d:'20课时',img:'https://picsum.photos/seed/c1/800/500',w:800,h:500,tg:['经典','儒家'] },
-    { id:2,cat:'tech',t:'Python 数据科学实战',a:'程远',r:'前阿里P8算法专家',n:8960,rt:4.8,p:'¥299',lv:'进阶',d:'32课时',img:'https://picsum.photos/seed/c2/800/500',w:800,h:500,tg:['Python','数据'] },
-    { id:3,cat:'arts',t:'颜体楷书入门到精通',a:'砚田墨香',r:'中书协会员',n:5680,rt:4.9,p:'免费',lv:'入门',d:'16课时',img:'https://picsum.photos/seed/c3/800/500',w:800,h:500,tg:['书法','楷书'] },
-    { id:4,cat:'ai',t:'大模型应用开发实战',a:'凌风',r:'AI Lab 负责人',n:11200,rt:4.7,p:'¥499',lv:'高级',d:'40课时',img:'https://picsum.photos/seed/c4/800/500',w:800,h:500,tg:['LLM','Agent'] },
-    { id:5,cat:'humanities',t:'史记与历史思维',a:'司马清风',r:'历史学博士',n:4320,rt:4.8,p:'¥199',lv:'进阶',d:'24课时',img:'https://picsum.photos/seed/c5/800/500',w:800,h:500,tg:['历史','史记'] },
-    { id:6,cat:'tech',t:'全栈 Web 开发训练营',a:'无极',r:'全栈架构师',n:15600,rt:4.9,p:'¥399',lv:'入门',d:'48课时',img:'https://picsum.photos/seed/c6/800/500',w:800,h:500,tg:['Vue','Node'] },
-    { id:7,cat:'humanities',t:'《道德经》导读',a:'清虚先生',r:'哲学博士',n:3890,rt:4.7,p:'免费',lv:'入门',d:'12课时',img:'https://picsum.photos/seed/c7/800/500',w:800,h:500,tg:['哲学','道家'] },
-    { id:8,cat:'tech',t:'深度学习与神经网络',a:'凌风',r:'AI Lab 负责人',n:7820,rt:4.6,p:'¥599',lv:'高级',d:'36课时',img:'https://picsum.photos/seed/c8/800/500',w:800,h:500,tg:['AI','深度学习'] },
-    { id:9,cat:'arts',t:'水墨山水画技法',a:'丹青妙手',r:'国画大师',n:2340,rt:4.8,p:'¥299',lv:'进阶',d:'20课时',img:'https://picsum.photos/seed/c9/800/500',w:800,h:500,tg:['国画','山水'] },
-    { id:10,cat:'ai',t:'Prompt 工程实战',a:'程远',r:'AI研究员',n:5680,rt:4.5,p:'¥199',lv:'进阶',d:'16课时',img:'https://picsum.photos/seed/c10/800/500',w:800,h:500,tg:['Prompt','LLM'] },
-    { id:11,cat:'humanities',t:'中国哲学简史',a:'墨韵先生',r:'国学院教授',n:2100,rt:4.9,p:'免费',lv:'入门',d:'18课时',img:'https://picsum.photos/seed/c11/800/500',w:800,h:500,tg:['哲学','历史'] },
-    { id:12,cat:'tech',t:'Vue 3 源码解析',a:'无极',r:'全栈架构师',n:3450,rt:4.8,p:'¥399',lv:'高级',d:'28课时',img:'https://picsum.photos/seed/c12/800/500',w:800,h:500,tg:['Vue','前端'] },
-    { id:13,cat:'humanities',t:'《诗经》选读',a:'清风居士',r:'文学教授',n:1890,rt:4.6,p:'免费',lv:'入门',d:'14课时',img:'https://picsum.photos/seed/c13/800/500',w:800,h:500,tg:['诗词','文学'] },
-    { id:14,cat:'arts',t:'篆刻艺术入门',a:'金石斋主',r:'篆刻名家',n:1230,rt:4.7,p:'¥199',lv:'入门',d:'12课时',img:'https://picsum.photos/seed/c14/800/500',w:800,h:500,tg:['篆刻','金石'] },
-    { id:15,cat:'tech',t:'Node.js 微服务架构',a:'程远',r:'架构专家',n:4560,rt:4.5,p:'¥399',lv:'高级',d:'30课时',img:'https://picsum.photos/seed/c15/800/500',w:800,h:500,tg:['Node','微服务'] },
-    { id:16,cat:'ai',t:'计算机视觉入门',a:'凌风',r:'AI Lab 负责人',n:6780,rt:4.6,p:'¥499',lv:'进阶',d:'32课时',img:'https://picsum.photos/seed/c16/800/500',w:800,h:500,tg:['CV','视觉'] },
-    { id:17,cat:'humanities',t:'西方哲学史',a:'思辨先生',r:'哲学博士',n:2670,rt:4.8,p:'¥299',lv:'进阶',d:'26课时',img:'https://picsum.photos/seed/c17/800/500',w:800,h:500,tg:['哲学','西方'] },
-    { id:18,cat:'arts',t:'工笔花鸟画',a:'丹青妙手',r:'国画大师',n:1560,rt:4.9,p:'¥399',lv:'进阶',d:'22课时',img:'https://picsum.photos/seed/c18/800/500',w:800,h:500,tg:['国画','工笔'] },
-    { id:19,cat:'tech',t:'Rust 系统编程',a:'无极',r:'全栈架构师',n:2340,rt:4.7,p:'¥499',lv:'高级',d:'34课时',img:'https://picsum.photos/seed/c19/800/500',w:800,h:500,tg:['Rust','系统'] },
-    { id:20,cat:'ai',t:'NLP 自然语言处理',a:'文心',r:'NLP 研究员',n:3450,rt:4.5,p:'¥399',lv:'进阶',d:'28课时',img:'https://picsum.photos/seed/c20/800/500',w:800,h:500,tg:['NLP','LLM'] },
-    { id:21,cat:'humanities',t:'《孙子兵法》与现代管理',a:'墨韵先生',r:'国学院教授',n:5430,rt:4.9,p:'¥199',lv:'进阶',d:'16课时',img:'https://picsum.photos/seed/c21/800/500',w:800,h:500,tg:['兵法','管理'] },
-    { id:22,cat:'arts',t:'古琴演奏入门',a:'琴心居士',r:'古琴传承人',n:890,rt:4.8,p:'免费',lv:'入门',d:'10课时',img:'https://picsum.photos/seed/c22/800/500',w:800,h:500,tg:['音乐','古琴'] },
-    { id:23,cat:'tech',t:'Kubernetes 实战',a:'程远',r:'架构专家',n:6780,rt:4.6,p:'¥599',lv:'高级',d:'40课时',img:'https://picsum.photos/seed/c23/800/500',w:800,h:500,tg:['K8s','运维'] },
-    { id:24,cat:'ai',t:'强化学习基础',a:'凌风',r:'AI Lab 负责人',n:2340,rt:4.4,p:'¥599',lv:'高级',d:'36课时',img:'https://picsum.photos/seed/c24/800/500',w:800,h:500,tg:['RL','算法'] },
-    { id:25,cat:'humanities',t:'唐宋八大家文选',a:'清风居士',r:'文学教授',n:3210,rt:4.7,p:'¥199',lv:'进阶',d:'20课时',img:'https://picsum.photos/seed/c25/800/500',w:800,h:500,tg:['文学','唐宋'] },
-    { id:26,cat:'arts',t:'茶道与生活美学',a:'茶禅一味',r:'茶道大师',n:1670,rt:4.9,p:'免费',lv:'入门',d:'8课时',img:'https://picsum.photos/seed/c26/800/500',w:800,h:500,tg:['茶道','美学'] },
-    { id:27,cat:'tech',t:'Flutter 跨平台开发',a:'无极',r:'全栈架构师',n:4320,rt:4.8,p:'¥299',lv:'进阶',d:'24课时',img:'https://picsum.photos/seed/c27/800/500',w:800,h:500,tg:['Flutter','跨端'] },
-    { id:28,cat:'ai',t:'AIGC 内容创作实战',a:'文心',r:'AI研究员',n:7890,rt:4.7,p:'¥299',lv:'进阶',d:'20课时',img:'https://picsum.photos/seed/c28/800/500',w:800,h:500,tg:['AIGC','创作'] },
-    { id:29,cat:'humanities',t:'《资治通鉴》选读',a:'司马清风',r:'历史学博士',n:2100,rt:4.8,p:'¥299',lv:'进阶',d:'22课时',img:'https://picsum.photos/seed/c29/800/500',w:800,h:500,tg:['历史','通鉴'] },
-    { id:30,cat:'tech',t:'TypeScript 类型体操',a:'程远',r:'前端专家',n:3450,rt:4.6,p:'¥199',lv:'进阶',d:'18课时',img:'https://picsum.photos/seed/c30/800/500',w:800,h:500,tg:['TS','前端'] },
+    { id:1,cat:'humanities',t:'《论语》精读二十讲',a:'墨韵先生',r:'国学院教授',n:12580,rt:4.9,p:'免费',lv:'入门',d:'20课时',tg:['经典','儒家'] },
+    { id:2,cat:'tech',t:'Python 数据科学实战',a:'程远',r:'前阿里P8算法专家',n:8960,rt:4.8,p:'¥299',lv:'进阶',d:'32课时',tg:['Python','数据'] },
+    { id:3,cat:'arts',t:'颜体楷书入门到精通',a:'砚田墨香',r:'中书协会员',n:5680,rt:4.9,p:'免费',lv:'入门',d:'16课时',tg:['书法','楷书'] },
+    { id:4,cat:'ai',t:'大模型应用开发实战',a:'凌风',r:'AI Lab 负责人',n:11200,rt:4.7,p:'¥499',lv:'高级',d:'40课时',tg:['LLM','Agent'] },
+    { id:5,cat:'humanities',t:'史记与历史思维',a:'司马清风',r:'历史学博士',n:4320,rt:4.8,p:'¥199',lv:'进阶',d:'24课时',tg:['历史','史记'] },
+    { id:6,cat:'tech',t:'全栈 Web 开发训练营',a:'无极',r:'全栈架构师',n:15600,rt:4.9,p:'¥399',lv:'入门',d:'48课时',tg:['Vue','Node'] },
+    { id:7,cat:'humanities',t:'《道德经》导读',a:'清虚先生',r:'哲学博士',n:3890,rt:4.7,p:'免费',lv:'入门',d:'12课时',tg:['哲学','道家'] },
+    { id:8,cat:'tech',t:'深度学习与神经网络',a:'凌风',r:'AI Lab 负责人',n:7820,rt:4.6,p:'¥599',lv:'高级',d:'36课时',tg:['AI','深度学习'] },
+    { id:9,cat:'arts',t:'水墨山水画技法',a:'丹青妙手',r:'国画大师',n:2340,rt:4.8,p:'¥299',lv:'进阶',d:'20课时',tg:['国画','山水'] },
+    { id:10,cat:'ai',t:'Prompt 工程实战',a:'程远',r:'AI研究员',n:5680,rt:4.5,p:'¥199',lv:'进阶',d:'16课时',tg:['Prompt','LLM'] },
+    { id:11,cat:'humanities',t:'中国哲学简史',a:'墨韵先生',r:'国学院教授',n:2100,rt:4.9,p:'免费',lv:'入门',d:'18课时',tg:['哲学','历史'] },
+    { id:12,cat:'tech',t:'Vue 3 源码解析',a:'无极',r:'全栈架构师',n:3450,rt:4.8,p:'¥399',lv:'高级',d:'28课时',tg:['Vue','前端'] },
+    { id:13,cat:'humanities',t:'《诗经》选读',a:'清风居士',r:'文学教授',n:1890,rt:4.6,p:'免费',lv:'入门',d:'14课时',tg:['诗词','文学'] },
+    { id:14,cat:'arts',t:'篆刻艺术入门',a:'金石斋主',r:'篆刻名家',n:1230,rt:4.7,p:'¥199',lv:'入门',d:'12课时',tg:['篆刻','金石'] },
+    { id:15,cat:'tech',t:'Node.js 微服务架构',a:'程远',r:'架构专家',n:4560,rt:4.5,p:'¥399',lv:'高级',d:'30课时',tg:['Node','微服务'] },
+    { id:16,cat:'ai',t:'计算机视觉入门',a:'凌风',r:'AI Lab 负责人',n:6780,rt:4.6,p:'¥499',lv:'进阶',d:'32课时',tg:['CV','视觉'] },
+    { id:17,cat:'humanities',t:'西方哲学史',a:'思辨先生',r:'哲学博士',n:2670,rt:4.8,p:'¥299',lv:'进阶',d:'26课时',tg:['哲学','西方'] },
+    { id:18,cat:'arts',t:'工笔花鸟画',a:'丹青妙手',r:'国画大师',n:1560,rt:4.9,p:'¥399',lv:'进阶',d:'22课时',tg:['国画','工笔'] },
+    { id:19,cat:'tech',t:'Rust 系统编程',a:'无极',r:'全栈架构师',n:2340,rt:4.7,p:'¥499',lv:'高级',d:'34课时',tg:['Rust','系统'] },
+    { id:20,cat:'ai',t:'NLP 自然语言处理',a:'文心',r:'NLP 研究员',n:3450,rt:4.5,p:'¥399',lv:'进阶',d:'28课时',tg:['NLP','LLM'] },
+    { id:21,cat:'humanities',t:'《孙子兵法》与现代管理',a:'墨韵先生',r:'国学院教授',n:5430,rt:4.9,p:'¥199',lv:'进阶',d:'16课时',tg:['兵法','管理'] },
+    { id:22,cat:'arts',t:'古琴演奏入门',a:'琴心居士',r:'古琴传承人',n:890,rt:4.8,p:'免费',lv:'入门',d:'10课时',tg:['音乐','古琴'] },
+    { id:23,cat:'tech',t:'Kubernetes 实战',a:'程远',r:'架构专家',n:6780,rt:4.6,p:'¥599',lv:'高级',d:'40课时',tg:['K8s','运维'] },
+    { id:24,cat:'ai',t:'强化学习基础',a:'凌风',r:'AI Lab 负责人',n:2340,rt:4.4,p:'¥599',lv:'高级',d:'36课时',tg:['RL','算法'] },
+    { id:25,cat:'humanities',t:'唐宋八大家文选',a:'清风居士',r:'文学教授',n:3210,rt:4.7,p:'¥199',lv:'进阶',d:'20课时',tg:['文学','唐宋'] },
+    { id:26,cat:'arts',t:'茶道与生活美学',a:'茶禅一味',r:'茶道大师',n:1670,rt:4.9,p:'免费',lv:'入门',d:'8课时',tg:['茶道','美学'] },
+    { id:27,cat:'tech',t:'Flutter 跨平台开发',a:'无极',r:'全栈架构师',n:4320,rt:4.8,p:'¥299',lv:'进阶',d:'24课时',tg:['Flutter','跨端'] },
+    { id:28,cat:'ai',t:'AIGC 内容创作实战',a:'文心',r:'AI研究员',n:7890,rt:4.7,p:'¥299',lv:'进阶',d:'20课时',tg:['AIGC','创作'] },
+    { id:29,cat:'humanities',t:'《资治通鉴》选读',a:'司马清风',r:'历史学博士',n:2100,rt:4.8,p:'¥299',lv:'进阶',d:'22课时',tg:['历史','通鉴'] },
+    { id:30,cat:'tech',t:'TypeScript 类型体操',a:'程远',r:'前端专家',n:3450,rt:4.6,p:'¥199',lv:'进阶',d:'18课时',tg:['TS','前端'] },
 ]
 
 // ─── Fake API — replace with real fetch later ───
@@ -60,6 +98,7 @@ const currentPage = ref(1)
 const pageSize = 9
 const courses = ref([])
 const total = ref(0)
+const displayTotal = ref(0)
 const loading = ref(false)
 
 const cats = [
@@ -91,7 +130,10 @@ async function loadCourses() {
     const res = await fetchCourses({ page: currentPage.value, pageSize, category: activeCat.value, search: searchQuery.value })
     courses.value = res.data
     total.value = res.total
+    gsap.to(displayTotal, { value: res.total, duration: .8, ease: 'power2.out', snap: { value: 1 } })
     loading.value = false
+    await nextTick()
+    gsap.fromTo('.cl-card', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .4, stagger: .05, ease: 'power3.out' })
 }
 
 function goPage(p) {
@@ -119,7 +161,7 @@ onMounted(async () => {
     <!-- Header -->
     <div class="cl-hero">
         <h1 class="cl-title">全部课程</h1>
-        <p class="cl-sub">跨学科精选 · 从经典到前沿 · {{ total }} 门课程</p>
+        <p class="cl-sub">跨学科精选 · 从经典到前沿 · {{ Math.round(displayTotal) }} 门课程</p>
         <div class="cl-search-row">
             <el-input v-model="searchQuery" size="large" placeholder="搜索课程、讲师…" :prefix-icon="Search" autocomplete="off" class="cl-search" />
         </div>
@@ -137,10 +179,11 @@ onMounted(async () => {
     <!-- Grid -->
     <div v-if="!loading && courses.length" class="cl-grid">
         <article v-for="c in courses" :key="c.id" class="cl-card" tabindex="0"
+            @click="router.push(`/course/course/${c.id}`)"
             @mouseenter="cardIn($event,$event.currentTarget)"
             @mouseleave="cardOut($event,$event.currentTarget)">
             <div class="cl-cover">
-                <img :src="c.img" :alt="c.t" :width="c.w" :height="c.h" loading="lazy" decoding="async" @load="imgLoad"/>
+                <img :src="courseImg(c.id)" :alt="c.t" loading="lazy" decoding="async" @load="imgLoad"/>
                 <span class="cl-badge cl-lv">{{c.lv}}</span>
                 <span class="cl-badge" :class="c.p==='免费'?'cl-free':'cl-paid'">{{c.p}}</span>
             </div>
@@ -199,7 +242,7 @@ onMounted(async () => {
 .cl-card { border-radius:16px;overflow:hidden;cursor:pointer;background:var(--surface-glass);border:1px solid var(--border-subtle);transition:all .3s;outline:none;touch-action:manipulation;opacity:0;transform:translateY(40px); }
 .cl-card:focus-visible{outline:2px solid #00d4ff;outline-offset:2px}
 .cl-card:hover{border-color:rgba(0,212,255,.2);box-shadow:0 20px 60px rgba(0,0,0,.45)}
-.cl-cover{position:relative;aspect-ratio:800/500;overflow:hidden;background:var(--surface-glass)}
+.cl-cover{position:relative;aspect-ratio:3/2;overflow:hidden;background:var(--surface-glass)}
 .cl-cover img{width:100%;height:100%;object-fit:cover;transition:transform .6s,opacity .5s;opacity:0}
 .cl-cover img.loaded{opacity:1}
 .cl-card:hover .cl-cover img{transform:scale(1.04)}

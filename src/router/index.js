@@ -180,6 +180,12 @@ const viewRoutes = [
         meta: { title: '全部课程' }
       },
       {
+        path: 'course/:id',
+        name: 'CourseDetail',
+        component: () => import('@/views/course/CourseDetail.vue'),
+        meta: { title: '课程详情' }
+      },
+      {
         path: 'settings',
         name: 'CourseSetting',
         component: () => import('@/views/course/CourseSetting.vue'), // 使用相对路径

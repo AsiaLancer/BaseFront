@@ -129,7 +129,7 @@ onMounted(
                         <span class="bi-ring"></span>
                         <span class="bi-text">昇</span>
                     </div>
-                    <h1 class="brand-title" @click="goHome">昇新</h1>
+                    <h1 class="brand-title" @click="goHome">墨学</h1>
                     <p class="brand-subtitle">传承千年智慧 · 启迪当代学人</p>
                     <!-- 宣传轮播 -->
                     <div class="brand-carousel">
@@ -161,7 +161,7 @@ onMounted(
                 <div class="login-form-container">
                     <div class="form-header">
                         <h2 class="form-title">欢迎回来</h2>
-                        <p class="form-subtitle">登录昇新账号，开启学习之旅</p>
+                        <p class="form-subtitle">登录墨学账号，开启学习之旅</p>
                     </div>
                     <!-- 登录类型切换 -->
                     <div class="login-type-tabs">

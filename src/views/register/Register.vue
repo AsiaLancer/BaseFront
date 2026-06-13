@@ -206,7 +206,7 @@ const handleSubmit = async () => {
             <!-- 左侧品牌区域 -->
             <div class="register-brand">
                 <div class="brand-content">
-                    <h1 class="brand-title" @click="goHome">昇新</h1>
+                    <h1 class="brand-title" @click="goHome">墨学</h1>
                     <p class="brand-subtitle">开启您的学习之旅</p>
                     <div class="brand-quote">
                         <blockquote>
@@ -223,7 +223,7 @@ const handleSubmit = async () => {
                 <div class="register-form-container">
                     <div class="form-header">
                         <h2 class="form-title">创建账号</h2>
-                        <p class="form-subtitle">加入昇新，探索知识的海洋</p>
+                        <p class="form-subtitle">加入墨学，探索知识的海洋</p>
                     </div>
 
                     <!-- 表单 -->

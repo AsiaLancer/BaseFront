@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
-import { ArrowRight, VideoPlay, Star } from '@element-plus/icons-vue'
+import { ArrowRight, VideoPlay, Star, Connection, Cpu, Promotion, Link } from '@element-plus/icons-vue'
 import VideoPreview from '@/components/common/VideoPreview.vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -28,10 +28,10 @@ let bannerTimer = null
 
 // ─── Section data ───
 const visionItems = [
-    { icon:'🌐',t:'全球知识共享',d:'AI让优质教育资源跨越地域限制，每个人都能平等获取知识' },
-    { icon:'🧠',t:'智能个性化学习',d:'基于学习行为分析，为每位学习者定制专属学习路径' },
-    { icon:'🚀',t:'前沿技术驱动',d:'融合LLM、RAG、多模态等最新AI技术赋能教育创新' },
-    { icon:'🤝',t:'人机协作共生',d:'AI讲师与人类教师协同教学，创造最佳学习体验' },
+    { icon:Connection,t:'全球知识共享',d:'AI让优质教育资源跨越地域限制，每个人都能平等获取知识' },
+    { icon:Cpu,t:'智能个性化学习',d:'基于学习行为分析，为每位学习者定制专属学习路径' },
+    { icon:Promotion,t:'前沿技术驱动',d:'融合LLM、RAG、多模态等最新AI技术赋能教育创新' },
+    { icon:Link,t:'人机协作共生',d:'AI讲师与人类教师协同教学，创造最佳学习体验' },
 ]
 const historyItems = [
     { y:'2024.06',t:'AI World 正式上线',d:'首个AI原生内容平台诞生' },
@@ -177,7 +177,7 @@ onUnmounted(() => {
             <div class="aw-sec-right">
                 <div class="aw-vision-grid">
                     <div v-for="v in visionItems" :key="v.t" class="aw-vision-card">
-                        <span class="aw-vc-icon">{{v.icon}}</span>
+                        <el-icon class="aw-vc-icon" :size="24"><component :is="v.icon"/></el-icon>
                         <h4>{{v.t}}</h4>
                         <p>{{v.d}}</p>
                     </div>
@@ -300,7 +300,7 @@ onUnmounted(() => {
 /* ═══════ VIDEO HERO ═══════ */
 .aw-video-hero { position:relative;z-index:1;width:100%;height:85vh;overflow:hidden; }
 .aw-hero-video { position:absolute;inset:0;width:100%;height:100%;object-fit:cover; }
-.aw-video-overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(6,11,24,1) 0%,rgba(6,11,24,.6) 15%,rgba(6,11,24,.2) 40%,rgba(6,11,24,.05) 70%,rgba(6,11,24,.02) 100%);z-index:1; }
+.aw-video-overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(6,11,24,1) 0%,rgba(6,11,24,.6) 10%,rgba(6,11,24,.2) 40%,rgba(6,11,24,.03) 70%,transparent 100%);z-index:1; }
 .aw-video-info { position:absolute;bottom:15%;left:0;right:0;z-index:2;text-align:center; }
 .aw-video-eyebrow { font-family:var(--font-display);font-size:12px;letter-spacing:6px;color:rgba(0,212,255,.7);margin-bottom:16px; }
 .aw-video-info h1 { font-family:var(--font-display);font-size:52px;font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-1px; }

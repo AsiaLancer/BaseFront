@@ -125,17 +125,34 @@ onMounted(
             <!-- 左侧品牌区域 -->
             <div class="login-brand">
                 <div class="brand-content">
+                    <div class="brand-icon">
+                        <span class="bi-ring"></span>
+                        <span class="bi-text">昇</span>
+                    </div>
                     <h1 class="brand-title" @click="goHome">昇新</h1>
                     <p class="brand-subtitle">传承千年智慧 · 启迪当代学人</p>
-                    <div class="brand-features">
-                        <div class="feature-item">
-                            <span class="feature-icon">📚</span>
-                            <span class="feature-text">海量课程资源</span>
+                    <!-- 宣传轮播 -->
+                    <div class="brand-carousel">
+                        <div class="bc-slide">
+                            <img src="https://picsum.photos/seed/promo1/360/180" alt="">
+                            <p class="bc-text">海量精品课程，随时随地学习</p>
                         </div>
-                        <div class="feature-item">
-                            <span class="feature-icon">🎓</span>
-                            <span class="feature-text">名师在线授课</span>
+                        <div class="bc-slide">
+                            <img src="https://picsum.photos/seed/promo2/360/180" alt="">
+                            <p class="bc-text">AI 智能伴学，个性化学习路径</p>
                         </div>
+                        <div class="bc-slide">
+                            <img src="https://picsum.photos/seed/promo3/360/180" alt="">
+                            <p class="bc-text">名师在线授课，成就更好的你</p>
+                        </div>
+                    </div>
+                    <!-- 数据行 -->
+                    <div class="brand-stats">
+                        <div class="bs-item"><b>128+</b><span>精品课程</span></div>
+                        <div class="bs-div"></div>
+                        <div class="bs-item"><b>86</b><span>合作名师</span></div>
+                        <div class="bs-div"></div>
+                        <div class="bs-item"><b>52K+</b><span>在读学员</span></div>
                     </div>
                 </div>
             </div>
@@ -286,6 +303,47 @@ onMounted(
 .login-container:hover>img:nth-child(1) { transform: translateX(4px); }
 .login-container:hover>img:nth-child(2) { transform: translateX(-4px); }
 .login-container:hover>img:nth-child(3) { transform: translateY(-4px); }
+
+/* Left brand — fixed width */
+.login-brand { flex: 0 0 420px !important; }
+.brand-content { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+
+/* Brand icon */
+.brand-icon { position:relative; width:52px; height:52px; margin-bottom:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.bi-ring { position:absolute; inset:0; border-radius:50%; border:1px solid rgba(0,212,255,.1); animation:biSpin 12s linear infinite; }
+.bi-text { font-family:'KaiTi','STKaiti',serif; font-size:26px; color:#00d4ff; position:relative; z-index:1; }
+@keyframes biSpin { to{transform:rotate(360deg)} }
+
+/* Title */
+.brand-title { animation:brandPulse 3s ease-in-out infinite; margin-bottom:4px; }
+@keyframes brandPulse { 0%,100%{filter:drop-shadow(0 0 6px rgba(0,212,255,.15))} 50%{filter:drop-shadow(0 0 14px rgba(0,212,255,.3))} }
+.brand-subtitle { margin-bottom:20px; }
+
+/* Carousel */
+.brand-carousel { position:relative; width:360px; height:240px; border-radius:10px; overflow:hidden; flex-shrink:0; }
+.bc-slide { position:absolute; inset:0; display:flex; flex-direction:column; animation:carouselSlide 9s infinite; }
+.bc-slide:nth-child(1) { animation-delay:0s; }
+.bc-slide:nth-child(2) { animation-delay:3s; }
+.bc-slide:nth-child(3) { animation-delay:6s; }
+.bc-slide img { width:100%; height:180px; object-fit:cover; border-radius:10px 10px 0 0; flex-shrink:0; }
+.bc-text { font-size:14px; color:var(--text-secondary); text-align:center; padding:16px 8px 0; margin:0; }
+@keyframes carouselSlide {
+    0%   { transform:translateX(100%); }
+    5%   { transform:translateX(0); }
+    28%  { transform:translateX(0); }
+    33%  { transform:translateX(-100%); }
+    100% { transform:translateX(-100%); }
+}
+
+/* Stats row */
+.brand-stats { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 16px; }
+.bs-item { text-align: center; }
+.bs-item b { display: block; font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text-primary); }
+.bs-item span { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
+.bs-div { width: 1px; height: 26px; background: var(--border-subtle); }
+
+/* Hide old features */
+.brand-features { display:none !important; }
 
 /* Social login */
 .social-login { margin-top: 24px; text-align: center; }

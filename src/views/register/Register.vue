@@ -187,12 +187,11 @@ const handleSubmit = async () => {
     <div class="register-page">
         <!-- 背景装饰 -->
         <div class="register-bg">
-            <div class="bg-circle circle-1"></div>
-            <div class="bg-circle circle-2"></div>
-            <div class="bg-circle circle-3"></div>
-            <div class="bg-circle circle-4"></div>
+            <div class="bg-glow bg-glow-1"></div>
+            <div class="bg-glow bg-glow-2"></div>
+            <div class="bg-grid"></div>
             <div class="stars-container">
-                <div v-for="i in 200" :key="i" class="star" :style="getStarStyle()"></div>
+                <div v-for="i in 100" :key="i" class="star" :style="getStarStyle()"></div>
             </div>
         </div>
         <!-- 注册容器 -->
@@ -354,4 +353,14 @@ const handleSubmit = async () => {
     background-size: cover;
     background-position: center;
 }
+
+/* Background */
+.register-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.bg-glow { position: absolute; border-radius: 50%; filter: blur(100px); opacity: .05; }
+.bg-glow-1 { width: 500px; height: 400px; background: radial-gradient(circle, #00d4ff, transparent 70%); top: -10%; right: -8%; animation: glowDrift 14s ease-in-out infinite; }
+.bg-glow-2 { width: 400px; height: 350px; background: radial-gradient(circle, #8b5cf6, transparent 70%); bottom: -8%; left: -5%; animation: glowDrift 18s ease-in-out infinite reverse; }
+@keyframes glowDrift { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-30px,20px) scale(1.2)} 66%{transform:translate(20px,-15px) scale(.85)} }
+.bg-grid { position: absolute; inset: 0; opacity: .015;
+    background-image: linear-gradient(rgba(0,212,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,.5) 1px, transparent 1px);
+    background-size: 50px 50px; }
 </style>

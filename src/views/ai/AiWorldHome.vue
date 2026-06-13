@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
-import { ArrowRight, VideoPlay, Star, Fire } from '@element-plus/icons-vue'
+import { ArrowRight, VideoPlay, Star } from '@element-plus/icons-vue'
 import VideoPreview from '@/components/common/VideoPreview.vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -66,30 +66,29 @@ const streamers = [
 // ─── Three.js background ───
 let scene, camera, renderer, animId
 function initThree() {
-    const el = document.querySelector('.aw-bg-canvas')
-    if (!el) return
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    el.appendChild(renderer.domElement)
-    camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.5, 50)
-    camera.position.z = 8
-    scene = new THREE.Scene()
-    // Subtle floating particles
-    const geo = new THREE.BufferGeometry()
-    const count = 200
-    const pos = new Float32Array(count * 3)
-    for (let i = 0; i < count * 3; i += 3) {
-        pos[i] = (Math.random() - 0.5) * 16
-        pos[i + 1] = (Math.random() - 0.5) * 10
-        pos[i + 2] = (Math.random() - 0.5) * 4 - 2
-    }
-    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3))
-    const mat = new THREE.PointsMaterial({ size: 0.02, color: 0x00d4ff, transparent: true, opacity: 0.4, blending: THREE.AdditiveBlending, depthWrite: false })
-    scene.add(new THREE.Points(geo, mat))
-    function loop() { animId = requestAnimationFrame(loop); scene.children[0].rotation.y += 0.0003; renderer.render(scene, camera) }
-    loop()
-    window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight) })
+    try {
+        const el = document.querySelector('.aw-bg-canvas')
+        if (!el) return
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
+        renderer.setSize(window.innerWidth, window.innerHeight)
+        el.appendChild(renderer.domElement)
+        camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.5, 50)
+        camera.position.z = 8
+        scene = new THREE.Scene()
+        const geo = new THREE.BufferGeometry()
+        const count = 150; const pos = new Float32Array(count * 3)
+        for (let i = 0; i < count * 3; i += 3) {
+            pos[i] = (Math.random() - 0.5) * 16
+            pos[i + 1] = (Math.random() - 0.5) * 10
+            pos[i + 2] = (Math.random() - 0.5) * 4 - 2
+        }
+        geo.setAttribute('position', new THREE.BufferAttribute(pos, 3))
+        const mat = new THREE.PointsMaterial({ size: 0.02, color: 0x00d4ff, transparent: true, opacity: 0.3, blending: THREE.AdditiveBlending, depthWrite: false })
+        scene.add(new THREE.Points(geo, mat))
+        !function l(){ animId = requestAnimationFrame(l); scene.children[0].rotation.y += 0.0003; renderer.render(scene, camera) }()
+        window.addEventListener('resize', () => { if(camera){ camera.aspect = window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight) } })
+    } catch(e) { console.warn('Three.js init failed:', e) }
 }
 
 // ─── GSAP Scroll ───
@@ -128,15 +127,23 @@ onUnmounted(() => {
 
     <!-- ═══════ FULL-WIDTH VIDEO ═══════ -->
     <section class="aw-video-hero">
-        <video :src="heroVideo" autoplay muted loop playsinline class="aw-hero-video"></video>
+        <video :src="heroVideo" autoplay muted="muted" loop="loop" playsinline
+            class="aw-hero-video"
+            @error="e => e.target.style.display='none'"
+            @ended="e => { e.target.currentTime = 0; e.target.play() }"></video>
         <div class="aw-video-overlay"></div>
         <div class="aw-video-info">
             <p class="aw-video-eyebrow">WELCOME TO AI WORLD</p>
             <h1>探索无限AI创作</h1>
             <p class="aw-video-sub">AI原生内容平台 · 虚拟讲师 · 智能直播 · 创意无限</p>
-            <el-button type="primary" size="large" round class="aw-video-btn" @click="router.push('/ai-world/videos')">
-                开始探索 <el-icon class="ml-2"><ArrowRight/></el-icon>
-            </el-button>
+            <div class="aw-video-actions">
+                <el-button type="primary" size="large" round class="aw-video-btn" @click="router.push('/ai-world/videos')">
+                    <el-icon :size="18"><VideoPlay/></el-icon> 探索视频
+                </el-button>
+                <el-button size="large" round class="aw-video-btn-ghost" @click="router.push('/ai-world/live')">
+                    进入直播
+                </el-button>
+            </div>
         </div>
     </section>
 
@@ -288,22 +295,24 @@ onUnmounted(() => {
 /* ═══════ ROOT ═══════ */
 .aw-root { position:relative; min-height:100vh; background:var(--surface-root); overflow-x:hidden; }
 .aw-bg-canvas { position:fixed;inset:0;z-index:0;pointer-events:none; }
-.aw-bg-canvas :deep(canvas) { display:block; }
+.aw-bg-canvas :deep(canvas) { display:block !important; }
 
 /* ═══════ VIDEO HERO ═══════ */
 .aw-video-hero { position:relative;z-index:1;width:100%;height:85vh;overflow:hidden; }
 .aw-hero-video { position:absolute;inset:0;width:100%;height:100%;object-fit:cover; }
-.aw-video-overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(6,11,24,.95) 0%,rgba(6,11,24,.3) 40%,rgba(6,11,24,.1) 100%);z-index:1; }
+.aw-video-overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(6,11,24,1) 0%,rgba(6,11,24,.6) 15%,rgba(6,11,24,.2) 40%,rgba(6,11,24,.05) 70%,rgba(6,11,24,.02) 100%);z-index:1; }
 .aw-video-info { position:absolute;bottom:15%;left:0;right:0;z-index:2;text-align:center; }
 .aw-video-eyebrow { font-family:var(--font-display);font-size:12px;letter-spacing:6px;color:rgba(0,212,255,.7);margin-bottom:16px; }
 .aw-video-info h1 { font-family:var(--font-display);font-size:52px;font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-1px; }
 .aw-video-sub { font-size:17px;color:rgba(255,255,255,.5);margin-bottom:32px; }
 .aw-video-btn { --el-button-bg-color:#00d4ff;--el-button-border-color:#00d4ff;--el-button-hover-bg-color:#33e0ff;height:50px;font-size:16px;padding:0 32px; }
+.aw-video-actions { display:flex;gap:12px;justify-content:center; }
+.aw-video-btn-ghost { height:50px;font-size:16px;border-color:rgba(255,255,255,.2)!important;color:#fff!important; }
 
 /* ═══════ CAROUSEL ═══════ */
-.aw-carousel { position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:40px 0 80px; }
-.aw-caro-track { border-radius:20px;overflow:hidden; }
-.aw-caro-slide { position:relative;aspect-ratio:21/7;background:var(--surface-glass); }
+.aw-carousel { position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:60px 0 100px; }
+.aw-caro-track { border-radius:24px;overflow:hidden; }
+.aw-caro-slide { position:relative;aspect-ratio:21/9;background:var(--surface-glass); }
 .aw-caro-slide img { width:100%;height:100%;object-fit:cover; }
 .aw-caro-text { position:absolute;left:0;bottom:0;padding:40px;background:linear-gradient(transparent,rgba(6,11,24,.9));right:0; }
 .aw-caro-tag { display:inline-block;padding:3px 12px;border-radius:9999px;font-size:11px;background:rgba(0,212,255,.25);color:#00d4ff;margin-bottom:10px; }

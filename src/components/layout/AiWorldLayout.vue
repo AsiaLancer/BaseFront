@@ -99,8 +99,8 @@ function onCmd(cmd) {
 .aw-tag { font-size:10px;color:#8b5cf6;letter-spacing:3px;text-transform:uppercase;border:1px solid rgba(139,92,246,.2);padding:1px 6px;border-radius:4px; }
 .aw-back-link { display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--text-muted);text-decoration:none;padding:6px 12px;border-radius:8px;border:1px solid var(--border-subtle);transition:all .2s;flex-shrink:0; }
 .aw-back-link:hover { color:#00d4ff;border-color:rgba(0,212,255,.2); }
-.aw-nav { display:flex;gap:0; }
-.aw-nav-link { padding:8px 16px;font-size:14px;color:var(--text-secondary);text-decoration:none;border-radius:8px;transition:all .2s; }
+.aw-nav { display:flex;gap:8px; }
+.aw-nav-link { padding:8px 22px;font-size:14px;color:var(--text-secondary);text-decoration:none;border-radius:8px;transition:all .2s; }
 .aw-nav-link:hover { color:var(--text-primary); }
 .aw-nav-active { color:#00d4ff!important;background:rgba(0,212,255,.06); }
 .aw-actions { display:flex;align-items:center;gap:12px;margin-left:auto;flex-shrink:0; }

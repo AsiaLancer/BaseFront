@@ -234,6 +234,12 @@ const viewRoutes = [
         component: () => import('@/views/video/VideoWatch.vue'),
         meta: { title: '视频播放' }
       },
+      {
+        path: 'live/:id',
+        name: 'AiWorldLiveRoom',
+        component: () => import('@/views/ai/AiWorldLiveRoom.vue'),
+        meta: { title: '直播间' }
+      },
     ]
   },
   {

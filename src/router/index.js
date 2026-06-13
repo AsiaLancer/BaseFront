@@ -213,14 +213,14 @@ const viewRoutes = [
       {
         path: 'live',
         name: 'AiWorldLive',
-        component: () => import('@/views/ai/AiWorldHome.vue'),
-        meta: { title: '直播' }
+        component: () => import('@/views/ai/AiWorldLive.vue'),
+        meta: { title: 'AI直播' }
       },
       {
         path: 'videos',
         name: 'AiWorldVideos',
-        component: () => import('@/views/ai/AiWorldHome.vue'),
-        meta: { title: '视频' }
+        component: () => import('@/views/ai/AiWorldVideos.vue'),
+        meta: { title: 'AI视频' }
       },
       {
         path: 'video/:id',

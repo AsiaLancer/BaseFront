@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import { useTheme } from '@/utils/useTheme'
+import SettingsDrawer from '@/components/common/SettingsDrawer.vue'
 import {
     Search, Bell, Setting, User,
     SwitchButton, CaretBottom, ChatDotRound, Sunny, Moon
@@ -22,6 +23,7 @@ const userInfo = computed(() => userStore.userInfo)
 
 const searchQuery = ref('')
 const scrolled = ref(false)
+const showSettings = ref(false)
 
 if (typeof window !== 'undefined') {
     window.addEventListener('scroll', () => { scrolled.value = window.scrollY > 20 }, { passive: true })
@@ -37,7 +39,7 @@ async function handleLogout() { await userStore.logout(); router.push('/login') 
 function onCmd(cmd) {
     if (cmd === 'profile') goProfile()
     else if (cmd === 'aichat') goAI()
-    else if (cmd === 'settings') goSettings()
+    else if (cmd === 'settings') showSettings.value = true
     else if (cmd === 'logout') handleLogout()
 }
 </script>
@@ -108,6 +110,7 @@ function onCmd(cmd) {
             </div>
         </div>
     </header>
+    <SettingsDrawer :visible="showSettings" @close="showSettings=false" />
 </template>
 
 <style scoped>

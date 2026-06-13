@@ -3,18 +3,15 @@ import { ref, computed, reactive, onMounted, nextTick } from 'vue'
 import { useUserStore } from '@/stores/user'
 import { useRouter } from 'vue-router'
 import {
-    User, Edit, Star, Notebook, Medal, Setting, Lock, Bell,
-    Camera, Check, Close, Clock, Collection, SwitchButton, Sunny, Moon,
-    ArrowRight
+    User, Edit, Notebook, Medal, Setting,
+    Camera, Clock, Collection,
 } from '@element-plus/icons-vue'
-import { useTheme } from '@/utils/useTheme'
+import SettingsDrawer from '@/components/common/SettingsDrawer.vue'
 import { ElMessage } from 'element-plus'
 import gsap from 'gsap'
 
 const router = useRouter()
 const userStore = useUserStore()
-const { getEffectiveTheme, toggleTheme } = useTheme()
-
 const user = computed(() => userStore.userInfo || {})
 const isLoggedIn = computed(() => userStore.isLoggedIn)
 const username = computed(() => userStore.username || '未登录')
@@ -224,27 +221,7 @@ onMounted(async () => {
         </div>
     </div>
 
-    <!-- ═══════ SETTINGS DRAWER ═══════ -->
-    <Transition name="drawer">
-    <div v-if="showSettings" class="up-settings-overlay" @click.self="showSettings=false">
-        <div class="up-settings-panel">
-            <div class="up-settings-head">
-                <h3>设置</h3>
-                <el-button text @click="showSettings=false"><el-icon><Close/></el-icon></el-button>
-            </div>
-            <div class="up-settings-body">
-                <div class="up-setting-item" @click="toggleTheme">
-                    <span><el-icon><component :is="isDark?Sunny:Moon"/></el-icon> 主题切换</span>
-                    <span class="up-setting-val">{{ isDark?'暗色':'亮色' }}</span>
-                </div>
-                <div class="up-setting-item"><span><el-icon><Lock/></el-icon> 隐私设置</span><el-icon><ArrowRight/></el-icon></div>
-                <div class="up-setting-item"><span><el-icon><Bell/></el-icon> 通知设置</span><el-icon><ArrowRight/></el-icon></div>
-                <div class="up-setting-divider"></div>
-                <div class="up-setting-item danger" @click="handleLogout"><span><el-icon><SwitchButton/></el-icon> 退出登录</span></div>
-            </div>
-        </div>
-    </div>
-    </Transition>
+    <SettingsDrawer :visible="showSettings" @close="showSettings=false" />
 
 </div>
 </template>
@@ -332,23 +309,6 @@ onMounted(async () => {
 .up-achi-badge { display:inline-block;margin-top:8px;padding:2px 10px;border-radius:9999px;font-size:10px;background:rgba(0,212,255,.1);color:#00d4ff; }
 
 .up-empty { text-align:center;padding:60px 0;color:var(--text-muted);font-size:15px;grid-column:1/-1; }
-
-/* ═══════ SETTINGS ═══════ */
-.up-settings-overlay { position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.5);display:flex;justify-content:flex-end; }
-.up-settings-panel { width:360px;height:100%;background:var(--surface-root);border-left:1px solid var(--border-subtle);display:flex;flex-direction:column; }
-.up-settings-head { display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--border-subtle); }
-.up-settings-head h3 { font-family:var(--font-display);font-size:16px;color:var(--text-primary); }
-.up-settings-body { flex:1;padding:16px 0; }
-.up-setting-item { display:flex;justify-content:space-between;align-items:center;padding:14px 24px;cursor:pointer;transition:background .15s;color:var(--text-secondary);font-size:14px; }
-.up-setting-item:hover { background:var(--surface-glass-hover); }
-.up-setting-item span { display:inline-flex;align-items:center;gap:10px; }
-.up-setting-item.danger { color:#f87171; }
-.up-setting-val { font-size:12px;color:var(--text-muted); }
-.up-setting-divider { height:1px;background:var(--border-subtle);margin:8px 24px; }
-.drawer-enter-active,.drawer-leave-active { transition:opacity .25s; }
-.drawer-enter-active .up-settings-panel,.drawer-leave-active .up-settings-panel { transition:transform .25s ease; }
-.drawer-enter-from,.drawer-leave-to { opacity:0; }
-.drawer-enter-from .up-settings-panel,.drawer-leave-to .up-settings-panel { transform:translateX(100%); }
 
 @media(max-width:768px){
     .up-root{padding:36px 16px 60px}

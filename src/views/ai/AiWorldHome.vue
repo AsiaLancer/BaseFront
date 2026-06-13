@@ -22,9 +22,10 @@ const filteredLive = computed(() => {
 
 // Hero carousel
 const banners = [
-    { t:'探索AI的无限可能',sub:'加入墨学AI世界 · 发现精彩内容',color:'#00d4ff',img:'xn1.png' },
-    { t:'Spring Boot 3.0 实战',sub:'从零搭建微服务架构',color:'#8b5cf6',img:'xn2.png' },
-    { t:'《论语》精读系列',sub:'墨韵先生带你读懂儒家经典',color:'#fbbf24',img:'xn3.png' },
+    { t:'探索AI的无限可能',sub:'加入墨学AI世界 · 发现精彩内容 · 无限创作',color:'#00d4ff',img:'xn1.png',tag:'热门推荐' },
+    { t:'大模型应用开发实战',sub:'凌风老师 · 从Prompt到Agent全流程 · 已更新40课时',color:'#8b5cf6',img:'xn4.png',tag:'AI技术' },
+    { t:'《论语》精读系列',sub:'墨韵先生带你读懂儒家经典 · 20讲完整版',color:'#fbbf24',img:'xn3.png',tag:'人文经典' },
+    { t:'Python数据科学从零到精通',sub:'程远老师 · 32课时系统课程 · 实战项目驱动',color:'#3b82f6',img:'xn2.png',tag:'编程开发' },
 ]
 const bannerIdx = ref(0)
 
@@ -75,15 +76,36 @@ onUnmounted(() => { clearInterval(bannerTimer) })
 
     <!-- ═══════ HERO BANNER ═══════ -->
     <div class="aw-hero">
-        <div class="aw-banner" :style="{'--bc':banners[bannerIdx].color}">
-            <img :src="imgSrc(banners[bannerIdx].img)" alt="" class="aw-banner-img"/>
-            <div class="aw-banner-info">
-                <h1>{{banners[bannerIdx].t}}</h1>
-                <p>{{banners[bannerIdx].sub}}</p>
-                <el-button type="primary" round size="large" class="aw-banner-btn">立即观看</el-button>
+        <div class="aw-banner">
+            <Transition name="banner-fade" mode="out-in">
+                <div :key="bannerIdx" class="aw-banner-slide">
+                    <img :src="imgSrc(banners[bannerIdx].img)" alt="" class="aw-banner-cover"/>
+                    <div class="aw-banner-overlay"></div>
+                    <div class="aw-banner-info">
+                        <span class="aw-banner-tag">{{banners[bannerIdx].tag}}</span>
+                        <h1>{{banners[bannerIdx].t}}</h1>
+                        <p>{{banners[bannerIdx].sub}}</p>
+                        <el-button type="primary" round size="large" class="aw-banner-btn">
+                            {{bannerIdx===2?'立即观看':'立即观看'}}
+                        </el-button>
+                    </div>
+                </div>
+            </Transition>
+            <!-- Preview thumbnails row -->
+            <div class="aw-banner-thumbs">
+                <div v-for="(b,i) in banners" :key="i" class="aw-banner-thumb" :class="{active:i===bannerIdx}" @click="bannerIdx=i">
+                    <img :src="imgSrc(b.img)" alt=""/>
+                </div>
             </div>
-            <div class="aw-banner-dots">
-                <span v-for="(b,i) in banners" :key="i" :class="{active:i===bannerIdx}" @click="bannerIdx=i"></span>
+        </div>
+        <!-- Announcements sidebar -->
+        <div class="aw-announce">
+            <h3>📢 AI世界公告</h3>
+            <div class="aw-announce-list">
+                <div v-for="(a,i) in [{t:'AI虚拟主播大赛报名开启',d:'06-15'},{t:'新AI讲师「星尘」入驻',d:'06-14'},{t:'AI漫画创作工具2.0上线',d:'06-12'},{t:'周末AI音乐会直播预告',d:'06-10'}]" :key="i" class="aw-announce-item">
+                    <span class="aw-ann-text">{{a.t}}</span>
+                    <span class="aw-ann-date">{{a.d}}</span>
+                </div>
             </div>
         </div>
     </div>
@@ -157,16 +179,35 @@ onUnmounted(() => { clearInterval(bannerTimer) })
 .aw-home { max-width:1400px; margin:0 auto; padding:0 24px 60px; }
 
 /* ═══════ BANNER ═══════ */
-.aw-hero { margin-bottom:24px; }
-.aw-banner { position:relative; height:320px; border-radius:16px; overflow:hidden; background:linear-gradient(135deg,var(--bc,#0a1030),#0a1030); display:flex;align-items:center; }
-.aw-banner-img { position:absolute;right:0;top:0;width:55%;height:100%;object-fit:cover;mask-image:linear-gradient(to left,black 60%,transparent);-webkit-mask-image:linear-gradient(to left,black 60%,transparent); }
-.aw-banner-info { position:relative;z-index:1;padding:48px;max-width:50%; }
-.aw-banner-info h1 { font-family:var(--font-display);font-size:30px;font-weight:700;color:#fff;margin-bottom:12px; }
-.aw-banner-info p { font-size:15px;color:rgba(255,255,255,.6);margin-bottom:24px; }
+.aw-hero { margin-bottom:24px;display:flex;gap:12px; }
+.aw-banner { flex:1;display:flex;flex-direction:column;gap:8px; }
+.aw-banner-slide { position:relative;height:300px;border-radius:16px;overflow:hidden;background:#0a1030; }
+.aw-banner-cover { width:100%;height:100%;object-fit:cover;display:block; }
+.aw-banner-overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(10,16,48,.9) 0%,rgba(10,16,48,.4) 50%,rgba(10,16,48,.1) 100%); }
+.aw-banner-info { position:absolute;left:0;bottom:0;padding:40px 48px;z-index:2;max-width:55%; }
+.aw-banner-tag { display:inline-block;padding:3px 12px;border-radius:9999px;font-size:11px;color:#fff;background:rgba(0,212,255,.25);border:1px solid rgba(0,212,255,.35);margin-bottom:12px; }
+.aw-banner-info h1 { font-family:var(--font-display);font-size:28px;font-weight:700;color:#fff;margin-bottom:8px; }
+.aw-banner-info p { font-size:14px;color:rgba(255,255,255,.55);margin-bottom:20px; }
 .aw-banner-btn { --el-button-bg-color:#00d4ff;--el-button-border-color:#00d4ff;--el-button-hover-bg-color:#33e0ff; }
-.aw-banner-dots { position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2; }
-.aw-banner-dots span { width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .3s; }
-.aw-banner-dots span.active { background:#fff;width:24px;border-radius:4px; }
+
+/* Banner thumbnails */
+.aw-banner-thumbs { display:flex;gap:8px; }
+.aw-banner-thumb { width:80px;height:50px;border-radius:8px;overflow:hidden;cursor:pointer;opacity:.4;transition:all .2s;border:2px solid transparent;flex-shrink:0; }
+.aw-banner-thumb.active { opacity:1;border-color:#00d4ff; }
+.aw-banner-thumb:hover { opacity:.7; }
+.aw-banner-thumb img { width:100%;height:100%;object-fit:cover; }
+
+/* Announcements */
+.aw-announce { width:240px;flex-shrink:0;background:var(--surface-glass);border:1px solid var(--border-subtle);border-radius:14px;padding:18px;display:flex;flex-direction:column; }
+.aw-announce h3 { font-size:13px;color:var(--text-secondary);margin-bottom:14px;font-family:var(--font-display);letter-spacing:1px; }
+.aw-announce-list { display:flex;flex-direction:column;gap:2px;flex:1; }
+.aw-announce-item { display:flex;justify-content:space-between;align-items:center;padding:9px 10px;border-radius:8px;cursor:pointer;transition:background .15s; }
+.aw-announce-item:hover { background:var(--surface-glass-hover); }
+.aw-ann-text { font-size:12px;color:var(--text-secondary);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+.aw-ann-date { font-size:10px;color:var(--text-muted);margin-left:8px;flex-shrink:0; }
+
+.banner-fade-enter-active,.banner-fade-leave-active { transition:opacity .4s; }
+.banner-fade-enter-from,.banner-fade-leave-to { opacity:0; }
 
 /* ═══════ CATEGORIES ═══════ */
 .aw-cats { display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;padding:4px 0; }
@@ -221,6 +262,6 @@ onUnmounted(() => { clearInterval(bannerTimer) })
 .aw-rank-title { flex:1;font-size:13px;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
 .aw-rank-views { font-size:11px;color:var(--text-muted);flex-shrink:0; }
 
-@media(max-width:1024px){.aw-video-grid,.aw-live-grid{grid-template-columns:repeat(2,1fr)}.aw-sidebar{display:none} .aw-banner-info{padding:32px} .aw-banner-info h1{font-size:22px} }
-@media(max-width:768px){.aw-video-grid,.aw-live-grid{grid-template-columns:1fr}.aw-banner{height:200px}.aw-banner-info{padding:20px}.aw-banner-info h1{font-size:18px}.aw-banner-img{display:none}}
+@media(max-width:1024px){.aw-video-grid,.aw-live-grid{grid-template-columns:repeat(2,1fr)}.aw-sidebar{display:none}.aw-announce{display:none}.aw-banner-info{padding:32px}.aw-banner-info h1{font-size:22px} }
+@media(max-width:768px){.aw-video-grid,.aw-live-grid{grid-template-columns:1fr}.aw-banner-slide{height:200px}.aw-banner-info{padding:20px}.aw-banner-info h1{font-size:18px}.aw-banner-thumbs{display:none}}
 </style>

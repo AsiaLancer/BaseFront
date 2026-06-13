@@ -244,7 +244,7 @@ const handleSubmit = async () => {
                                 </el-col>
                                 <el-col :span="8">
                                     <el-button @click="handleSendCode" :loading="sendCodeLoading"
-                                        :disabled="sendCodeCooldown > 0" size="large" type="primary"
+                                        :disabled="sendCodeCooldown > 0" size="large" type="primary" class="send-code-btn"
                                         style="width: 100%">
                                         {{ sendCodeText }}
                                     </el-button>
@@ -323,6 +323,19 @@ const handleSubmit = async () => {
     </div>
 </template>
 <style scoped>
+/* Send code button */
+.send-code-btn { --el-button-bg-color:#00d4ff !important; --el-button-border-color:#00d4ff !important; --el-button-hover-bg-color:#33e0ff !important; --el-button-hover-border-color:#33e0ff !important; --el-button-text-color:#060b18 !important; }
+
+/* Submit button */
+.submit-btn {
+    --el-button-bg-color: #00d4ff !important;
+    --el-button-border-color: #00d4ff !important;
+    --el-button-hover-bg-color: #33e0ff !important;
+    --el-button-hover-border-color: #33e0ff !important;
+    --el-button-text-color: #060b18 !important;
+    --el-button-hover-text-color: #060b18 !important;
+}
+
 /* 密码强度 */
 .password-strength {
     margin-bottom: var(--spacing-base);

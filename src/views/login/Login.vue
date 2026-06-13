@@ -290,9 +290,18 @@ onMounted(
 .login-form :deep(.el-input__wrapper.is-focus) { box-shadow: 0 0 0 3px rgba(0,212,255,.1) !important; }
 
 /* Submit button — hover scale */
-.submit-btn { transition: transform .2s, box-shadow .2s !important; }
+.submit-btn {
+    transition: transform .2s, box-shadow .2s !important;
+    --el-button-bg-color: #00d4ff !important;
+    --el-button-border-color: #00d4ff !important;
+    --el-button-hover-bg-color: #33e0ff !important;
+    --el-button-hover-border-color: #33e0ff !important;
+    --el-button-text-color: #060b18 !important;
+    --el-button-hover-text-color: #060b18 !important;
+}
 .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,212,255,.25) !important; }
 .submit-btn:active { transform: scale(.98) !important; }
+.send-code-btn { --el-button-bg-color:#00d4ff !important; --el-button-border-color:#00d4ff !important; --el-button-hover-bg-color:#33e0ff !important; --el-button-hover-border-color:#33e0ff !important; --el-button-text-color:#060b18 !important; }
 
 /* Password toggle — spin on toggle */
 .pwd-toggle { transition: transform .3s; }

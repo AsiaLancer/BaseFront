@@ -2,6 +2,8 @@
 import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { Search, Collection, Reading, MagicStick, Monitor, Cpu, Star } from '@element-plus/icons-vue'
+import VideoPreview from '@/components/common/VideoPreview.vue'
+import mediaVid from '@/assets/media123.mp4'
 import gsap from 'gsap'
 
 const router = useRouter()
@@ -183,7 +185,7 @@ onMounted(async () => {
             @mouseenter="cardIn($event,$event.currentTarget)"
             @mouseleave="cardOut($event,$event.currentTarget)">
             <div class="cl-cover">
-                <img :src="courseImg(c.id)" :alt="c.t" loading="lazy" decoding="async" @load="imgLoad"/>
+                <img :src="courseImg(c.id)" :alt="c.t" loading="lazy" decoding="async" @load="imgLoad"/><VideoPreview :src="mediaVid" :poster="courseImg(c.id)"/>
                 <span class="cl-badge cl-lv">{{c.lv}}</span>
                 <span class="cl-badge" :class="c.p==='免费'?'cl-free':'cl-paid'">{{c.p}}</span>
             </div>

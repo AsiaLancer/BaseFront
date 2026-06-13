@@ -2,10 +2,13 @@
 import { ref, computed, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { Star, Clock, User, ArrowRight, Collection, ArrowLeft } from '@element-plus/icons-vue'
+import VideoPreview from '@/components/common/VideoPreview.vue'
+import mediaVid from '@/assets/media123.mp4'
 import gsap from 'gsap'
 
 const route = useRoute()
 const router = useRouter()
+const isAiWorld = window.location.pathname.startsWith('/ai-world')
 
 // ─── Mock API ───
 const delay = (ms=300) => new Promise(r => setTimeout(r, ms))
@@ -86,11 +89,12 @@ function toggleFav(){
 <template>
 <div class="cd-page" v-if="!loading&&course">
     <!-- Breadcrumb -->
-    <div class="cd-bread"><a @click="router.push('/course/courses')">全部课程</a> <span>/</span> <span>{{c.t}}</span></div>
+    <div class="cd-bread"><a @click="router.push(isAiWorld?'/ai-world':'/course/courses')">{{isAiWorld?'AI World':'全部课程'}}</a> <span>/</span> <span>{{c.t}}</span></div>
 
     <!-- Hero -->
     <div class="cd-hero">
-        <div class="cd-hero-img"><img :src="imgUrl" :alt="c.t"/></div>
+        <div class="cd-hero-img" @click="router.push((isAiWorld?'/ai-world':'/course')+'/watch/'+c.id)">
+                    <img :src="imgUrl" :alt="c.t"/><VideoPreview :src="mediaVid" :poster="imgUrl"/></div>
         <div class="cd-hero-body">
             <div class="cd-tags"><span v-for="s in c.skills" :key="s" class="cd-tag">{{s}}</span></div>
             <h1 class="cd-title">{{c.t}}</h1>
@@ -108,8 +112,8 @@ function toggleFav(){
                 <el-button size="large" round class="cd-fav-btn" :class="{favorited}" @click="toggleFav">
                     {{favorited?'已收藏':'收藏'}}
                 </el-button>
-                <el-button size="large" round class="cd-back-btn" @click="router.back()">
-                    <el-icon><ArrowLeft/></el-icon> 返回
+                <el-button size="large" round class="cd-back-btn" @click="router.push(isAiWorld?'/ai-world':'/course/courses')">
+                    <el-icon><ArrowLeft/></el-icon> 返回{{isAiWorld?'AI World':'课程'}}
                 </el-button>
             </div>
         </div>
@@ -176,7 +180,7 @@ function toggleFav(){
 
 /* Hero */
 .cd-hero{display:flex;gap:48px;align-items:flex-start;margin-bottom:48px}
-.cd-hero-img{flex:0 0 480px;border-radius:16px;overflow:hidden;aspect-ratio:16/10;background:var(--surface-glass)}
+.cd-hero-img{flex:0 0 480px;border-radius:16px;overflow:hidden;aspect-ratio:16/10;background:var(--surface-glass);position:relative}
 .cd-hero-img img{width:100%;height:100%;object-fit:cover}
 .cd-hero-body{flex:1;min-width:0;padding-top:4px}
 .cd-tags{display:flex;gap:6px;margin-bottom:16px}

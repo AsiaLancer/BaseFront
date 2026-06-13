@@ -186,6 +186,12 @@ const viewRoutes = [
         meta: { title: '课程详情' }
       },
       {
+        path: 'watch/:id',
+        name: 'CourseWatch',
+        component: () => import('@/views/video/VideoWatch.vue'),
+        meta: { title: '视频播放' }
+      },
+      {
         path: 'settings',
         name: 'CourseSetting',
         component: () => import('@/views/course/CourseSetting.vue'), // 使用相对路径
@@ -215,6 +221,18 @@ const viewRoutes = [
         name: 'AiWorldVideos',
         component: () => import('@/views/ai/AiWorldHome.vue'),
         meta: { title: '视频' }
+      },
+      {
+        path: 'video/:id',
+        name: 'AiWorldVideoDetail',
+        component: () => import('@/views/course/CourseDetail.vue'),
+        meta: { title: '视频详情' }
+      },
+      {
+        path: 'watch/:id',
+        name: 'AiWorldWatch',
+        component: () => import('@/views/video/VideoWatch.vue'),
+        meta: { title: '视频播放' }
       },
     ]
   },

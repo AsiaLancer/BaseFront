@@ -3,6 +3,8 @@ import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import { Search, ArrowRight, Collection, Reading, MagicStick, Monitor, DataAnalysis, Cpu, Document, Star, ChatDotRound } from '@element-plus/icons-vue'
+import VideoPreview from '@/components/common/VideoPreview.vue'
+import mediaVid from '@/assets/media123.mp4'
 import LightningBolt from '@/components/three/LightningBolt.vue'
 function imgSrc(name) { return new URL(`@/assets/imgs/${name}`, import.meta.url).href }
 import gsap from 'gsap'
@@ -183,7 +185,7 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
                 @mouseenter="cardIn($event,$event.currentTarget)"
                 @mouseleave="cardOut($event,$event.currentTarget)">
                 <div class="cc-cover">
-                    <img :src="imgSrc(c.img)" :alt="c.t" loading="lazy" decoding="async" @load="imgLoad"/>
+                    <img :src="imgSrc(c.img)" :alt="c.t" loading="lazy" decoding="async" @load="imgLoad"/><VideoPreview :src="mediaVid" :poster="imgSrc(c.img)"/>
                     <span class="cc-badge cc-lv">{{c.lv}}</span>
                     <span class="cc-badge" :class="c.p==='免费'?'cc-free':'cc-paid'">{{c.p}}</span>
                 </div>

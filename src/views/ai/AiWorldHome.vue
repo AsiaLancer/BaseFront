@@ -3,6 +3,28 @@ import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { Search, ArrowRight, Star, VideoPlay } from '@element-plus/icons-vue'
 import gsap from 'gsap'
+import VideoPreview from '@/components/common/VideoPreview.vue'
+import mediaVideo from '@/assets/media123.mp4'
+
+// Static image imports for banner
+import bn1 from '@/assets/imgs/xn1.png'
+import bn2 from '@/assets/imgs/xn2.png'
+import bn3 from '@/assets/imgs/xn3.png'
+import bn4 from '@/assets/imgs/xn4.png'
+import bn5 from '@/assets/imgs/xn5.png'
+import bn6 from '@/assets/imgs/xn6.png'
+import bn7 from '@/assets/imgs/xn7.png'
+import bn8 from '@/assets/imgs/xn8.png'
+import bn9 from '@/assets/imgs/xn9.png'
+import bn10 from '@/assets/imgs/xn10.png'
+import bn11 from '@/assets/imgs/xn11.png'
+import bn12 from '@/assets/imgs/xn12.png'
+import bn13 from '@/assets/imgs/xn13.png'
+import bn14 from '@/assets/imgs/xn14.png'
+import bn15 from '@/assets/imgs/xn15.png'
+
+const imgMap = { 'xn1':bn1,'xn2':bn2,'xn3':bn3,'xn4':bn4,'xn5':bn5,'xn6':bn6,'xn7':bn7,'xn8':bn8,'xn9':bn9,'xn10':bn10,'xn11':bn11,'xn12':bn12,'xn13':bn13,'xn14':bn14,'xn15':bn15 }
+function imgSrc(name) { return imgMap[name.replace('.png','')] || bn1 }
 
 const router = useRouter()
 
@@ -31,14 +53,14 @@ const bannerIdx = ref(0)
 
 // Videos
 const videos = [
-    { id:1,t:'深度学习入门：从感知机到Transformer',a:'凌风',v:128000,d:'32:15',img:'xn4.png',cat:'AI技术' },
-    { id:2,t:'《道德经》与现代生活哲学',a:'清虚先生',v:89000,d:'24:08',img:'xn5.png',cat:'人文历史' },
-    { id:3,t:'Rust异步编程实战指南',a:'无极',v:67000,d:'45:30',img:'xn6.png',cat:'编程开发' },
-    { id:4,t:'颜体楷书基本笔画精讲',a:'砚田墨香',v:45000,d:'18:22',img:'xn7.png',cat:'艺术设计' },
-    { id:5,t:'Kubernetes集群运维实战',a:'程远',v:92000,d:'56:40',img:'xn8.png',cat:'编程开发' },
-    { id:6,t:'Python数据可视化进阶',a:'程远',v:78000,d:'28:15',img:'xn9.png',cat:'编程开发' },
-    { id:7,t:'中国山水画技法入门',a:'丹青妙手',v:34000,d:'22:10',img:'xn10.png',cat:'艺术设计' },
-    { id:8,t:'大模型Prompt工程完全指南',a:'凌风',v:156000,d:'38:45',img:'xn11.png',cat:'AI技术' },
+    { id:1,t:'深度学习入门：从感知机到Transformer',a:'凌风',v:128000,d:'32:15',img:'xn4.png',cat:'AI技术',video:mediaVideo,time:'2小时前' },
+    { id:2,t:'《道德经》与现代生活哲学',a:'清虚先生',v:89000,d:'24:08',img:'xn5.png',cat:'人文历史',video:mediaVideo,time:'5小时前' },
+    { id:3,t:'Rust异步编程实战指南',a:'无极',v:67000,d:'45:30',img:'xn6.png',cat:'编程开发',video:mediaVideo,time:'昨天' },
+    { id:4,t:'颜体楷书基本笔画精讲',a:'砚田墨香',v:45000,d:'18:22',img:'xn7.png',cat:'艺术设计',video:mediaVideo,time:'昨天' },
+    { id:5,t:'Kubernetes集群运维实战',a:'程远',v:92000,d:'56:40',img:'xn8.png',cat:'编程开发',video:mediaVideo,time:'2天前' },
+    { id:6,t:'Python数据可视化进阶',a:'程远',v:78000,d:'28:15',img:'xn9.png',cat:'编程开发',video:mediaVideo,time:'3天前' },
+    { id:7,t:'中国山水画技法入门',a:'丹青妙手',v:34000,d:'22:10',img:'xn10.png',cat:'艺术设计',video:mediaVideo,time:'5天前' },
+    { id:8,t:'大模型Prompt工程完全指南',a:'凌风',v:156000,d:'38:45',img:'xn11.png',cat:'AI技术',video:mediaVideo,time:'1周前' },
 ]
 
 // Live streams
@@ -58,7 +80,6 @@ const rankings = [
     { t:'Kubernetes集群运维实战',v:92000 },
 ]
 
-function imgSrc(name) { return new URL(`@/assets/imgs/${name}`, import.meta.url).href }
 function fmtViews(n) { return n>=10000?(n/10000).toFixed(1)+'万':n }
 
 let bannerTimer = null
@@ -122,18 +143,19 @@ onUnmounted(() => { clearInterval(bannerTimer) })
             <section class="aw-section">
                 <div class="aw-sec-head">
                     <h2><el-icon><VideoPlay/></el-icon> 推荐视频</h2>
-                    <a @click="router.push('/ai-world/videos')">更多 <el-icon><ArrowRight/></el-icon></a>
+                    <a @click="router.push('/ai-world/video/'+v.id)">更多 <el-icon><ArrowRight/></el-icon></a>
                 </div>
                 <div class="aw-video-grid">
-                    <div v-for="v in filteredVideos" :key="v.id" class="awv-card" @click="router.push('/ai-world/videos')">
+                    <div v-for="v in filteredVideos" :key="v.id" class="awv-card" @click="router.push('/ai-world/video/'+v.id)">
                         <div class="awv-cover">
                             <img :src="imgSrc(v.img)" :alt="v.t"/>
+                        <VideoPreview :src="v.video" :poster="imgSrc(v.img)"/>
                             <span class="awv-duration">{{v.d}}</span>
                             <span class="awv-views">{{fmtViews(v.v)}} 观看</span>
                         </div>
                         <div class="awv-info">
                             <h3>{{v.t}}</h3>
-                            <p>{{v.a}}</p>
+                            <p>{{v.a}}<span class="awv-time">{{v.time}}</span></p>
                         </div>
                     </div>
                 </div>
@@ -239,7 +261,8 @@ onUnmounted(() => { clearInterval(bannerTimer) })
 .awv-views { position:absolute;bottom:6px;left:6px;padding:2px 6px;border-radius:4px;font-size:11px;background:rgba(0,0,0,.7);color:#fff; }
 .awv-info { padding:8px 2px; }
 .awv-info h3 { font-size:13px;color:var(--text-primary);line-height:1.4;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
-.awv-info p { font-size:11px;color:var(--text-muted); }
+.awv-info p { font-size:11px;color:var(--text-muted);display:flex;justify-content:space-between;align-items:center; }
+.awv-time { color:var(--text-muted);font-size:10px; }
 
 /* Live grid */
 .aw-live-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:16px; }

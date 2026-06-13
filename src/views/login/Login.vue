@@ -106,12 +106,11 @@ onMounted(
     <div class="login-page">
         <!-- 背景装饰 -->
         <div class="login-bg">
-            <div class="bg-circle circle-1"></div>
-            <div class="bg-circle circle-2"></div>
-            <div class="bg-circle circle-3"></div>
-            <div class="bg-circle circle-4"></div>
+            <div class="bg-glow bg-glow-1"></div>
+            <div class="bg-glow bg-glow-2"></div>
+            <div class="bg-grid"></div>
             <div class="stars-container">
-                <div v-for="i in 200" :key="i" class="star" :style="getStarStyle()"></div>
+                <div v-for="i in 100" :key="i" class="star" :style="getStarStyle()"></div>
             </div>
         </div>
         <!-- 登录容器 -->
@@ -219,13 +218,22 @@ onMounted(
                         </el-link>
                     </div>
 
-                    <!-- 测试账号提示 -->
-                    <div class="test-accounts">
-                        <p class="test-title">测试账号：</p>
-                        <div class="test-list">
-                            <span>admin/123456</span>
-                            <span>teacher/123456</span>
-                            <span>student/123456</span>
+                    <!-- 第三方登录 -->
+                    <div class="social-login">
+                        <p class="social-title">其他登录方式</p>
+                        <div class="social-list">
+                            <button class="social-btn wechat" title="微信登录">
+                                <span class="social-icon">💬</span>
+                                <span>微信</span>
+                            </button>
+                            <button class="social-btn qq" title="QQ登录">
+                                <span class="social-icon">🐧</span>
+                                <span>QQ</span>
+                            </button>
+                            <button class="social-btn github" title="GitHub登录">
+                                <span class="social-icon">🐙</span>
+                                <span>GitHub</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -234,9 +242,72 @@ onMounted(
     </div>
 </template>
 <style scoped>
-.login-container>img {
-    pointer-events: none;
+.login-container>img { pointer-events: none; }
+
+/* New immersive background */
+.login-bg { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.bg-glow { position: absolute; border-radius: 50%; filter: blur(100px); opacity: .05; }
+.bg-glow-1 { width: 500px; height: 400px; background: radial-gradient(circle, #00d4ff, transparent 70%); top: -10%; right: -8%; animation: glowDrift 14s ease-in-out infinite; }
+.bg-glow-2 { width: 400px; height: 350px; background: radial-gradient(circle, #8b5cf6, transparent 70%); bottom: -8%; left: -5%; animation: glowDrift 18s ease-in-out infinite reverse; }
+@keyframes glowDrift { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-30px,20px) scale(1.2)} 66%{transform:translate(20px,-15px) scale(.85)} }
+.bg-grid { position: absolute; inset: 0; opacity: .015;
+    background-image: linear-gradient(rgba(0,212,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,.5) 1px, transparent 1px);
+    background-size: 50px 50px; }
+
+/* ═══════ MICRO-INTERACTIONS ═══════ */
+
+/* Brand title glow pulse */
+.brand-title { animation: brandPulse 3s ease-in-out infinite; }
+@keyframes brandPulse { 0%,100%{filter:drop-shadow(0 0 6px rgba(0,212,255,.15))} 50%{filter:drop-shadow(0 0 14px rgba(0,212,255,.3))} }
+
+/* Feature items — hover lift */
+.feature-item { transition: transform .25s, border-color .25s, box-shadow .25s; cursor: default; }
+.feature-item:hover { transform: translateY(-2px); border-color: rgba(0,212,255,.15); box-shadow: 0 4px 16px rgba(0,0,0,.2); }
+
+/* Tab active — smooth slide */
+.tab-item { position: relative; transition: color .25s; }
+.tab-item.active::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: #00d4ff; animation: tabSlide .3s ease-out; }
+@keyframes tabSlide { from{transform:scaleX(0)} to{transform:scaleX(1)} }
+
+/* Input focus — glow ring */
+.login-form :deep(.el-input__wrapper.is-focus) { box-shadow: 0 0 0 3px rgba(0,212,255,.1) !important; }
+
+/* Submit button — hover scale */
+.submit-btn { transition: transform .2s, box-shadow .2s !important; }
+.submit-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,212,255,.25) !important; }
+.submit-btn:active { transform: scale(.98) !important; }
+
+/* Password toggle — spin on toggle */
+.pwd-toggle { transition: transform .3s; }
+.pwd-toggle:active { transform: rotate(180deg); }
+
+/* Sidebar images — subtle float */
+.login-container>img { transition: transform .4s ease-out; }
+.login-container:hover>img:nth-child(1) { transform: translateX(4px); }
+.login-container:hover>img:nth-child(2) { transform: translateX(-4px); }
+.login-container:hover>img:nth-child(3) { transform: translateY(-4px); }
+
+/* Social login */
+.social-login { margin-top: 24px; text-align: center; }
+.social-title { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+.social-title::before, .social-title::after { content: ''; flex: 1; height: 1px; background: var(--border-subtle); }
+.social-list { display: flex; gap: 10px; justify-content: center; }
+.social-btn {
+    display: flex; align-items: center; gap: 6px; padding: 8px 18px;
+    border-radius: 10px; border: 1px solid var(--border-default);
+    background: var(--surface-glass); color: var(--text-secondary);
+    font-size: 13px; cursor: pointer; transition: all .2s;
 }
+.social-btn:hover { border-color: var(--border-emphasis); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,.15); }
+.social-btn:active { transform: scale(.97); }
+.social-icon { font-size: 16px; }
+
+/* Forgot link — underline slide */
+.forgot-link { position: relative; text-decoration: none; background: linear-gradient(#00d4ff,#00d4ff) 0 100%/0 1px no-repeat; transition: background-size .3s; }
+.forgot-link:hover { background-size: 100% 1px; }
+
+/* Checkbox — color match */
+.form-options :deep(.el-checkbox__input.is-checked .el-checkbox__inner) { background-color: #00d4ff !important; border-color: #00d4ff !important; }
 
 .feature-item {
     display: flex;

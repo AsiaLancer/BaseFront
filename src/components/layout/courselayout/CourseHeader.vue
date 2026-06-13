@@ -5,7 +5,7 @@ import { useUserStore } from '@/stores/user'
 import { useTheme } from '@/utils/useTheme'
 import {
     Search, Bell, Setting, User,
-    SwitchButton, CaretBottom, ChatDotRound, Reading, Sunny, Moon
+    SwitchButton, CaretBottom, ChatDotRound, Sunny, Moon
 } from '@element-plus/icons-vue'
 
 const router = useRouter()
@@ -100,9 +100,7 @@ function onCmd(cmd) {
                 </template>
 
                 <template v-else>
-                    <el-button size="small" round class="!border-white/10 !text-text-secondary" @click="goLogin">
-                        登录
-                    </el-button>
+                    <el-button size="small" round @click="goLogin">登录</el-button>
                     <el-button size="small" type="primary" round @click="router.push('/register')">
                         注册
                     </el-button>
@@ -116,75 +114,58 @@ function onCmd(cmd) {
 /* ═══════════ STICKY GLASS NAVBAR ═══════════ */
 .nav-sticky {
     position: sticky; top: 0; z-index: 100; height: 64px;
-    background: color-mix(in srgb, var(--surface-root, #ffffff) 85%, transparent);
-    backdrop-filter: blur(12px) saturate(120%);
-    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    background: var(--surface-root);
     border-bottom: 1px solid var(--border-subtle);
-    transition: background .3s, backdrop-filter .3s, box-shadow .3s;
+    transition: box-shadow .3s;
 }
-.nav-sticky.nav-scrolled {
-    background: color-mix(in srgb, var(--surface-root, #ffffff) 92%, transparent);
-    backdrop-filter: blur(16px) saturate(120%);
-    -webkit-backdrop-filter: blur(16px) saturate(120%);
-    box-shadow: 0 1px 0 var(--border-subtle), 0 4px 24px rgba(0,0,0,.08);
-}
+.nav-sticky.nav-scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.06); }
 .nav-inner { max-width:1200px; margin:0 auto; padding:0 24px; height:100%; display:flex; align-items:center; gap:24px; }
-
-/* Brand */
-.nav-logo { background:none; border:none; cursor:pointer; display:flex; align-items:baseline; flex-shrink:0; padding:0; }
 
 /* Links */
 .nav-links { display:none; gap:2px; }
 @media(min-width:768px){.nav-links{display:flex}}
 .nav-link { padding:10px 16px; border-radius:8px; font-size:14px; color:var(--text-secondary); text-decoration:none; transition:color .2s, background .2s; min-height:44px; display:inline-flex; align-items:center; }
 .nav-link:hover { color:var(--text-primary); background:var(--surface-glass-hover); }
-.nav-link-active { color:#00e5ff !important; background:rgba(0,229,255,.06); }
+.nav-link-active { color:#00b8e6 !important; background:rgba(0,168,204,.08); }
 
 /* Actions */
 .nav-actions { display:flex; align-items:center; gap:12px; margin-left:auto; flex-shrink:0; }
 .nav-icon-btn { background:none; border:none; cursor:pointer; color:var(--text-secondary); transition:color .2s; display:flex; padding:4px; border-radius:8px; }
-.nav-icon-btn:hover { color:#00e5ff; background:var(--surface-glass-hover); }
+.nav-icon-btn:hover { color:#00b8e6; background:var(--surface-glass-hover); }
 .nav-user-btn { display:flex; align-items:center; background:none; border:none; cursor:pointer; padding:2px 10px 2px 2px; border-radius:9999px; transition:background .2s; color:var(--text-primary); }
 .nav-user-btn:hover { background:var(--surface-glass-hover); }
 
-/* Search — pill shape, theme-adaptive */
+/* Search */
 .nav-search-input :deep(.el-input__wrapper) {
     border-radius: 9999px !important;
     background: var(--surface-glass) !important;
-    border-color: var(--border-subtle) !important;
+    border-color: var(--border-default) !important;
     box-shadow: none !important;
     transition: all .25s !important;
     height: 38px !important;
     padding-inline: 16px !important;
 }
-.nav-search-input :deep(.el-input__wrapper:hover) {
-    border-color: var(--border-default) !important;
-    background: var(--surface-glass-hover) !important;
-}
+.nav-search-input :deep(.el-input__wrapper:hover) { border-color: var(--border-emphasis) !important; }
 .nav-search-input :deep(.el-input__wrapper.is-focus) {
     border-color: var(--brand-primary) !important;
-    box-shadow: 0 0 0 3px rgba(0,229,255,.1) !important;
-    background: var(--surface-glass-hover) !important;
+    box-shadow: 0 0 0 3px rgba(0,168,204,.15) !important;
 }
-.nav-search-input :deep(.el-input__inner) {
-    color: var(--text-primary) !important;
-    font-size: 13px !important;
-}
-.nav-search-input :deep(.el-input__inner::placeholder) {
-    color: var(--text-muted) !important;
-}
-.nav-search-input :deep(.el-input__prefix) {
-    color: var(--text-muted) !important;
-}
+.nav-search-input :deep(.el-input__inner) { color: var(--text-primary) !important; font-size: 13px !important; }
+.nav-search-input :deep(.el-input__inner::placeholder) { color: var(--text-muted) !important; }
+.nav-search-input :deep(.el-input__prefix) { color: var(--text-muted) !important; }
 
-/* Login/Register buttons in nav */
+/* Login/Register buttons */
 .nav-actions :deep(.el-button.is-round) {
     border-color: var(--border-default) !important;
     color: var(--text-secondary) !important;
 }
 .nav-actions :deep(.el-button--primary.is-round) {
-    border-color: transparent !important;
-    color: var(--text-inverse) !important;
+    --el-button-bg-color: #00d4ff !important;
+    --el-button-border-color: #00d4ff !important;
+    --el-button-hover-bg-color: #33e0ff !important;
+    --el-button-hover-border-color: #33e0ff !important;
+    --el-button-text-color: #060b18 !important;
+    --el-button-hover-text-color: #060b18 !important;
 }
 
 @media(max-width:640px){.nav-inner{padding:0 16px;gap:12px}}

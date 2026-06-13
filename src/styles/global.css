@@ -21,11 +21,7 @@ body {
     font-size: var(--font-size-base);
     line-height: 1.6;
     color: var(--text-primary);
-    background:
-        /* url('../assets/imgs/bg.png'); */
-        var(--gradient-bg);
-    background-size: cover;
-    background-attachment: fixed;
+    background: var(--surface-root, #060918);
     min-height: 100vh;
 }
 

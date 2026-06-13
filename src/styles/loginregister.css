@@ -103,7 +103,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-qihhei) 0%, var(--color-ancient) 100%);
+    background: linear-gradient(135deg, rgba(0,212,255,.08), rgba(139,92,246,.06), rgba(59,130,246,.04));
     padding: var(--spacing-xxl);
 }
 

@@ -30,11 +30,11 @@
     --color-space-700: #1a1f52;
 
     /* ─── Accent colors ─── */
-    --color-neon-cyan:    #00e5ff;
-    --color-neon-magenta: #ff2d95;
-    --color-neon-purple:  #a855f7;
-    --color-neon-amber:   #ffb800;
-    --color-neon-lime:    #39ff14;
+    --color-neon-cyan:    #00d4ff;
+    --color-neon-magenta: #f472b6;
+    --color-neon-purple:  #8b5cf6;
+    --color-neon-amber:   #fbbf24;
+    --color-neon-lime:    #34d399;
 
     /* ─── Semantic tokens ─── */
     --color-success: oklch(0.65 0.18 145);
@@ -84,12 +84,7 @@
     body {
         margin: 0;
         min-height: 100vh;
-        background:
-            radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,229,255,.04) 0%, transparent 60%),
-            linear-gradient(rgba(0,229,255,.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,229,255,.03) 1px, transparent 1px),
-            var(--surface-root, #060918);
-        background-size: 100% 100%, 60px 60px, 60px 60px;
+        background: var(--surface-root, #060918);
     }
 }
 

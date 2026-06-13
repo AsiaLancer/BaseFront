@@ -262,8 +262,8 @@ onMounted(
 
 .tab-item:hover,
 .tab-item.active {
-    color: var(--color-bronze);
-    border-bottom-color: var(--color-bronze);
+    color: #00d4ff;
+    border-bottom-color: #00d4ff;
 }
 
 .form-options {

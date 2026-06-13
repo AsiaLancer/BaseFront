@@ -4,41 +4,43 @@
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-    /* ══════════ COLOR PALETTE ══════════ */
+    /* ══════════ COLOR PALETTE — Future Tech ══════════ */
 
     /* ─── Brand Core ─── */
-    --brand-primary:       #00e5ff;
-    --brand-primary-hover: #33eaff;
-    --brand-secondary:     #ff2d95;
-    --brand-accent:        #ffb800;
-    --brand-purple:        #a855f7;
-    --brand-lime:          #39ff14;
+    --brand-primary:       #00d4ff;   /* electric cyan */
+    --brand-primary-hover: #33e0ff;
+    --brand-cyan:          #00d4ff;
+    --brand-cyan-hover:    #5cefff;
+    --brand-violet:        #8b5cf6;   /* tech violet */
+    --brand-purple:        #a78bfa;
+    --brand-blue:          #3b82f6;   /* electric blue */
+    --brand-teal:          #2dd4bf;   /* holographic teal */
 
     /* ─── Surfaces (Dark — default) ─── */
-    --surface-root:        #060918;
-    --surface-raised:      #0d1130;
-    --surface-overlay:     #111640;
-    --surface-glass:       rgba(255, 255, 255, 0.03);
-    --surface-glass-hover: rgba(255, 255, 255, 0.06);
-    --surface-glass-active:rgba(0, 229, 255, 0.06);
+    --surface-root:        #060b18;
+    --surface-raised:      #0a1030;
+    --surface-overlay:     #0f1640;
+    --surface-glass:       rgba(255, 255, 255, 0.025);
+    --surface-glass-hover: rgba(255, 255, 255, 0.05);
+    --surface-glass-active:rgba(0, 212, 255, 0.06);
 
     /* ─── Borders ─── */
-    --border-subtle:       rgba(255, 255, 255, 0.05);
-    --border-default:      rgba(255, 255, 255, 0.08);
-    --border-emphasis:     rgba(0, 229, 255, 0.2);
-    --border-glow:         rgba(0, 229, 255, 0.4);
+    --border-subtle:       rgba(255, 255, 255, 0.04);
+    --border-default:      rgba(255, 255, 255, 0.07);
+    --border-emphasis:     rgba(0, 212, 255, 0.18);
+    --border-glow:         rgba(0, 212, 255, 0.3);
 
-    /* ─── Text ─── */
-    --text-primary:        #e8e4f0;
-    --text-secondary:      #94a3b8;
-    --text-muted:          #64748b;
-    --text-inverse:        #060918;
+    /* ─── Text — cool hierarchy ─── */
+    --text-primary:        #e8e8f0;   /* cool white */
+    --text-secondary:      rgba(232,232,240,0.55);
+    --text-muted:          rgba(232,232,240,0.3);
+    --text-inverse:        #060b18;
 
     /* ─── Semantic ─── */
-    --color-success:       #39ff14;
-    --color-warning:       #ffb800;
-    --color-error:         #ff2d95;
-    --color-info:          #00e5ff;
+    --color-success:       #34d399;
+    --color-warning:       #fbbf24;
+    --color-error:         #f87171;
+    --color-info:          #00d4ff;
 
     /* ══════════ TYPOGRAPHY SCALE ══════════ */
     --font-display:  'Orbitron', 'Space Grotesk', system-ui, sans-serif;
@@ -170,19 +172,19 @@
 :root.theme-light {
     --surface-root:       #ffffff;
     --surface-raised:     #ffffff;
-    --surface-overlay:    #f5f5f5;
-    --surface-glass:      rgba(255, 255, 255, 0.7);
-    --surface-glass-hover:rgba(255, 255, 255, 0.85);
-    --surface-glass-active:rgba(0, 180, 220, 0.08);
-    --text-primary:       #1a1d2e;
-    --text-secondary:     #4a5568;
-    --text-muted:         #8899aa;
-    --text-inverse:       #f8f9fc;
+    --surface-overlay:    #f8f9fb;
+    --surface-glass:      rgba(255, 255, 255, 0.8);
+    --surface-glass-hover:rgba(0, 0, 0, 0.03);
+    --surface-glass-active:rgba(0, 180, 220, 0.06);
+    --text-primary:       #111827;
+    --text-secondary:     #374151;
+    --text-muted:         #6b7280;
+    --text-inverse:       #ffffff;
     --border-subtle:      rgba(0, 0, 0, 0.06);
     --border-default:     rgba(0, 0, 0, 0.1);
     --border-emphasis:    rgba(0, 180, 220, 0.3);
     --border-glow:        rgba(0, 200, 240, 0.5);
-    --glass-bg:           rgba(255, 255, 255, 0.6);
+    --glass-bg:           rgba(255, 255, 255, 0.8);
     --glass-border:       rgba(0, 0, 0, 0.08);
     --shadow-sm:          0 1px 3px rgba(0, 0, 0, 0.06);
     --shadow-md:          0 4px 16px rgba(0, 0, 0, 0.08);
@@ -251,7 +253,7 @@ html.theme-transitioning *::after {
     font-weight: 700;
     letter-spacing: var(--tracking-ultra);
     color: var(--brand-primary);
-    text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
 }
 .brand-tagline {
     font-family: var(--font-body);

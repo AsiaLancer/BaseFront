@@ -250,46 +250,60 @@ onUnmounted(() => {
         </div>
     </section>
 
-    <!-- ═══════ SECTION 3: 热门视频(3) + 介绍(7) ═══════ -->
+    <!-- ═══════ SECTION 3: 热门视频 + 介绍 ═══════ -->
     <section class="aw-sec aw-sec-s3">
         <div class="aw-sec-inner">
-            <div class="aw-sec-left">
+            <div class="aw-sec-head-row">
                 <span class="aw-sec-label">热门视频</span>
                 <h2>AI创作精选</h2>
-                <div class="aw-hv-list">
-                    <div v-for="v in hotVideos" :key="v.t" class="aw-hv-card" @click="router.push('/ai-world/video/1')">
-                        <div class="aw-hv-cover"><img :src="v.img" :alt="v.t"/><span class="aw-hv-views">{{v.v}}</span></div>
-                        <div class="aw-hv-info"><p>{{v.t}}</p><span>{{v.a}}</span></div>
-                    </div>
+            </div>
+            <div class="aw-hv-list">
+                <div v-for="v in hotVideos" :key="v.t" class="aw-hv-card" @click="router.push('/ai-world/video/1')">
+                    <div class="aw-hv-cover"><img :src="v.img" :alt="v.t"/><span class="aw-hv-views">{{v.v}}</span></div>
+                    <div class="aw-hv-info"><p>{{v.t}}</p><span>{{v.a}}</span></div>
                 </div>
             </div>
-            <div class="aw-sec-right">
-                <h2>革命性<br/>AI内容体验</h2>
-                <p class="aw-sec-desc">AI讲师24小时不间断创作，从技术教程到艺术表演，从学术讲座到游戏直播，AI World重新定义内容生产与消费的边界。</p>
-                <div class="aw-stats-row">
-                    <div class="aw-stat"><b>200+</b><span>AI讲师</span></div>
-                    <div class="aw-stat"><b>50K+</b><span>视频内容</span></div>
-                    <div class="aw-stat"><b>1.2M</b><span>月活用户</span></div>
+            <div class="aw-sec-split">
+                <div class="aw-sec-left">
+                    <h2>革命性<br/>AI内容体验</h2>
+                    <p class="aw-sec-desc">AI讲师24小时不间断创作，从技术教程到艺术表演，从学术讲座到游戏直播，AI World重新定义内容生产与消费的边界。</p>
+                </div>
+                <div class="aw-sec-right">
+                    <div class="aw-stats-row">
+                        <div class="aw-stat"><b>200+</b><span>AI讲师</span></div>
+                        <div class="aw-stat"><b>50K+</b><span>视频内容</span></div>
+                        <div class="aw-stat"><b>1.2M</b><span>月活用户</span></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════ SECTION 4: 介绍(7) + 热门直播(3) ═══════ -->
+    <!-- ═══════ SECTION 4: 热门直播 + 介绍 ═══════ -->
     <section class="aw-sec aw-sec-s4">
         <div class="aw-sec-inner">
-            <div class="aw-sec-left">
-                <h2>实时互动<br/>AI直播间</h2>
-                <p class="aw-sec-desc">AI主播24小时在线，实时回答观众问题。从技术答疑到艺术表演，每个直播间都是独特的AI体验空间。弹幕互动、礼物打赏、连麦对话，让AI直播充满真实感。</p>
-                <el-button type="primary" round size="large" @click="router.push('/ai-world/live')">
-                    进入直播间 <el-icon class="ml-2"><ArrowRight/></el-icon>
-                </el-button>
+            <div class="aw-sec-head-row">
+                <span class="aw-sec-label">实时互动</span>
+                <h2>AI直播间</h2>
             </div>
-            <div class="aw-sec-right">
-                <div class="aw-hl-grid">
-                    <div v-for="l in hotLives" :key="l.t" class="aw-hl-card" @click="router.push('/ai-world/video/1')">
-                        <div class="aw-hl-cover"><img :src="l.img" :alt="l.t"/><span class="aw-hl-badge">🔴 LIVE</span></div>
-                        <div class="aw-hl-info"><p>{{l.t}}</p><span>{{l.a}} · {{l.w}}观看</span></div>
+            <div class="aw-hl-grid">
+                <div v-for="l in hotLives" :key="l.t" class="aw-hl-card" @click="router.push('/ai-world/video/1')">
+                    <div class="aw-hl-cover"><img :src="l.img" :alt="l.t"/><span class="aw-hl-badge">🔴 LIVE</span></div>
+                    <div class="aw-hl-info"><p>{{l.t}}</p><span>{{l.a}} · {{l.w}}观看</span></div>
+                </div>
+            </div>
+            <div class="aw-sec-split">
+                <div class="aw-sec-left">
+                    <p class="aw-sec-desc">AI主播24小时在线，实时回答观众问题。从技术答疑到艺术表演，每个直播间都是独特的AI体验空间。</p>
+                    <el-button type="primary" round size="large" @click="router.push('/ai-world/live')">
+                        进入直播间 <el-icon class="ml-2"><ArrowRight/></el-icon>
+                    </el-button>
+                </div>
+                <div class="aw-sec-right">
+                    <div class="aw-stats-row">
+                        <div class="aw-stat"><b>24H</b><span>全天直播</span></div>
+                        <div class="aw-stat"><b>50+</b><span>AI主播</span></div>
+                        <div class="aw-stat"><b>10K+</b><span>日活观众</span></div>
                     </div>
                 </div>
             </div>
@@ -361,8 +375,13 @@ onUnmounted(() => {
 /* ═══════ SECTIONS — 3:7 spiral ═══════ */
 .aw-sec { position:relative;z-index:1;padding:100px 0;border-bottom:1px solid var(--border-subtle); }
 .aw-sec-inner { max-width:1400px;margin:0 auto;padding:0 28px;display:grid;gap:64px; }
-.aw-sec-s1 .aw-sec-inner,.aw-sec-s3 .aw-sec-inner,.aw-sec-s5 .aw-sec-inner { grid-template-columns:3fr 7fr; }
-.aw-sec-s2 .aw-sec-inner,.aw-sec-s4 .aw-sec-inner { grid-template-columns:7fr 3fr; }
+.aw-sec-s1 .aw-sec-inner,.aw-sec-s5 .aw-sec-inner { grid-template-columns:3fr 7fr; }
+.aw-sec-s2 .aw-sec-inner { grid-template-columns:7fr 3fr; }
+/* S3/S4: full-width cards + split row below */
+.aw-sec-s3 .aw-sec-inner,.aw-sec-s4 .aw-sec-inner { display:flex;flex-direction:column;gap:36px; }
+.aw-sec-head-row { }
+.aw-sec-head-row h2 { font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--text-primary);margin-bottom:0; }
+.aw-sec-split { display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center; }
 .aw-sec-label { display:inline-block;font-family:var(--font-display);font-size:10px;letter-spacing:4px;color:#00d4ff;text-transform:uppercase;margin-bottom:16px; }
 .aw-sec-left h2,.aw-sec-right h2 { font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--text-primary);line-height:1.2;margin-bottom:20px; }
 .aw-sec-desc { font-size:15px;color:var(--text-secondary);line-height:1.8;margin-bottom:28px;max-width:480px; }
@@ -391,7 +410,7 @@ onUnmounted(() => {
 .aw-history-item p { font-size:13px;color:var(--text-secondary); }
 
 /* Hot videos — 3 vertical cards */
-.aw-hv-list { display:grid;grid-template-columns:repeat(2,1fr);gap:32px; }
+.aw-hv-list { display:grid;grid-template-columns:repeat(3,1fr);gap:28px; }
 .aw-hv-card { flex:1;min-width:0; border-radius:16px;overflow:hidden;cursor:pointer;transition:all .3s;background:var(--surface-glass);border:1px solid var(--border-subtle); }
 .aw-hv-card:hover { transform:translateY(-6px);border-color:rgba(0,212,255,.2);box-shadow:0 12px 32px rgba(0,0,0,.3); }
 .aw-hv-cover { position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--surface-glass); }
@@ -409,7 +428,7 @@ onUnmounted(() => {
 .aw-stat span { font-size:11px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase; }
 
 /* Hot lives — 3 vertical cards */
-.aw-hl-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:32px; }
+.aw-hl-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:28px; }
 .aw-hl-card { flex:1;min-width:0; border-radius:16px;overflow:hidden;cursor:pointer;transition:all .3s;background:var(--surface-glass);border:1px solid var(--border-subtle); }
 .aw-hl-card:hover { transform:translateY(-6px);border-color:rgba(0,212,255,.2);box-shadow:0 12px 32px rgba(0,0,0,.3); }
 .aw-hl-cover { position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--surface-glass); }

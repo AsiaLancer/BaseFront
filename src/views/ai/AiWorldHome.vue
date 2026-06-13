@@ -359,7 +359,7 @@ onUnmounted(() => {
 .caro-fade-enter-from,.caro-fade-leave-to { opacity:0; }
 
 /* ═══════ SECTIONS — 3:7 spiral ═══════ */
-.aw-sec { position:relative;z-index:1;padding:100px 0; }
+.aw-sec { position:relative;z-index:1;padding:100px 0;border-bottom:1px solid var(--border-subtle); }
 .aw-sec-inner { max-width:1400px;margin:0 auto;padding:0 28px;display:grid;gap:64px; }
 .aw-sec-s1 .aw-sec-inner,.aw-sec-s3 .aw-sec-inner,.aw-sec-s5 .aw-sec-inner { grid-template-columns:3fr 7fr; }
 .aw-sec-s2 .aw-sec-inner,.aw-sec-s4 .aw-sec-inner { grid-template-columns:7fr 3fr; }
@@ -392,7 +392,7 @@ onUnmounted(() => {
 
 /* Hot videos — 3 vertical cards */
 .aw-hv-list { display:grid;grid-template-columns:repeat(2,1fr);gap:32px; }
-.aw-hv-card { border-radius:16px;overflow:hidden;cursor:pointer;transition:all .3s;background:var(--surface-glass);border:1px solid var(--border-subtle); }
+.aw-hv-card { flex:1;min-width:0; border-radius:16px;overflow:hidden;cursor:pointer;transition:all .3s;background:var(--surface-glass);border:1px solid var(--border-subtle); }
 .aw-hv-card:hover { transform:translateY(-6px);border-color:rgba(0,212,255,.2);box-shadow:0 12px 32px rgba(0,0,0,.3); }
 .aw-hv-cover { position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--surface-glass); }
 .aw-hv-cover img { width:100%;height:100%;object-fit:cover;transition:transform .5s; }
@@ -410,7 +410,7 @@ onUnmounted(() => {
 
 /* Hot lives — 3 vertical cards */
 .aw-hl-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:32px; }
-.aw-hl-card { border-radius:16px;overflow:hidden;cursor:pointer;transition:all .3s;background:var(--surface-glass);border:1px solid var(--border-subtle); }
+.aw-hl-card { flex:1;min-width:0; border-radius:16px;overflow:hidden;cursor:pointer;transition:all .3s;background:var(--surface-glass);border:1px solid var(--border-subtle); }
 .aw-hl-card:hover { transform:translateY(-6px);border-color:rgba(0,212,255,.2);box-shadow:0 12px 32px rgba(0,0,0,.3); }
 .aw-hl-cover { position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--surface-glass); }
 .aw-hl-cover img { width:100%;height:100%;object-fit:cover;transition:transform .5s; }

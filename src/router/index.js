@@ -174,6 +174,12 @@ const viewRoutes = [
         meta: { title: '智能助手聊天' }
       },
       {
+        path: 'courses',
+        name: 'CourseList',
+        component: () => import('@/views/course/CourseList.vue'),
+        meta: { title: '全部课程' }
+      },
+      {
         path: 'settings',
         name: 'CourseSetting',
         component: () => import('@/views/course/CourseSetting.vue'), // 使用相对路径

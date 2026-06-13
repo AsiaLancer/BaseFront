@@ -194,6 +194,31 @@ const viewRoutes = [
     ]
   },
   {
+    path: '/ai-world',
+    component: () => import('@/components/layout/AiWorldLayout.vue'),
+    redirect: '/ai-world/home',
+    children: [
+      {
+        path: 'home',
+        name: 'AiWorldHome',
+        component: () => import('@/views/ai/AiWorldHome.vue'),
+        meta: { title: 'AI World - 墨学视频平台' }
+      },
+      {
+        path: 'live',
+        name: 'AiWorldLive',
+        component: () => import('@/views/ai/AiWorldHome.vue'),
+        meta: { title: '直播' }
+      },
+      {
+        path: 'videos',
+        name: 'AiWorldVideos',
+        component: () => import('@/views/ai/AiWorldHome.vue'),
+        meta: { title: '视频' }
+      },
+    ]
+  },
+  {
     path: '/',
     redirect: '/course'
   }

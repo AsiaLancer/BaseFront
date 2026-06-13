@@ -6,6 +6,7 @@ import { ElMessage } from 'element-plus'
 import { User, Lock, View, Hide } from '@element-plus/icons-vue'
 import storages from '@/utils/storages.js'
 import { getStarStyle } from '@/utils/designUtils.js'
+function imgUrl(name) { return new URL(`@/assets/imgs/${name}`, import.meta.url).href }
 const router = useRouter()
 const route = useRoute()
 const userStore = useUserStore()
@@ -134,15 +135,15 @@ onMounted(
                     <!-- 宣传轮播 -->
                     <div class="brand-carousel">
                         <div class="bc-slide">
-                            <img src="https://picsum.photos/seed/promo1/360/180" alt="">
+                            <img :src="imgUrl('xn20.png')" alt="">
                             <p class="bc-text">海量精品课程，随时随地学习</p>
                         </div>
                         <div class="bc-slide">
-                            <img src="https://picsum.photos/seed/promo2/360/180" alt="">
+                            <img :src="imgUrl('xn21.png')" alt="">
                             <p class="bc-text">AI 智能伴学，个性化学习路径</p>
                         </div>
                         <div class="bc-slide">
-                            <img src="https://picsum.photos/seed/promo3/360/180" alt="">
+                            <img :src="imgUrl('xn22.png')" alt="">
                             <p class="bc-text">名师在线授课，成就更好的你</p>
                         </div>
                     </div>

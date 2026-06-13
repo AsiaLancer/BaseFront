@@ -58,7 +58,7 @@ function onCmd(cmd) {
                 <router-link to="/course" class="nav-link" active-class="nav-link-active">首页</router-link>
                 <router-link to="/course/courses" class="nav-link" active-class="nav-link-active">课程</router-link>
                 <router-link to="/course/aichat" class="nav-link" active-class="nav-link-active">AI 学伴</router-link>
-                <router-link to="/course/paths" class="nav-link" active-class="nav-link-active">学习路径</router-link>
+                <router-link to="/ai-world" class="nav-link" active-class="nav-link-active">AI World</router-link>
             </nav>
 
             <!-- Right actions -->

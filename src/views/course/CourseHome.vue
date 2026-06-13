@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import { Search, ArrowRight, Collection, Reading, MagicStick, Monitor, DataAnalysis, Cpu, Document, Star, ChatDotRound } from '@element-plus/icons-vue'
 import LightningBolt from '@/components/three/LightningBolt.vue'
+function imgSrc(name) { return new URL(`@/assets/imgs/${name}`, import.meta.url).href }
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
@@ -30,12 +31,12 @@ const cats = [
     { k:'ai',l:'AI 前沿',icon:Cpu,n:12 },
 ]
 const courses = [
-    { id:1,cat:'humanities',t:'《论语》精读二十讲',a:'墨韵先生',r:'国学院教授',n:12580,rt:4.9,p:'免费',lv:'入门',d:'20课时',img:'https://picsum.photos/seed/h1/800/500',w:800,h:500,tg:['经典','儒家'] },
-    { id:2,cat:'tech',t:'Python 数据科学实战',a:'程远',r:'前阿里P8算法专家',n:8960,rt:4.8,p:'¥299',lv:'进阶',d:'32课时',img:'https://picsum.photos/seed/h2/800/500',w:800,h:500,tg:['Python','数据'] },
-    { id:3,cat:'arts',t:'颜体楷书入门到精通',a:'砚田墨香',r:'中书协会员',n:5680,rt:4.9,p:'免费',lv:'入门',d:'16课时',img:'https://picsum.photos/seed/h3/800/500',w:800,h:500,tg:['书法','楷书'] },
-    { id:4,cat:'ai',t:'大模型应用开发实战',a:'凌风',r:'AI Lab 负责人',n:11200,rt:4.7,p:'¥499',lv:'高级',d:'40课时',img:'https://picsum.photos/seed/h4/800/500',w:800,h:500,tg:['LLM','Agent'] },
-    { id:5,cat:'humanities',t:'史记与历史思维',a:'司马清风',r:'历史学博士',n:4320,rt:4.8,p:'¥199',lv:'进阶',d:'24课时',img:'https://picsum.photos/seed/h5/800/500',w:800,h:500,tg:['历史','史记'] },
-    { id:6,cat:'tech',t:'全栈 Web 开发训练营',a:'无极',r:'全栈架构师',n:15600,rt:4.9,p:'¥399',lv:'入门',d:'48课时',img:'https://picsum.photos/seed/h6/800/500',w:800,h:500,tg:['Vue','Node'] },
+    { id:1,cat:'humanities',t:'《论语》精读二十讲',a:'墨韵先生',r:'国学院教授',n:12580,rt:4.9,p:'免费',lv:'入门',d:'20课时',img:'xn1.png',tg:['经典','儒家'] },
+    { id:2,cat:'tech',t:'Python 数据科学实战',a:'程远',r:'前阿里P8算法专家',n:8960,rt:4.8,p:'¥299',lv:'进阶',d:'32课时',img:'xn2.png',tg:['Python','数据'] },
+    { id:3,cat:'arts',t:'颜体楷书入门到精通',a:'砚田墨香',r:'中书协会员',n:5680,rt:4.9,p:'免费',lv:'入门',d:'16课时',img:'xn3.png',tg:['书法','楷书'] },
+    { id:4,cat:'ai',t:'大模型应用开发实战',a:'凌风',r:'AI Lab 负责人',n:11200,rt:4.7,p:'¥499',lv:'高级',d:'40课时',img:'xn4.png',tg:['LLM','Agent'] },
+    { id:5,cat:'humanities',t:'史记与历史思维',a:'司马清风',r:'历史学博士',n:4320,rt:4.8,p:'¥199',lv:'进阶',d:'24课时',img:'xn5.png',tg:['历史','史记'] },
+    { id:6,cat:'tech',t:'全栈 Web 开发训练营',a:'无极',r:'全栈架构师',n:15600,rt:4.9,p:'¥399',lv:'入门',d:'48课时',img:'xn6.png',tg:['Vue','Node'] },
 ]
 const paths = [
     { id:1,t:'国学入门之路',n:8,d:'12周',icon:Document,desc:'《论语》→《道德经》→《诗经》→《周易》',s:3280,c:'#00e5ff' },
@@ -182,7 +183,7 @@ onUnmounted(()=>{window.removeEventListener('mousemove',onMouse);ScrollTrigger.g
                 @mouseenter="cardIn($event,$event.currentTarget)"
                 @mouseleave="cardOut($event,$event.currentTarget)">
                 <div class="cc-cover">
-                    <img :src="c.img" :alt="c.t" :width="c.w" :height="c.h" loading="lazy" decoding="async" @load="imgLoad"/>
+                    <img :src="imgSrc(c.img)" :alt="c.t" loading="lazy" decoding="async" @load="imgLoad"/>
                     <span class="cc-badge cc-lv">{{c.lv}}</span>
                     <span class="cc-badge" :class="c.p==='免费'?'cc-free':'cc-paid'">{{c.p}}</span>
                 </div>

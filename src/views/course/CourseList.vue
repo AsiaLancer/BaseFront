@@ -1,22 +1,12 @@
 <script setup>
-import { ref, computed, onMounted, nextTick } from 'vue'
-import { Search, ArrowRight, Collection, Reading, MagicStick, Monitor, DataAnalysis, Cpu, Star } from '@element-plus/icons-vue'
+import { ref, computed, onMounted, nextTick, watch } from 'vue'
+import { Search, Collection, Reading, MagicStick, Monitor, Cpu, Star } from '@element-plus/icons-vue'
 import gsap from 'gsap'
 
-const searchQuery = ref('')
-const activeCat = ref('all')
-const currentPage = ref(1)
-const pageSize = 6
+// ─── Mock API layer — swap these functions when backend is ready ───
+const delay = (ms=300) => new Promise(r => setTimeout(r, ms))
 
-const cats = [
-    { k:'all',l:'全部',icon:Collection,n:32 },
-    { k:'humanities',l:'人文通识',icon:Reading,n:12 },
-    { k:'arts',l:'艺术修养',icon:MagicStick,n:8 },
-    { k:'tech',l:'技术实践',icon:Monitor,n:10 },
-    { k:'ai',l:'AI 前沿',icon:Cpu,n:6 },
-]
-
-const allCourses = [
+const mockCourses = [
     { id:1,cat:'humanities',t:'《论语》精读二十讲',a:'墨韵先生',r:'国学院教授',n:12580,rt:4.9,p:'免费',lv:'入门',d:'20课时',img:'https://picsum.photos/seed/c1/800/500',w:800,h:500,tg:['经典','儒家'] },
     { id:2,cat:'tech',t:'Python 数据科学实战',a:'程远',r:'前阿里P8算法专家',n:8960,rt:4.8,p:'¥299',lv:'进阶',d:'32课时',img:'https://picsum.photos/seed/c2/800/500',w:800,h:500,tg:['Python','数据'] },
     { id:3,cat:'arts',t:'颜体楷书入门到精通',a:'砚田墨香',r:'中书协会员',n:5680,rt:4.9,p:'免费',lv:'入门',d:'16课时',img:'https://picsum.photos/seed/c3/800/500',w:800,h:500,tg:['书法','楷书'] },
@@ -29,28 +19,96 @@ const allCourses = [
     { id:10,cat:'ai',t:'Prompt 工程实战',a:'程远',r:'AI研究员',n:5680,rt:4.5,p:'¥199',lv:'进阶',d:'16课时',img:'https://picsum.photos/seed/c10/800/500',w:800,h:500,tg:['Prompt','LLM'] },
     { id:11,cat:'humanities',t:'中国哲学简史',a:'墨韵先生',r:'国学院教授',n:2100,rt:4.9,p:'免费',lv:'入门',d:'18课时',img:'https://picsum.photos/seed/c11/800/500',w:800,h:500,tg:['哲学','历史'] },
     { id:12,cat:'tech',t:'Vue 3 源码解析',a:'无极',r:'全栈架构师',n:3450,rt:4.8,p:'¥399',lv:'高级',d:'28课时',img:'https://picsum.photos/seed/c12/800/500',w:800,h:500,tg:['Vue','前端'] },
+    { id:13,cat:'humanities',t:'《诗经》选读',a:'清风居士',r:'文学教授',n:1890,rt:4.6,p:'免费',lv:'入门',d:'14课时',img:'https://picsum.photos/seed/c13/800/500',w:800,h:500,tg:['诗词','文学'] },
+    { id:14,cat:'arts',t:'篆刻艺术入门',a:'金石斋主',r:'篆刻名家',n:1230,rt:4.7,p:'¥199',lv:'入门',d:'12课时',img:'https://picsum.photos/seed/c14/800/500',w:800,h:500,tg:['篆刻','金石'] },
+    { id:15,cat:'tech',t:'Node.js 微服务架构',a:'程远',r:'架构专家',n:4560,rt:4.5,p:'¥399',lv:'高级',d:'30课时',img:'https://picsum.photos/seed/c15/800/500',w:800,h:500,tg:['Node','微服务'] },
+    { id:16,cat:'ai',t:'计算机视觉入门',a:'凌风',r:'AI Lab 负责人',n:6780,rt:4.6,p:'¥499',lv:'进阶',d:'32课时',img:'https://picsum.photos/seed/c16/800/500',w:800,h:500,tg:['CV','视觉'] },
+    { id:17,cat:'humanities',t:'西方哲学史',a:'思辨先生',r:'哲学博士',n:2670,rt:4.8,p:'¥299',lv:'进阶',d:'26课时',img:'https://picsum.photos/seed/c17/800/500',w:800,h:500,tg:['哲学','西方'] },
+    { id:18,cat:'arts',t:'工笔花鸟画',a:'丹青妙手',r:'国画大师',n:1560,rt:4.9,p:'¥399',lv:'进阶',d:'22课时',img:'https://picsum.photos/seed/c18/800/500',w:800,h:500,tg:['国画','工笔'] },
+    { id:19,cat:'tech',t:'Rust 系统编程',a:'无极',r:'全栈架构师',n:2340,rt:4.7,p:'¥499',lv:'高级',d:'34课时',img:'https://picsum.photos/seed/c19/800/500',w:800,h:500,tg:['Rust','系统'] },
+    { id:20,cat:'ai',t:'NLP 自然语言处理',a:'文心',r:'NLP 研究员',n:3450,rt:4.5,p:'¥399',lv:'进阶',d:'28课时',img:'https://picsum.photos/seed/c20/800/500',w:800,h:500,tg:['NLP','LLM'] },
+    { id:21,cat:'humanities',t:'《孙子兵法》与现代管理',a:'墨韵先生',r:'国学院教授',n:5430,rt:4.9,p:'¥199',lv:'进阶',d:'16课时',img:'https://picsum.photos/seed/c21/800/500',w:800,h:500,tg:['兵法','管理'] },
+    { id:22,cat:'arts',t:'古琴演奏入门',a:'琴心居士',r:'古琴传承人',n:890,rt:4.8,p:'免费',lv:'入门',d:'10课时',img:'https://picsum.photos/seed/c22/800/500',w:800,h:500,tg:['音乐','古琴'] },
+    { id:23,cat:'tech',t:'Kubernetes 实战',a:'程远',r:'架构专家',n:6780,rt:4.6,p:'¥599',lv:'高级',d:'40课时',img:'https://picsum.photos/seed/c23/800/500',w:800,h:500,tg:['K8s','运维'] },
+    { id:24,cat:'ai',t:'强化学习基础',a:'凌风',r:'AI Lab 负责人',n:2340,rt:4.4,p:'¥599',lv:'高级',d:'36课时',img:'https://picsum.photos/seed/c24/800/500',w:800,h:500,tg:['RL','算法'] },
+    { id:25,cat:'humanities',t:'唐宋八大家文选',a:'清风居士',r:'文学教授',n:3210,rt:4.7,p:'¥199',lv:'进阶',d:'20课时',img:'https://picsum.photos/seed/c25/800/500',w:800,h:500,tg:['文学','唐宋'] },
+    { id:26,cat:'arts',t:'茶道与生活美学',a:'茶禅一味',r:'茶道大师',n:1670,rt:4.9,p:'免费',lv:'入门',d:'8课时',img:'https://picsum.photos/seed/c26/800/500',w:800,h:500,tg:['茶道','美学'] },
+    { id:27,cat:'tech',t:'Flutter 跨平台开发',a:'无极',r:'全栈架构师',n:4320,rt:4.8,p:'¥299',lv:'进阶',d:'24课时',img:'https://picsum.photos/seed/c27/800/500',w:800,h:500,tg:['Flutter','跨端'] },
+    { id:28,cat:'ai',t:'AIGC 内容创作实战',a:'文心',r:'AI研究员',n:7890,rt:4.7,p:'¥299',lv:'进阶',d:'20课时',img:'https://picsum.photos/seed/c28/800/500',w:800,h:500,tg:['AIGC','创作'] },
+    { id:29,cat:'humanities',t:'《资治通鉴》选读',a:'司马清风',r:'历史学博士',n:2100,rt:4.8,p:'¥299',lv:'进阶',d:'22课时',img:'https://picsum.photos/seed/c29/800/500',w:800,h:500,tg:['历史','通鉴'] },
+    { id:30,cat:'tech',t:'TypeScript 类型体操',a:'程远',r:'前端专家',n:3450,rt:4.6,p:'¥199',lv:'进阶',d:'18课时',img:'https://picsum.photos/seed/c30/800/500',w:800,h:500,tg:['TS','前端'] },
 ]
 
-const filtered = computed(() => {
-    let list = activeCat.value === 'all' ? allCourses : allCourses.filter(c => c.cat === activeCat.value)
-    if (searchQuery.value) {
-        const q = searchQuery.value.toLowerCase()
+// ─── Fake API — replace with real fetch later ───
+async function fetchCourses({ page=1, pageSize=9, category='all', search='' } = {}) {
+    await delay(400)
+    let list = [...mockCourses]
+    if (category && category !== 'all') list = list.filter(c => c.cat === category)
+    if (search) {
+        const q = search.toLowerCase()
         list = list.filter(c => c.t.includes(q) || c.a.includes(q) || c.tg.some(t => t.toLowerCase().includes(q)))
     }
-    return list
+    const total = list.length
+    const start = (page - 1) * pageSize
+    return { data: list.slice(start, start + pageSize), total, page, pageSize }
+}
+
+// ─── State ───
+const searchQuery = ref('')
+const activeCat = ref('all')
+const currentPage = ref(1)
+const pageSize = 9
+const courses = ref([])
+const total = ref(0)
+const loading = ref(false)
+
+const cats = [
+    { k:'all',l:'全部',icon:Collection,n:30 },
+    { k:'humanities',l:'人文通识',icon:Reading,n:8 },
+    { k:'arts',l:'艺术修养',icon:MagicStick,n:6 },
+    { k:'tech',l:'技术实践',icon:Monitor,n:10 },
+    { k:'ai',l:'AI 前沿',icon:Cpu,n:6 },
+]
+
+const totalPages = computed(() => Math.ceil(total.value / pageSize) || 1)
+const hasPrev = computed(() => currentPage.value > 1)
+const hasNext = computed(() => currentPage.value < totalPages.value)
+
+// Page number display — show max 5 buttons with ellipsis
+const pageNumbers = computed(() => {
+    const tp = totalPages.value, cp = currentPage.value
+    if (tp <= 7) return Array.from({length:tp}, (_,i)=>i+1)
+    const pages = [1]
+    if (cp > 3) pages.push('...')
+    for (let i = Math.max(2, cp-1); i <= Math.min(tp-1, cp+1); i++) pages.push(i)
+    if (cp < tp-2) pages.push('...')
+    pages.push(tp)
+    return pages
 })
 
-const totalPages = computed(() => Math.ceil(filtered.value.length / pageSize))
-const paged = computed(() => {
-    const start = (currentPage.value - 1) * pageSize
-    return filtered.value.slice(start, start + pageSize)
-})
+async function loadCourses() {
+    loading.value = true
+    const res = await fetchCourses({ page: currentPage.value, pageSize, category: activeCat.value, search: searchQuery.value })
+    courses.value = res.data
+    total.value = res.total
+    loading.value = false
+}
+
+function goPage(p) {
+    if (p < 1 || p > totalPages.value || p === currentPage.value) return
+    currentPage.value = p
+    loadCourses()
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+watch([activeCat, searchQuery], () => { currentPage.value = 1; loadCourses() })
 
 function imgLoad(e) { e.target.classList.add('loaded') }
 function cardIn(_,el) { gsap.to(el, { y: -6, duration: .3, ease: 'power3.out' }) }
 function cardOut(_,el) { gsap.to(el, { y: 0, duration: .2, ease: 'power2.in' }) }
 
 onMounted(async () => {
+    await loadCourses()
     await nextTick()
     gsap.fromTo('.cl-card', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .5, stagger: .06, ease: 'power3.out' })
 })
@@ -61,8 +119,7 @@ onMounted(async () => {
     <!-- Header -->
     <div class="cl-hero">
         <h1 class="cl-title">全部课程</h1>
-        <p class="cl-sub">跨学科精选 · 从经典到前沿 · {{ allCourses.length }} 门课程</p>
-        <!-- Search -->
+        <p class="cl-sub">跨学科精选 · 从经典到前沿 · {{ total }} 门课程</p>
         <div class="cl-search-row">
             <el-input v-model="searchQuery" size="large" placeholder="搜索课程、讲师…" :prefix-icon="Search" autocomplete="off" class="cl-search" />
         </div>
@@ -70,16 +127,16 @@ onMounted(async () => {
 
     <!-- Category filter -->
     <div class="cl-cats">
-        <button v-for="c in cats" :key="c.k" class="cl-cat-chip" :class="{active:activeCat===c.k}" @click="activeCat=c.k;currentPage=1">
+        <button v-for="c in cats" :key="c.k" class="cl-cat-chip" :class="{active:activeCat===c.k}" @click="activeCat=c.k">
             <el-icon class="cat-ic" aria-hidden="true"><component :is="c.icon"/></el-icon>
             <span>{{c.l}}</span>
             <span class="cat-n">{{c.n}}</span>
         </button>
     </div>
 
-    <!-- Course grid -->
-    <div class="cl-grid">
-        <article v-for="c in paged" :key="c.id" class="cl-card" tabindex="0"
+    <!-- Grid -->
+    <div v-if="!loading && courses.length" class="cl-grid">
+        <article v-for="c in courses" :key="c.id" class="cl-card" tabindex="0"
             @mouseenter="cardIn($event,$event.currentTarget)"
             @mouseleave="cardOut($event,$event.currentTarget)">
             <div class="cl-cover">
@@ -100,11 +157,20 @@ onMounted(async () => {
         </article>
     </div>
 
+    <!-- Empty state -->
+    <div v-else-if="!loading" class="cl-empty">没有找到匹配的课程</div>
+
+    <!-- Loading -->
+    <div v-if="loading" class="cl-loading">加载中…</div>
+
     <!-- Pagination -->
     <div v-if="totalPages>1" class="cl-pager">
-        <button :disabled="currentPage===1" @click="currentPage--">上一页</button>
-        <span v-for="p in totalPages" :key="p" class="cl-page-btn" :class="{active:p===currentPage}" @click="currentPage=p">{{p}}</span>
-        <button :disabled="currentPage===totalPages" @click="currentPage++">下一页</button>
+        <button :disabled="!hasPrev" @click="goPage(currentPage-1)">← 上一页</button>
+        <template v-for="p in pageNumbers" :key="p">
+            <span v-if="p==='...'" class="cl-ellipsis">…</span>
+            <button v-else class="cl-page-btn" :class="{active:p===currentPage}" @click="goPage(p)">{{p}}</button>
+        </template>
+        <button :disabled="!hasNext" @click="goPage(currentPage+1)">下一页 →</button>
     </div>
 </div>
 </template>
@@ -151,11 +217,15 @@ onMounted(async () => {
 .cl-rating{display:inline-flex;align-items:center;gap:4px;color:#fbbf24;font-weight:500}
 
 /* Pagination */
-.cl-pager{display:flex;justify-content:center;align-items:center;gap:8px}
+.cl-pager{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:48px}
 .cl-pager button,.cl-page-btn{padding:8px 16px;border-radius:8px;border:1px solid var(--border-subtle);background:var(--surface-glass);color:var(--text-secondary);font-size:14px;cursor:pointer;transition:all .2s}
 .cl-pager button:hover,.cl-page-btn:hover{border-color:rgba(0,212,255,.3);color:var(--text-primary)}
 .cl-page-btn.active{background:rgba(0,212,255,.1);border-color:#00d4ff;color:#00d4ff}
 .cl-pager button:disabled{opacity:.3;cursor:not-allowed}
+.cl-ellipsis{color:var(--text-muted);padding:0 4px}
+
+/* States */
+.cl-empty,.cl-loading{text-align:center;padding:60px 0;color:var(--text-muted);font-size:15px}
 
 @media(max-width:1024px){.cl-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){.cl-grid{grid-template-columns:1fr}.cl-page{padding:40px 16px 60px}.cl-title{font-size:28px}}

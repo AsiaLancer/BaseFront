@@ -93,17 +93,51 @@ function initThree() {
 
 // ─── GSAP Scroll ───
 function initScroll() {
-    const sections = document.querySelectorAll('.aw-sec')
-    sections.forEach(sec => {
-        const left = sec.querySelector('.aw-sec-left')
-        const right = sec.querySelector('.aw-sec-right')
-        if (left && right) {
-            gsap.fromTo(left, { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 1, ease: 'power3.out',
-                scrollTrigger: { trigger: sec, start: 'top 75%', once: true } })
-            gsap.fromTo(right, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 1, ease: 'power3.out',
-                scrollTrigger: { trigger: sec, start: 'top 75%', once: true } })
-        }
-    })
+    // Carousel — parallax fade-in
+    gsap.fromTo('.aw-carousel', { opacity:0, y:80 }, { opacity:1, y:0, duration:1.2, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-carousel', start:'top 85%', once:true } })
+
+    // S1: 理念(左) + 愿景卡片(右) — 左右同时进入,右侧卡片stagger
+    gsap.fromTo('.aw-sec-s1 .aw-sec-left', { opacity:0, x:-80 }, { opacity:1, x:0, duration:1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s1', start:'top 70%', once:true } })
+    gsap.fromTo('.aw-sec-s1 .aw-sec-right', { opacity:0, x:80 }, { opacity:1, x:0, duration:1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s1', start:'top 70%', once:true } })
+    gsap.fromTo('.aw-vision-card', { opacity:0, y:50 }, { opacity:1, y:0, duration:.6, stagger:.1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s1', start:'top 70%', once:true } })
+
+    // S2: 介绍卡片(左stagger) + 历程(右) — L7/R3
+    gsap.fromTo('.aw-sec-s2 .aw-sec-left', { opacity:0, x:-80 }, { opacity:1, x:0, duration:1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s2', start:'top 70%', once:true } })
+    gsap.fromTo('.aw-sec-s2 .aw-sec-right', { opacity:0, x:80 }, { opacity:1, x:0, duration:1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s2', start:'top 70%', once:true } })
+    gsap.fromTo('.aw-intro-card', { opacity:0, x:-40 }, { opacity:1, x:0, duration:.6, stagger:.12, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s2', start:'top 70%', once:true } })
+    gsap.fromTo('.aw-history-item', { opacity:0, y:30 }, { opacity:1, y:0, duration:.5, stagger:.1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s2', start:'top 70%', once:true } })
+
+    // S3: 热门视频(左stagger) + 介绍(右)
+    gsap.fromTo('.aw-sec-s3 .aw-sec-left', { opacity:0, x:-80 }, { opacity:1, x:0, duration:1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s3', start:'top 70%', once:true } })
+    gsap.fromTo('.aw-sec-s3 .aw-sec-right', { opacity:0, x:80 }, { opacity:1, x:0, duration:1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s3', start:'top 70%', once:true } })
+    gsap.fromTo('.aw-hv-card', { opacity:0, y:40 }, { opacity:1, y:0, duration:.5, stagger:.1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s3', start:'top 70%', once:true } })
+
+    // S4: 介绍(左) + 热门直播(右stagger)
+    gsap.fromTo('.aw-sec-s4 .aw-sec-left', { opacity:0, x:-80 }, { opacity:1, x:0, duration:1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s4', start:'top 70%', once:true } })
+    gsap.fromTo('.aw-sec-s4 .aw-sec-right', { opacity:0, x:80 }, { opacity:1, x:0, duration:1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s4', start:'top 70%', once:true } })
+    gsap.fromTo('.aw-hl-card', { opacity:0, y:40 }, { opacity:1, y:0, duration:.5, stagger:.1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s4', start:'top 70%', once:true } })
+
+    // S5: 主播介绍(左) + 圆形主播卡(右stagger)
+    gsap.fromTo('.aw-sec-s5 .aw-sec-left', { opacity:0, x:-80 }, { opacity:1, x:0, duration:1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s5', start:'top 70%', once:true } })
+    gsap.fromTo('.aw-sec-s5 .aw-sec-right', { opacity:0, x:80 }, { opacity:1, x:0, duration:1, ease:'power3.out',
+        scrollTrigger: { trigger:'.aw-sec-s5', start:'top 70%', once:true } })
+    gsap.fromTo('.aw-streamer-card', { opacity:0, scale:.8 }, { opacity:1, scale:1, duration:.5, stagger:.08, ease:'back.out(1.4)',
+        scrollTrigger: { trigger:'.aw-sec-s5', start:'top 70%', once:true } })
 }
 
 onMounted(async () => {
@@ -298,9 +332,9 @@ onUnmounted(() => {
 .aw-bg-canvas :deep(canvas) { display:block !important; }
 
 /* ═══════ VIDEO HERO ═══════ */
-.aw-video-hero { position:relative;z-index:1;width:100%;height:85vh;overflow:hidden; }
+.aw-video-hero { position:relative;z-index:1;width:100%;height:100vh;overflow:hidden; }
 .aw-hero-video { position:absolute;inset:0;width:100%;height:100%;object-fit:cover; }
-.aw-video-overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(6,11,24,1) 0%,rgba(6,11,24,.6) 10%,rgba(6,11,24,.2) 40%,rgba(6,11,24,.03) 70%,transparent 100%);z-index:1; }
+.aw-video-overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(6,11,24,.9) 0%,rgba(6,11,24,.3) 30%,rgba(6,11,24,.05) 70%,transparent 100%);z-index:1; }
 .aw-video-info { position:absolute;bottom:15%;left:0;right:0;z-index:2;text-align:center; }
 .aw-video-eyebrow { font-family:var(--font-display);font-size:12px;letter-spacing:6px;color:rgba(0,212,255,.7);margin-bottom:16px; }
 .aw-video-info h1 { font-family:var(--font-display);font-size:52px;font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-1px; }
@@ -310,7 +344,7 @@ onUnmounted(() => {
 .aw-video-btn-ghost { height:50px;font-size:16px;border-color:rgba(255,255,255,.2)!important;color:#fff!important; }
 
 /* ═══════ CAROUSEL ═══════ */
-.aw-carousel { position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:60px 0 100px; }
+.aw-carousel { position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:160px 28px 120px;opacity:0; }
 .aw-caro-track { border-radius:24px;overflow:hidden; }
 .aw-caro-slide { position:relative;aspect-ratio:21/9;background:var(--surface-glass); }
 .aw-caro-slide img { width:100%;height:100%;object-fit:cover; }
@@ -326,7 +360,7 @@ onUnmounted(() => {
 
 /* ═══════ SECTIONS — 3:7 spiral ═══════ */
 .aw-sec { position:relative;z-index:1;padding:100px 0; }
-.aw-sec-inner { max-width:1200px;margin:0 auto;padding:0 28px;display:grid;gap:60px; }
+.aw-sec-inner { max-width:1400px;margin:0 auto;padding:0 28px;display:grid;gap:64px; }
 .aw-sec-s1 .aw-sec-inner,.aw-sec-s3 .aw-sec-inner,.aw-sec-s5 .aw-sec-inner { grid-template-columns:3fr 7fr; }
 .aw-sec-s2 .aw-sec-inner,.aw-sec-s4 .aw-sec-inner { grid-template-columns:7fr 3fr; }
 .aw-sec-label { display:inline-block;font-family:var(--font-display);font-size:10px;letter-spacing:4px;color:#00d4ff;text-transform:uppercase;margin-bottom:16px; }
@@ -356,16 +390,17 @@ onUnmounted(() => {
 .aw-history-item h4 { font-size:16px;color:var(--text-primary);margin-bottom:4px; }
 .aw-history-item p { font-size:13px;color:var(--text-secondary); }
 
-/* Hot videos */
-.aw-hv-list { display:flex;flex-direction:column;gap:14px; }
-.aw-hv-card { display:flex;gap:14px;padding:12px;border-radius:12px;cursor:pointer;transition:all .2s;background:var(--surface-glass);border:1px solid transparent; }
-.aw-hv-card:hover { border-color:rgba(0,212,255,.15); }
-.aw-hv-cover { position:relative;width:140px;height:84px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--surface-glass); }
-.aw-hv-cover img { width:100%;height:100%;object-fit:cover; }
-.aw-hv-views { position:absolute;bottom:4px;right:4px;padding:1px 6px;border-radius:4px;font-size:10px;background:rgba(0,0,0,.7);color:#fff; }
-.aw-hv-info { flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center; }
-.aw-hv-info p { font-size:13px;color:var(--text-primary);line-height:1.4;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
-.aw-hv-info span { font-size:11px;color:var(--text-muted); }
+/* Hot videos — 3 vertical cards */
+.aw-hv-list { display:grid;grid-template-columns:repeat(2,1fr);gap:32px; }
+.aw-hv-card { border-radius:16px;overflow:hidden;cursor:pointer;transition:all .3s;background:var(--surface-glass);border:1px solid var(--border-subtle); }
+.aw-hv-card:hover { transform:translateY(-6px);border-color:rgba(0,212,255,.2);box-shadow:0 12px 32px rgba(0,0,0,.3); }
+.aw-hv-cover { position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--surface-glass); }
+.aw-hv-cover img { width:100%;height:100%;object-fit:cover;transition:transform .5s; }
+.aw-hv-card:hover .aw-hv-cover img { transform:scale(1.05); }
+.aw-hv-views { position:absolute;bottom:8px;right:8px;padding:3px 8px;border-radius:4px;font-size:11px;background:rgba(0,0,0,.75);color:#fff; }
+.aw-hv-info { padding:20px 22px 24px; }
+.aw-hv-info p { font-size:16px;color:var(--text-primary);line-height:1.45;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
+.aw-hv-info span { font-size:12px;color:var(--text-muted); }
 
 /* Stats */
 .aw-stats-row { display:flex;gap:32px; }
@@ -373,16 +408,17 @@ onUnmounted(() => {
 .aw-stat b { display:block;font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--text-primary); }
 .aw-stat span { font-size:11px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase; }
 
-/* Hot lives */
-.aw-hl-grid { display:flex;flex-direction:column;gap:14px; }
-.aw-hl-card { display:flex;gap:14px;padding:12px;border-radius:12px;cursor:pointer;transition:all .2s;background:var(--surface-glass);border:1px solid transparent; }
-.aw-hl-card:hover { border-color:rgba(0,212,255,.15); }
-.aw-hl-cover { position:relative;width:140px;height:84px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--surface-glass); }
-.aw-hl-cover img { width:100%;height:100%;object-fit:cover; }
-.aw-hl-badge { position:absolute;top:4px;left:4px;padding:1px 6px;border-radius:4px;font-size:9px;background:#f87171;color:#fff; }
-.aw-hl-info { flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center; }
-.aw-hl-info p { font-size:13px;color:var(--text-primary);line-height:1.4;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
-.aw-hl-info span { font-size:11px;color:var(--text-muted); }
+/* Hot lives — 3 vertical cards */
+.aw-hl-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:32px; }
+.aw-hl-card { border-radius:16px;overflow:hidden;cursor:pointer;transition:all .3s;background:var(--surface-glass);border:1px solid var(--border-subtle); }
+.aw-hl-card:hover { transform:translateY(-6px);border-color:rgba(0,212,255,.2);box-shadow:0 12px 32px rgba(0,0,0,.3); }
+.aw-hl-cover { position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--surface-glass); }
+.aw-hl-cover img { width:100%;height:100%;object-fit:cover;transition:transform .5s; }
+.aw-hl-card:hover .aw-hl-cover img { transform:scale(1.05); }
+.aw-hl-badge { position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:4px;font-size:10px;background:#f87171;color:#fff; }
+.aw-hl-info { padding:20px 22px 24px; }
+.aw-hl-info p { font-size:16px;color:var(--text-primary);line-height:1.45;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
+.aw-hl-info span { font-size:12px;color:var(--text-muted); }
 
 /* Streamer cards */
 .aw-streamer-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:20px; }
@@ -390,7 +426,7 @@ onUnmounted(() => {
 .aw-streamer-card:hover { border-color:rgba(0,212,255,.2);transform:translateY(-4px); }
 .aw-sc-avatar { width:72px;height:72px;border-radius:50%;overflow:hidden;margin:0 auto 12px;border:2px solid rgba(0,212,255,.2); }
 .aw-sc-avatar img { width:100%;height:100%;object-fit:cover; }
-.aw-streamer-card h4 { font-size:14px;color:var(--text-primary);margin-bottom:4px; }
+.aw-streamer-card h4 { font-size:16px;color:var(--text-primary);margin-bottom:4px; }
 .aw-sc-role { display:block;font-size:11px;color:var(--text-muted);margin-bottom:6px; }
 .aw-sc-fans { font-size:10px;color:rgba(0,212,255,.5); }
 

@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import { Search, ArrowRight, Collection, Reading, MagicStick, Monitor, DataAnalysis, Cpu, Document, Star, ChatDotRound } from '@element-plus/icons-vue'
 import VideoPreview from '@/components/common/VideoPreview.vue'
-import mediaVid from '@/assets/media123.mp4'
+import mediaVid from '@/assets/media111.mp4'
 import LightningBolt from '@/components/three/LightningBolt.vue'
 function imgSrc(name) { return new URL(`@/assets/imgs/${name}`, import.meta.url).href }
 import gsap from 'gsap'

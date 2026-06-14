@@ -3,7 +3,7 @@ import { ref, computed, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { Star, Clock, User, ArrowRight, Collection, ArrowLeft } from '@element-plus/icons-vue'
 import VideoPreview from '@/components/common/VideoPreview.vue'
-import mediaVid from '@/assets/media123.mp4'
+import mediaVid from '@/assets/media111.mp4'
 import gsap from 'gsap'
 
 const route = useRoute()

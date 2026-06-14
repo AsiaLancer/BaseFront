@@ -12,7 +12,7 @@ const isAiWorld = window.location.pathname.startsWith('/ai-world')
 const videoSrc = ref(null)
 const posterSrc = ref(null)
 onMounted(async () => {
-    const { default: vid } = await import('@/assets/media123.mp4')
+    const { default: vid } = await import('@/assets/media111.mp4')
     const { default: poster } = await import('@/assets/imgs/xn1.png')
     videoSrc.value = vid; posterSrc.value = poster
 })

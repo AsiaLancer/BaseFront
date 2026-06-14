@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 .env
+src/assets/media123.mp4
 
 # Editor directories and files
 .vscode/*

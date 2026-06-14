@@ -170,7 +170,7 @@ const viewRoutes = [
       {
         path: 'aichat',
         name: 'Aichat',
-        component: () => import('@/views/ai/AiChat.vue')
+        component: () => import('@/views/ai/AiChat.vue'),
         meta: { title: '智能助手聊天' }
       },
       {

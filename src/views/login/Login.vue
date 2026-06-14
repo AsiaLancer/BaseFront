@@ -5,7 +5,7 @@ import { useUserStore } from '../../stores/user'
 import { ElMessage } from 'element-plus'
 import { User, Lock, View, Hide } from '@element-plus/icons-vue'
 import storages from '@/utils/storages.js'
-import { getStarStyle } from '@/utils/designUtils.js'
+import { getStarStyle } from '@/utils/designutils.js'
 function imgUrl(name) { return new URL(`@/assets/imgs/${name}`, import.meta.url).href }
 const router = useRouter()
 const route = useRoute()

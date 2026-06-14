@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import { ElMessage } from 'element-plus'
 import { User, Lock, Message, View, Hide } from '@element-plus/icons-vue'
-import { getStarStyle } from '@/utils/designUtils.js'
+import { getStarStyle } from '@/utils/designutils.js'
 
 const router = useRouter()
 const userStore = useUserStore()

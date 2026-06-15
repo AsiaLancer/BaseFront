@@ -13,6 +13,7 @@ const router = useRouter()
 
 // ─── Video ───
 import heroVideo from '@/assets/media111.mp4'
+const heroVideoRef = ref(null)
 
 // ─── Carousel ───
 import b1 from '@/assets/imgs/xn1.png'; import b2 from '@/assets/imgs/xn2.png'
@@ -143,6 +144,12 @@ function initScroll() {
 onMounted(async () => {
     bannerTimer = setInterval(() => { bannerIdx.value = (bannerIdx.value + 1) % banners.length }, 4000)
     await nextTick()
+    // 视频立即渲染：预加载链路 + 强制播放
+    if (heroVideoRef.value) {
+        const link = document.createElement('link');link.rel='preload';link.as='video';link.href=heroVideo;document.head.appendChild(link)
+        heroVideoRef.value.load()
+        heroVideoRef.value.play().catch(() => {})
+    }
     initThree()
     initScroll()
 })
@@ -161,8 +168,9 @@ onUnmounted(() => {
 
     <!-- ═══════ FULL-WIDTH VIDEO ═══════ -->
     <section class="aw-video-hero">
-        <video :src="heroVideo" autoplay muted="muted" loop="loop" playsinline
+        <video ref="heroVideoRef" :src="heroVideo" preload="auto" autoplay muted="muted" loop="loop" playsinline
             class="aw-hero-video"
+            @canplay="e => e.target.play()"
             @error="e => e.target.style.display='none'"
             @ended="e => { e.target.currentTime = 0; e.target.play() }"></video>
         <div class="aw-video-overlay"></div>
@@ -347,7 +355,7 @@ onUnmounted(() => {
 
 /* ═══════ VIDEO HERO ═══════ */
 .aw-video-hero { position:relative;z-index:1;width:100%;height:100vh;overflow:hidden; }
-.aw-hero-video { position:absolute;inset:0;width:100%;height:100%;object-fit:cover; }
+.aw-hero-video { position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000; }
 .aw-video-overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(6,11,24,.9) 0%,rgba(6,11,24,.3) 30%,rgba(6,11,24,.05) 70%,transparent 100%);z-index:1; }
 .aw-video-info { position:absolute;bottom:15%;left:0;right:0;z-index:2;text-align:center; }
 .aw-video-eyebrow { font-family:var(--font-display);font-size:12px;letter-spacing:6px;color:rgba(0,212,255,.7);margin-bottom:16px; }

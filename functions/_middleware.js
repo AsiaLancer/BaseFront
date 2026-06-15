@@ -13,6 +13,6 @@ export async function onRequest(context) {
     return context.next()
   }
 
-  // 其他域名 → 301 永久重定向到自定义域名
-  return Response.redirect(`https://moxue.tech${url.pathname}${url.search}`, 301)
+  // 其他域名 → 拒之门外，不给任何响应内容
+  return new Response('Not Found', { status: 404 })
 }

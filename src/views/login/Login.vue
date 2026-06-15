@@ -331,7 +331,7 @@ onMounted(
 
 /* Carousel */
 .brand-carousel { position:relative; width:360px; height:240px; border-radius:10px; overflow:hidden; flex-shrink:0; }
-.bc-slide { position:absolute; inset:0; display:flex; flex-direction:column; animation:carouselSlide 9s infinite; }
+.bc-slide { position:absolute; inset:0; display:flex; flex-direction:column; animation:carouselSlide 9s infinite backwards; }
 .bc-slide:nth-child(1) { animation-delay:0s; }
 .bc-slide:nth-child(2) { animation-delay:3s; }
 .bc-slide:nth-child(3) { animation-delay:6s; }
